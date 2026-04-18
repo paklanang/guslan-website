@@ -1,224 +1,375 @@
 ---
-import CallToAction from '~/components/widgets/CallToAction.astro';
-import Content from '~/components/widgets/Content.astro';
-import Features2 from '~/components/widgets/Features2.astro';
-import Hero from '~/components/widgets/Hero.astro';
-import Testimonials from '~/components/widgets/Testimonials.astro';
+// src/pages/services.astro
 import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import Prices from '~/components/widgets/Pricing.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
-  title: 'Services',
+  title: 'Paket Layanan — Konsultan Akuntansi F&B Bali | Guslan Putra',
+  description:
+    'Tiga paket layanan akuntansi F&B yang fleksibel: Starter (Rp 3,5–4,5 jt/bln), Growth (Rp 5,5–7 jt/bln), Multi-Outlet (Rp 9–15 jt/bln). Plus Setup & Onboarding one-time project.',
 };
 ---
 
 <Layout metadata={metadata}>
-  <!-- Hero Widget ******************* -->
 
-  <Hero
-    tagline="Services"
-    title="Elevate your projects with our stunning templates"
-    subtitle="Explore our meticulously crafted templates tailored to various industries and purposes. From captivating presentations to functional website designs, we offer the tools you need to succeed."
-    actions={[{ variant: 'primary', target: '_blank', text: 'Start exploring', href: '/' }]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
-      alt: 'AstroWind Hero Image',
-    }}
-  />
+  <!-- ═══ PRICING CUSTOM — Ganti <Prices .../> dengan ini ═══ -->
+<section class="py-16 px-4">
+  <div class="max-w-6xl mx-auto">
 
-  <!-- Features2 Widget ************** -->
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <p class="text-sm font-semibold uppercase tracking-widest text-primary mb-2">Paket Retainer Bulanan</p>
+      <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-3">
+        Pilih Paket yang Sesuai Tahap Bisnis Anda
+      </h2>
+      <p class="text-slate-500 dark:text-slate-400 max-w-xl mx-auto">
+        Semua paket include laporan bulanan, perhitungan pajak rutin, dan monthly review. 
+        Tidak cocok? Mari diskusikan,tidak ada paket yang tidak bisa disesuaikan.
+      </p>
+    </div>
 
-  <Features2
-    title="Explore our diverse templates"
-    subtitle="Discover our selection below to streamline and elevate your projects."
-    columns={3}
+    <!-- 3 Kartu Paket -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+
+      <!-- STARTER -->
+      <div class="relative flex flex-col bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-8 shadow-sm hover:shadow-md transition-shadow">
+        <div class="mb-6">
+          <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-1">Paket</p>
+          <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Starter</h3>
+          <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">
+            Cafe atau restoran baru. Membangun fondasi yang benar sejak awal.
+          </p>
+        </div>
+
+        <!-- Harga -->
+        <div class="mb-6 pb-6 border-b border-slate-100 dark:border-slate-700">
+          <div class="flex items-baseline gap-1">
+            <span class="text-sm font-medium text-slate-500">Mulai</span>
+            <span class="text-3xl font-bold text-slate-900 dark:text-white">Rp 3,5 juta</span>
+          </div>
+          <p class="text-sm text-slate-400 mt-1">per bulan</p>
+        </div>
+
+        <!-- Fitur -->
+        <ul class="flex-1 space-y-3 mb-8">
+          {[
+            'Bookkeeping & rekonsiliasi bank bulanan',
+            'Monthly P&L dan Balance Sheet (bahasa mudah)',
+            'Basic cash flow report',
+            'Basic COGS per kategori menu',
+            'Perhitungan & pelaporan pajak rutin (Non-PKP)',
+            '1× monthly review meeting (60 menit)',
+          ].map((item) => (
+            <li class="flex items-start gap-2.5 text-sm text-slate-600 dark:text-slate-300">
+              <svg class="w-4 h-4 mt-0.5 shrink-0 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+              {item}
+            </li>
+          ))}
+        </ul>
+
+        <a
+          href="https://wa.me/628213141688?text=Halo%20Guslan,%20saya%20tertarik%20Paket%20Starter.%20Boleh%20konsultasi%20gratis%3F"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="block text-center py-3 px-6 rounded-xl border-2 border-primary text-primary font-semibold text-sm hover:bg-primary hover:text-white transition-all duration-200"
+        >
+          Mulai Konsultasi Gratis
+        </a>
+      </div>
+
+      <!-- GROWTH — Featured -->
+      <div class="relative flex flex-col bg-primary dark:bg-primary rounded-2xl p-8 shadow-xl scale-[1.02]">
+        <!-- Badge -->
+        <div class="absolute -top-3 left-1/2 -translate-x-1/2">
+          <span class="bg-[#FF851B] text-white text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full shadow-md">
+            Paling Populer
+          </span>
+        </div>
+
+        <div class="mb-6">
+          <p class="text-xs font-bold uppercase tracking-widest text-blue-200 mb-1">Paket</p>
+          <h3 class="text-2xl font-bold text-white">Growth</h3>
+          <p class="text-sm text-blue-100 mt-1">
+            Bisnis stabil yang siap tumbuh lebih strategis dan efisien.
+          </p>
+        </div>
+
+        <!-- Harga -->
+        <div class="mb-6 pb-6 border-b border-white/20">
+          <div class="flex items-baseline gap-1">
+            <span class="text-sm font-medium text-blue-200">Mulai</span>
+            <span class="text-3xl font-bold text-white">Rp 5,5 juta</span>
+          </div>
+          <p class="text-sm text-blue-200 mt-1">per bulan</p>
+        </div>
+
+        <!-- Fitur -->
+        <ul class="flex-1 space-y-3 mb-8">
+          {[
+            'Semua fitur Paket Starter',
+            'Integrasi POS (MOKA, ESB, Accurate, GoBiz)',
+            'Weekly cash flow projection',
+            'Menu profitability analysis (HPP vs harga jual)',
+            'PPh 21 & PPN (jika PKP)',
+            '2× monthly meeting (operasional + strategis)',
+            'Basic budgeting & BEP analysis',
+          ].map((item) => (
+            <li class="flex items-start gap-2.5 text-sm text-white">
+              <svg class="w-4 h-4 mt-0.5 shrink-0 text-[#FF851B]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+              {item}
+            </li>
+          ))}
+        </ul>
+
+        <a
+          href="https://wa.me/628213141688?text=Halo%20Guslan,%20saya%20tertarik%20Paket%20Growth.%20Boleh%20konsultasi%20gratis%3F"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="block text-center py-3 px-6 rounded-xl bg-white text-primary font-bold text-sm hover:bg-[#FF851B] hover:text-white transition-all duration-200"
+        >
+          Mulai Konsultasi Gratis
+        </a>
+      </div>
+
+      <!-- MULTI-OUTLET -->
+      <div class="relative flex flex-col bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-8 shadow-sm hover:shadow-md transition-shadow">
+        <div class="mb-6">
+          <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-1">Paket</p>
+          <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Multi-Outlet</h3>
+          <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">
+            Grup F&B, beach club, atau operasi kompleks multi-cabang.
+          </p>
+        </div>
+
+        <!-- Harga -->
+        <div class="mb-6 pb-6 border-b border-slate-100 dark:border-slate-700">
+          <div class="flex items-baseline gap-1">
+            <span class="text-sm font-medium text-slate-500">Mulai</span>
+            <span class="text-3xl font-bold text-slate-900 dark:text-white">Rp 9 juta</span>
+          </div>
+          <p class="text-sm text-slate-400 mt-1">per bulan</p>
+        </div>
+
+        <!-- Fitur -->
+        <ul class="flex-1 space-y-3 mb-8">
+          {[
+            'Semua fitur Paket Growth',
+            'Consolidated reporting multi-outlet',
+            'Custom dashboard per cabang (real-time)',
+            'Weekly review & anomaly detection',
+            'Advanced margin & prime cost analysis',
+            'Annual budgeting & forecasting',
+            'Quarterly business review (QBR)',
+          ].map((item) => (
+            <li class="flex items-start gap-2.5 text-sm text-slate-600 dark:text-slate-300">
+              <svg class="w-4 h-4 mt-0.5 shrink-0 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+              {item}
+            </li>
+          ))}
+        </ul>
+
+        <a
+          href="https://wa.me/628213141688?text=Halo%20Guslan,%20saya%20tertarik%20Paket%20Multi-Outlet.%20Boleh%20diskusi%3F"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="block text-center py-3 px-6 rounded-xl border-2 border-primary text-primary font-semibold text-sm hover:bg-primary hover:text-white transition-all duration-200"
+        >
+          Diskusi Kebutuhan Anda
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Catatan bawah -->
+    <p class="text-center text-sm text-slate-400 mt-8">
+      Harga di atas adalah estimasi awal. Harga final ditentukan setelah assessment singkat —
+      <a
+        href="https://wa.me/628213141688?text=Halo%20Guslan,%20saya%20ingin%20konsultasi%20gratis"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-primary font-semibold hover:underline"
+      >
+        konsultasi gratis dulu →
+      </a>
+    </p>
+
+  </div>
+</section>
+
+  <!-- ═══ DISKON KOMITMEN ═══ -->
+  <section class="py-10 px-4">
+    <div class="max-w-3xl mx-auto bg-blue-50 dark:bg-slate-800 rounded-2xl p-8 text-center border border-blue-100 dark:border-slate-700">
+      <p class="text-sm font-semibold uppercase tracking-widest text-primary mb-2">Hemat Lebih Banyak</p>
+      <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-4">Diskon untuk Komitmen Jangka Panjang</h3>
+      <div class="grid grid-cols-3 gap-4 mb-4">
+        <div class="bg-white dark:bg-slate-900 rounded-xl p-4 border border-slate-100 dark:border-slate-700">
+          <p class="text-2xl font-bold text-primary">3%</p>
+          <p class="text-sm text-slate-500 mt-1">Komitmen 3 bulan</p>
+        </div>
+        <div class="bg-white dark:bg-slate-900 rounded-xl p-4 border border-slate-100 dark:border-slate-700">
+          <p class="text-2xl font-bold text-primary">8%</p>
+          <p class="text-sm text-slate-500 mt-1">Komitmen 6 bulan</p>
+        </div>
+        <div class="bg-white dark:bg-slate-900 rounded-xl p-4 border border-slate-100 dark:border-slate-700">
+          <p class="text-2xl font-bold text-primary">15%</p>
+          <p class="text-sm text-slate-500 mt-1">Komitmen 12 bulan</p>
+        </div>
+      </div>
+      <p class="text-sm text-slate-500 dark:text-slate-400">
+        Tidak ada lock-in wajib. Langganan bulanan dengan pemberitahuan 30 hari jika ingin berhenti.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ SETUP & ONBOARDING (One-Time) ═══ -->
+  <Features3
+    title="Setup & Onboarding Project"
+    subtitle="Bukan retainer. Ini proyek sekali bayar untuk membangun sistem keuangan in-house yang solid. Cocok untuk bisnis yang punya atau berencana merekrut staf accounting internal."
+    tagline="Rp 8.000.000 – 15.000.000 · One-Time"
+    columns={2}
     items={[
       {
-        title: 'Educational',
+        title: 'Setup Sistem Akuntansi F&B Lengkap',
         description:
-          'By harmonizing instructional design and visual appeal, templates streamline content creation for varied materials, expediting development and cultivating engaging educational spaces.',
+          'Instalasi & konfigurasi software (Accurate, ESB, Mekari Jurnal, atau Google Sheets custom), Chart of Accounts khusus F&B, dan integrasi POS.',
+        icon: 'tabler:settings-2',
+      },
+      {
+        title: 'Cleanup Data Historis 3–6 Bulan',
+        description:
+          'Membersihkan dan merapikan data keuangan yang ada untuk memberikan starting point yang akurat.',
+        icon: 'tabler:database-search',
+      },
+      {
+        title: 'SOP Tertulis untuk Tim Internal',
+        description:
+          'Dokumen prosedur operasional standar lengkap dalam Bahasa Indonesia: pembukuan harian, rekonsiliasi, closing bulanan, pelaporan pajak.',
+        icon: 'tabler:file-description',
+      },
+      {
+        title: 'Training Owner & Tim (hingga 12 jam)',
+        description:
+          'Pelatihan hands-on dari input transaksi hingga cara membaca laporan. Tim Anda siap operasikan sistem secara mandiri.',
         icon: 'tabler:school',
       },
       {
-        title: 'Interior Design',
+        title: '1 Bulan Support Pasca Implementasi',
         description:
-          'Crafting functional, visually appealing spaces for residential and commercial use. Templates emphasize layout, colors, and furniture setups, offering a versatile toolkit for your design vision.',
-        icon: 'tabler:home-star',
+          'Dukungan penuh selama 1 bulan setelah handover untuk memastikan tidak ada masalah saat sistem mulai berjalan.',
+        icon: 'tabler:headset',
       },
       {
-        title: 'Photography',
-        description: `Empowering photographers, our templates facilitate captivating storytelling. With a keen focus on layout, galleries, and typography, they cater to both professionals and enthusiasts.`,
-        icon: 'tabler:photo',
-      },
-      {
-        title: 'E-commerce',
+        title: 'Cocok untuk Bisnis yang Mau Mandiri',
         description:
-          'Developing engaging online stores, our E-commerce templates ensure a dynamic presence to effectively showcase products. Ideal for startups or revamps.',
-        icon: 'tabler:shopping-cart',
+          'Setelah proyek selesai, Anda bisa jalankan sistem sendiri, atau tetap konsultasi review berkala dengan biaya lebih ringan.',
+        icon: 'tabler:trophy',
       },
+    ]}
+    image={{
+      src: '~/assets/images/setup-akuntansi-fnb-bali-guslan.webp',
+      alt: 'Setup sistem akuntansi F&B',
+    }}
+    classes={{ container: 'bg-white dark:bg-slate-900' }}
+  />
+
+  <!-- ═══ APA YANG TIDAK TERMASUK (Transparansi) ═══ -->
+  <section class="py-12 px-4 bg-slate-50 dark:bg-slate-900">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-8">
+        <p class="text-sm font-semibold uppercase tracking-widest text-primary mb-2">Transparansi Penuh</p>
+        <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Yang Tidak Termasuk dalam Paket</h3>
+        <p class="text-slate-500 dark:text-slate-400 mt-2">Saya percaya transparansi adalah fondasi kepercayaan.</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {[
+          { item: 'Biaya software akuntansi pihak ketiga', note: 'Accurate, ESB, Mekari Jurnal, Xero, dan lain-lain, ditanggung klien.' },
+          { item: 'Biaya legalitas & notaris', note: 'Pengurusan izin usaha atau perubahan struktur perusahaan.' },
+          { item: 'Audit eksternal dari KAP', note: 'Untuk keperluan investor atau bank — saya bisa referensikan ke KAP terpercaya.' },
+          { item: 'Konsultasi di luar scope keuangan', note: 'Marketing, HR strategy, pengembangan menu (kecuali terkait pricing & profitability).' },
+          { item: 'Kasus pajak kompleks banding/pengadilan', note: 'Saya bisa referensikan ke konsultan pajak bersertifikat di jaringan saya.' },
+        ].map(({ item, note }) => (
+          <div class="flex gap-3 bg-white dark:bg-slate-800 rounded-xl p-4 border border-slate-100 dark:border-slate-700">
+            <span class="text-slate-400 mt-0.5 shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6M9 9l6 6"/></svg>
+            </span>
+            <div>
+              <p class="font-semibold text-sm text-slate-900 dark:text-white">{item}</p>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">{note}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FAQ MINI (dari Services page lama) ═══ -->
+  <FAQs
+    title="Pertanyaan Seputar Layanan"
+    tagline="FAQ"
+    classes={{ container: 'max-w-6xl' }}
+    items={[
       {
-        title: 'Blog',
+        title: 'Apakah ada kontrak jangka panjang yang wajib?',
         description:
-          'With attention to typography, these templates empower effective content presentation for writers at any stage, ensuring visually engaging and user-friendly blogs.',
-        icon: 'tabler:article',
+          'Tidak ada lock-in period wajib. Paket retainer berlangsung bulanan dengan pemberitahuan 30 hari jika ingin berhenti. Namun ada diskon 3–15% jika Anda berkomitmen 3, 6, atau 12 bulan.',
       },
       {
-        title: 'Business',
+        title: 'Berapa lama proses setup di awal?',
         description:
-          'Providing polished options for effective visual communication, these templates empower both startups and established companies for a professional brand presence.',
-        icon: 'tabler:building-store',
+          'Setup sistem membutuhkan 4–8 minggu untuk fully operational. Minggu 1–3: akses sistem & integrasi POS. Minggu 3–5: setup Chart of Accounts & cleanup data. Minggu 5–8: training tim & handover SOP.',
       },
       {
-        title: 'Branding',
+        title: 'Bisa upgrade atau downgrade paket?',
         description:
-          'Offering pre-designed elements for a consistent brand identity, including logos and marketing materials. Ideal for new ventures or revamps.',
-        icon: 'tabler:arrow-big-up-lines',
+          'Tentu bisa. Anda bisa naik atau turun paket dengan pemberitahuan 30 hari. Saya justru mendorong ini — paket yang tepat adalah yang sesuai kondisi bisnis Anda saat ini.',
       },
       {
-        title: 'Medical',
-        description: `From presentations to patient forms, these tools enhance communication effectiveness for healthcare professionals. Ideal for medical practices and research pursuits.`,
-        icon: 'tabler:vaccine',
-      },
-      {
-        title: 'Fashion Design',
+        title: 'Apakah data bisnis saya aman?',
         description:
-          'With attention to detail, customization, and contemporary design, they empower designers to showcase ideas cohesively. Ideal for all levels of designers.',
-        icon: 'tabler:tie',
+          'Kerahasiaan data adalah prioritas utama. Semua engagement dilindungi NDA. Data keuangan Anda tidak pernah dibagikan ke pihak ketiga tanpa izin tertulis. Kewajiban kerahasiaan berlaku selama masa engagement + 5 tahun setelahnya.',
+      },
+      {
+        title: 'Konsultasi bisa dilakukan online?',
+        description:
+          'Ya, semua layanan bisa dilakukan remote via Zoom atau Google Meet. Meeting tatap muka tersedia untuk area Badung dan Denpasar. Sebagian besar klien saya melakukan konsultasi online dengan support penuh.',
       },
     ]}
   />
 
-  <!-- Content Widget **************** -->
-
-  <Content
-    isReversed
-    items={[
-      {
-        title: 'High-Quality Designs',
-        description:
-          'Our templates feature top-tier designs that ensure a professional and polished appearance for your projects.',
-        icon: 'tabler:wand',
-      },
-      {
-        title: 'Customization Tools',
-        description:
-          'Tailor each template to your unique needs with user-friendly customization tools that let you personalize colors, fonts, and content.',
-        icon: 'tabler:settings',
-      },
-      {
-        title: 'Pre-Designed Elements',
-        description:
-          'Save time and effort with our ready-to-use elements, including graphics, icons, and layouts that enhance the visual appeal of your creations.',
-        icon: 'tabler:presentation',
-      },
-      {
-        title: 'Preview and Mockup Views',
-        description:
-          'Visualize the final outcome before making any changes using our preview and mockup views, ensuring your projects meet your expectations.',
-        icon: 'tabler:carousel-horizontal',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1525909002-1b05e0c869d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80',
-      alt: 'Features Image',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Main Features</h3>
-    </Fragment>
-  </Content>
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isAfterContent
-    items={[
-      {
-        title: 'Time Savings',
-        description:
-          'Streamline your workflow, enabling you to create stunning materials efficiently and allocate more time to your core tasks.',
-        icon: 'tabler:clock',
-      },
-      {
-        title: 'Professional Appearance',
-        description:
-          'Elevate your projects with the polished and sophisticated look that our templates provide, making a lasting impression on your audience.',
-        icon: 'tabler:school',
-      },
-      {
-        title: 'Cost-Efficiency',
-        description:
-          'Benefit from cost savings by avoiding the need for custom design work, as our templates offer professional-grade designs at a fraction of the cost.',
-        icon: 'tabler:coin',
-      },
-      {
-        title: 'Instant Download',
-        description:
-          'Enjoy immediate access to your chosen templates upon purchase, enabling you to begin working on your projects without delay.',
-        icon: 'tabler:file-download',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1552664688-cf412ec27db2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-      alt: 'Benefits Image',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Benefits</h3>
-    </Fragment>
-  </Content>
-
-  <!-- Testimonials Widget *********** -->
-
-  <Testimonials
-    title="Words from real customers"
-    testimonials={[
-      {
-        testimonial: `The designs are not only visually appealing but also highly professional. The templates have saved me a significant amount of time while helping me make a lasting impression on my clients.`,
-        name: 'Emily Kennedy',
-        job: 'Front-end developer',
-        image: {
-          src: 'https://images.unsplash.com/photo-1618835962148-cf177563c6c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=930&q=80',
-          alt: 'Emily Kennedy Image',
-        },
-      },
-      {
-        testimonial: `It beautifully showcases my work, with its clean and elegant design that lets my photographs shine. Customization was a breeze, even for a non-tech person like me. The result is a professional and immersive portfolio that's garnered numerous compliments.`,
-        name: 'Sarah Hansen',
-        job: 'Photographer',
-        image: {
-          src: 'https://images.unsplash.com/photo-1561406636-b80293969660?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-          alt: 'Sarah Hansen Image',
-        },
-      },
-      {
-        testimonial: `I discovered these templates and I'm impressed by their variety and quality. They've helped me establish a consistent brand image across my marketing and social platforms, elevating my business's overall appearance.`,
-        name: 'Mark Wilkinson',
-        job: 'Small business owner',
-        image: {
-          src: 'https://images.unsplash.com/photo-1545167622-3a6ac756afa4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=824&q=80',
-          alt: 'Mark Wilkinson Image',
-        },
-      },
-    ]}
-    callToAction={{
-      target: '_blank',
-      text: 'More testimonials...',
-      href: 'https://github.com/arthelokyo/astrowind',
-      icon: 'tabler:chevron-right',
-    }}
-  />
-
-  <!-- CallToAction Widget *********** -->
-
+  <!-- ═══ CTA ═══ -->
   <CallToAction
     actions={[
       {
         variant: 'primary',
-        text: 'Start exploring',
-        href: '/',
+        text: 'Jadwalkan Konsultasi Gratis',
+        href: 'https://wa.me/628213141688?text=Halo%20Guslan,%20saya%20ingin%20konsultasi%20gratis%20untuk%20diskusi%20paket%20layanan',
+        target: '_blank',
+        icon: 'tabler:brand-whatsapp',
+      },
+      {
+        text: 'Kirim Email',
+        href: 'mailto:halo@guslan.com',
       },
     ]}
-    title="Dive into our template collection"
-    subtitle="Whether you're in business, design, or education, our templates are here to elevate your projects."
-  />
+  >
+    <Fragment slot="title">
+      Tidak Yakin Paket Mana yang Tepat?
+    </Fragment>
+    <Fragment slot="subtitle">
+      Konsultasi awal gratis, 15–30 menit, tanpa komitmen dan tanpa tekanan.<br class="hidden md:inline" />
+      Kita diskusi kondisi bisnis Anda, saya bantu pilih yang paling sesuai.
+    </Fragment>
+  </CallToAction>
+
 </Layout>

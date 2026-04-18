@@ -1,228 +1,290 @@
 ---
-import Features2 from '~/components/widgets/Features2.astro';
-import Features3 from '~/components/widgets/Features3.astro';
-import Hero from '~/components/widgets/Hero.astro';
-import Stats from '~/components/widgets/Stats.astro';
-import Steps2 from '~/components/widgets/Steps2.astro';
 import Layout from '~/layouts/PageLayout.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
-  title: 'About us',
+  title: 'Tentang Guslan Putra — Konsultan Keuangan F&B Bali',
+  description:
+    '15 tahun di industri pariwisata Bali. Sejak 2021 fokus membantu owner cafe, restoran, bakery, dan bar membangun sistem keuangan yang solid dan mandiri.',
 };
 ---
 
 <Layout metadata={metadata}>
-  <!-- Hero Widget ******************* -->
 
-  <Hero
-    tagline="About us"
-    image={{
-      src: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Caos Image',
-    }}
+  <!-- ═══ HERO ABOUT ═══ -->
+  <section class="py-16 px-4 md:py-24">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+
+        <!-- Teks -->
+        <div>
+          <p class="text-sm font-bold uppercase tracking-widest text-primary mb-3">Tentang Saya</p>
+          <h1 class="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white leading-tight mb-5">
+            Finance & Growth Partner<br />untuk Bisnis F&B di Bali
+          </h1>
+          <p class="text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+            Saya <strong>Guslan Putra</strong> — konsultan keuangan dan akuntansi khusus untuk bisnis F&B di Bali.
+            Berbeda dengan akuntan konvensional yang hanya memberikan laporan bulanan, saya bekerja sebagai
+            <em>partner pertumbuhan</em> Anda.
+          </p>
+          <p class="text-slate-500 dark:text-slate-400 leading-relaxed">
+            Tujuan saya bukan hanya membuat pembukuan Anda rapi — tapi memastikan Anda memahami cerita di balik
+            angka dan tahu apa yang harus dilakukan untuk meningkatkan profitabilitas.
+          </p>
+
+          <div class="flex flex-wrap gap-3 mt-8">
+            <a
+              href="https://wa.me/628213141688?text=Halo%20Guslan,%20saya%20ingin%20konsultasi%20gratis"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 bg-primary text-white font-semibold py-3 px-6 rounded-xl hover:bg-teal-700 transition-colors text-sm"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.847L.057 23.882l6.197-1.623A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.887 9.887 0 01-5.031-1.371l-.361-.214-3.741.981 1.001-3.645-.235-.374A9.856 9.856 0 012.106 12C2.106 6.58 6.58 2.106 12 2.106S21.894 6.58 21.894 12 17.42 21.894 12 21.894z"/>
+              </svg>
+              Chat WhatsApp
+            </a>
+            <a
+              href="/services"
+              class="inline-flex items-center gap-2 border-2 border-slate-200 dark:border-slate-600 text-slate-700 dark:text-slate-300 font-semibold py-3 px-6 rounded-xl hover:border-primary hover:text-primary transition-colors text-sm"
+            >
+              Lihat Paket Layanan →
+            </a>
+          </div>
+        </div>
+
+        <!-- Stats Visual -->
+        <div class="grid grid-cols-2 gap-4">
+          {[
+            { angka: '15+', label: 'Tahun di industri keuangan & pariwisata Bali' },
+            { angka: '2021', label: 'Mulai fokus penuh ke F&B consulting' },
+            { angka: '4', label: 'Tipe bisnis: cafe, restoran, bakery, Warung Modern & Kuliner lokal' },
+            { angka: '3', label: 'Area: Denpasar, Ubud & Canggu' },
+          ].map(({ angka, label }) => (
+            <div class="bg-slate-50 dark:bg-slate-800 rounded-2xl p-6 border border-slate-100 dark:border-slate-700">
+              <p class="text-3xl font-bold text-primary mb-1">{angka}</p>
+              <p class="text-sm text-slate-500 dark:text-slate-400 leading-snug">{label}</p>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PERJALANAN ═══ -->
+  <section class="py-16 px-4 bg-slate-50 dark:bg-slate-900">
+    <div class="max-w-4xl mx-auto">
+      <p class="text-sm font-bold uppercase tracking-widest text-primary mb-2">Perjalanan Saya</p>
+      <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-12">
+        Dari Finance Manager ke Konsultan F&B
+      </h2>
+
+      <!-- Timeline -->
+      <div class="relative pl-8 border-l-2 border-slate-200 dark:border-slate-700 space-y-12">
+
+        <div class="relative">
+          <div class="absolute -left-[2.35rem] w-4 h-4 rounded-full bg-primary border-4 border-white dark:border-slate-900"></div>
+          <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-1">15 Tahun</p>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Finance & Accounting Manager — Industri Pariwisata</h3>
+          <p class="text-slate-500 dark:text-slate-400 leading-relaxed text-sm">
+            Karir saya dimulai di travel agent yang melayani wisatawan ke Bali dan Nusa Tenggara. Selama 15 tahun
+            saya mengelola budget planning, cash flow multi-currency, financial reporting untuk investor, serta
+            compliance pajak dan audit tahunan. Pengalaman ini mengajarkan saya satu hal penting: bisnis pariwisata
+            bisa survive di low season hanya kalau cash flow-nya dikelola dengan disiplin.
+          </p>
+        </div>
+
+        <div class="relative">
+          <div class="absolute -left-[2.35rem] w-4 h-4 rounded-full bg-primary border-4 border-white dark:border-slate-900"></div>
+          <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-1">2021 — Sekarang</p>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Pivot ke F&B Specialist</h3>
+          <p class="text-slate-500 dark:text-slate-400 leading-relaxed text-sm">
+            Saya melihat pola yang sama berulang di bisnis F&B skala kecil hingga menengah: owner yang brilliant
+            dalam menciptakan menu dan membangun brand, tapi terjebak masalah cash flow karena tidak ada sistem.
+            Pricing berdasarkan "kira-kira". Panik saat lapor pajak. Tidak tahu menu mana yang sebenarnya
+            menggerus margin. Saya memutuskan untuk fokus membantu segmen ini — karena masalahnya bisa diperbaiki,
+            dan dampaknya langsung terasa.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PENDEKATAN ═══ -->
+  <section class="py-16 px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <p class="text-sm font-bold uppercase tracking-widest text-primary mb-2">Pendekatan Saya</p>
+        <h2 class="text-3xl font-bold text-slate-900 dark:text-white">Sederhana, Transparan, Aplikatif</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {[
+          {
+            icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-3 3z"/></svg>`,
+            judul: 'Komunikasi yang Jelas',
+            isi: 'Setiap laporan saya jelaskan dengan bahasa yang Anda mengerti. Kenapa omzet naik tapi profit turun? Menu mana yang menggerus margin? Setelah review bulanan, Anda tidak hanya tahu "apa yang terjadi" — tapi juga "kenapa" dan "apa yang harus dilakukan".',
+          },
+          {
+            icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>`,
+            judul: 'Sistem yang Mandiri',
+            isi: 'Tujuan akhir saya adalah membuat Anda tidak bergantung pada saya. Sistem keuangan yang baik harus bisa berjalan dengan atau tanpa konsultan. Setiap setup include training tim, SOP dalam Bahasa Indonesia, dan dashboard real-time yang bisa Anda akses kapan saja.',
+          },
+          {
+            icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>`,
+            judul: 'Data untuk Keputusan',
+            isi: 'Banyak akuntan fokus pada compliance saja. Saya ingin data keuangan Anda menjadi alat pengambilan keputusan: haruskah buka cabang? Berapa harga ideal menu ini? Staff mana yang perlu ditambah? Keputusan strategis butuh data yang akurat — bukan feeling.',
+          },
+        ].map(({ icon, judul, isi }) => (
+          <div class="bg-white dark:bg-slate-800 rounded-2xl p-8 border border-slate-100 dark:border-slate-700 shadow-sm">
+            <div class="w-10 h-10 flex items-center justify-center text-primary mb-4" set:html={icon} />
+            <h3 class="font-bold text-slate-900 dark:text-white mb-3">{judul}</h3>
+            <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">{isi}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ DENGAN SIAPA SAYA BEKERJA ═══ -->
+  <section class="py-16 px-4 bg-slate-50 dark:bg-slate-900">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <p class="text-sm font-bold uppercase tracking-widest text-primary mb-2">Klien Saya</p>
+        <h2 class="text-3xl font-bold text-slate-900 dark:text-white">Dengan Siapa Saya Bekerja</h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {[
+          {
+            tipe: 'Cafe & Coffee Shop',
+            omzet: 'Rp 80–150 juta/bulan',
+            cogs: 'COGS target: 28–32%',
+            tantangan: 'Inventory coffee beans, waste control, margin per SKU minuman',
+          },
+          {
+            tipe: 'Restoran',
+            omzet: 'Rp 100–500 juta/bulan',
+            cogs: 'COGS target: 30–35%',
+            tantangan: 'Menu profitability, staff efficiency, fine dining vs casual complexity',
+          },
+          {
+            tipe: 'Bakery & Pastry',
+            omzet: 'Rp 100–250 juta/bulan',
+            cogs: 'COGS target: 35–40%',
+            tantangan: 'Waste management (15–25%), equipment investment, pricing produksi',
+          },
+          {
+            tipe: 'Warung Modern',
+            omzet: 'Rp 50–150 juta/bulan',
+            cogs: 'COGS target: 32–38%',
+            tantangan: 'High-volume transactions, portion control, and volatile ingredient costs management',
+          },
+        ].map(({ tipe, omzet, cogs, tantangan }) => (
+          <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-100 dark:border-slate-700">
+            <h3 class="font-bold text-slate-900 dark:text-white mb-3">{tipe}</h3>
+            <div class="space-y-2 mb-4">
+              <div class="flex items-center gap-2 text-xs text-slate-500">
+                <span class="w-2 h-2 rounded-full bg-primary shrink-0"></span>
+                {omzet}
+              </div>
+              <div class="flex items-center gap-2 text-xs text-slate-500">
+                <span class="w-2 h-2 rounded-full bg-orange-400 shrink-0"></span>
+                {cogs}
+              </div>
+            </div>
+            <p class="text-xs text-slate-400 leading-relaxed border-t border-slate-100 dark:border-slate-700 pt-3">
+              {tantangan}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ KEAHLIAN ═══ -->
+  <section class="py-16 px-4">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12">
+        <p class="text-sm font-bold uppercase tracking-widest text-primary mb-2">Keahlian & Tools</p>
+        <h2 class="text-3xl font-bold text-slate-900 dark:text-white">Yang Saya Kuasai</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {[
+          {
+            kategori: 'Spesialisasi F&B',
+            items: [
+              'COGS calculation & menu profitability',
+              'Cash flow management (perishable inventory)',
+              'Setup Chart of Accounts khusus F&B',
+              'Prime cost & waste analysis',
+              'BEP & pricing strategy',
+            ],
+          },
+          {
+            kategori: 'Sistem & Tools',
+            items: [
+              'Integrasi POS: MOKA, ESB, Accurate, GoBiz',
+              'Dashboard: Google Sheets custom, Looker Studio',
+              'ERP & accounting software setup',
+              'Google Apps Script automation',
+              'Real-time reporting system',
+            ],
+          },
+          {
+            kategori: 'Pajak & Compliance',
+            items: [
+              'PPh 21, PPh 23, PPN, PPh Final',
+              'Konsultasi PKP vs Non-PKP',
+              'Payroll compliance (5–50+ staf)',
+              'PB1 (Pajak Bangunan) restoran',
+              'Pelaporan pajak bulanan & tahunan',
+            ],
+          },
+        ].map(({ kategori, items }) => (
+          <div>
+            <h3 class="font-bold text-slate-900 dark:text-white mb-4 pb-2 border-b border-slate-100 dark:border-slate-700">{kategori}</h3>
+            <ul class="space-y-2.5">
+              {items.map((item) => (
+                <li class="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-300">
+                  <svg class="w-4 h-4 mt-0.5 shrink-0 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA ═══ -->
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Chat Saya via WhatsApp',
+        href: 'https://wa.me/628213141688?text=Halo%20Guslan,%20saya%20ingin%20diskusi%20kondisi%20keuangan%20bisnis%20saya',
+        target: '_blank',
+        icon: 'tabler:brand-whatsapp',
+      },
+      {
+        text: 'Lihat Paket Layanan',
+        href: '/services',
+      },
+    ]}
   >
-    <Fragment slot="title">
-      Elevate your online presence with our <br />
-      <span class="text-accent dark:text-white"> Beautiful Website Templates</span>
-    </Fragment>
-
+    <Fragment slot="title">Siap Membangun Sistem Keuangan yang Kuat?</Fragment>
     <Fragment slot="subtitle">
-      Donec efficitur, ipsum quis congue luctus, mauris magna convallis mauris, eu auctor nisi lectus non augue. Donec
-      quis lorem non massa vulputate efficitur ac at turpis. Sed tincidunt ex a nunc convallis, et lobortis nisi tempus.
-      Suspendisse vitae nisi eget tortor luctus maximus sed non lectus.
+      Mari kita bicara. Konsultasi awal gratis 15–30 menit, tanpa komitmen.<br class="hidden md:inline" />
+      Saya siap membantu Anda membangun fondasi keuangan yang solid untuk pertumbuhan jangka panjang.
     </Fragment>
-  </Hero>
+  </CallToAction>
 
-  <!-- Stats Widget ****************** -->
-
-  <Stats
-    title="Statistics about us"
-    stats={[
-      { title: 'Offices', amount: '4' },
-      { title: 'Employees', amount: '248' },
-      { title: 'Templates', amount: '12' },
-      { title: 'Awards', amount: '24' },
-    ]}
-  />
-
-  <!-- Features3 Widget ************** -->
-
-  <Features3
-    title="Our templates"
-    subtitle="Etiam scelerisque, enim eget vestibulum luctus, nibh mauris blandit nulla, nec vestibulum risus justo ut enim. Praesent lacinia diam et ante imperdiet euismod."
-    columns={3}
-    isBeforeContent={true}
-    items={[
-      {
-        title: 'Educational',
-        description:
-          'Morbi faucibus luctus quam, sit amet aliquet felis tempor id. Cras augue massa, ornare quis dignissim a, molestie vel nulla.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Interior Design',
-        description:
-          'Vivamus porttitor, tortor convallis aliquam pretium, turpis enim consectetur elit, vitae egestas purus erat ac nunc nulla.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Photography',
-        description:
-          'Duis sed lectus in nisl vehicula porttitor eget quis odio. Aliquam erat volutpat. Nulla eleifend nulla id sem fermentum.',
-        icon: 'tabler:template',
-      },
-    ]}
-  />
-
-  <!-- Features3 Widget ************** -->
-
-  <Features3
-    columns={3}
-    isAfterContent={true}
-    items={[
-      {
-        title: 'E-commerce',
-        description:
-          'Rutrum non odio at vehicula. Proin ipsum justo, dignissim in vehicula sit amet, dignissim id quam. Sed ac tincidunt sapien.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Blog',
-        description:
-          'Nullam efficitur volutpat sem sed fringilla. Suspendisse et enim eu orci volutpat laoreet ac vitae libero.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Business',
-        description:
-          'Morbi et elit finibus, facilisis justo ut, pharetra ipsum. Donec efficitur, ipsum quis congue luctus, mauris magna.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Branding',
-        description:
-          'Suspendisse vitae nisi eget tortor luctus maximus sed non lectus. Cras malesuada pretium placerat. Nullam venenatis dolor a ante rhoncus.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Medical',
-        description:
-          'Vestibulum malesuada lacus id nibh posuere feugiat. Nam volutpat nulla a felis ultrices, id suscipit mauris congue. In hac habitasse platea dictumst.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Fashion Design',
-        description:
-          'Maecenas eu tellus eget est scelerisque lacinia et a diam. Aliquam velit lorem, vehicula id fermentum et, rhoncus et purus.',
-        icon: 'tabler:template',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
-      alt: 'Colorful Image',
-    }}
-  />
-
-  <!-- Steps2 Widget ****************** -->
-
-  <Steps2
-    title="Our values"
-    subtitle="Maecenas eu tellus eget est scelerisque lacinia et a diam. Aliquam velit lorem, vehicula id fermentum et, rhoncus et purus. Nulla facilisi. Vestibulum malesuada lacus."
-    items={[
-      {
-        title: 'Customer-centric approach',
-        description:
-          'Donec id nibh neque. Quisque et fermentum tortor. Fusce vitae dolor a mauris dignissim commodo. Ut eleifend luctus condimentum.',
-      },
-      {
-        title: 'Constant Improvement',
-        description:
-          'Phasellus laoreet fermentum venenatis. Vivamus dapibus pulvinar arcu eget mattis. Fusce eget mauris leo.',
-      },
-      {
-        title: 'Ethical Practices',
-        description:
-          'Vestibulum imperdiet libero et lectus molestie, et maximus augue porta. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
-      },
-    ]}
-  />
-
-  <!-- Steps2 Widget ****************** -->
-
-  <Steps2
-    title="Achievements"
-    subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla, sed porttitor est nibh at nulla."
-    isReversed={true}
-    callToAction={{
-      text: 'See more',
-      href: '/',
-    }}
-    items={[
-      {
-        title: 'Global reach',
-        description: 'Nam malesuada urna in enim imperdiet tincidunt. Phasellus non tincidunt nisi, at elementum mi.',
-        icon: 'tabler:globe',
-      },
-      {
-        title: 'Positive customer feedback and reviews',
-        description:
-          'Cras semper nulla leo, eget laoreet erat cursus sed. Praesent faucibus massa in purus iaculis dictum.',
-        icon: 'tabler:message-star',
-      },
-      {
-        title: 'Awards and recognition as industry experts',
-        description:
-          'Phasellus lacinia cursus velit, eu malesuada magna pretium eu. Etiam aliquet tellus purus, blandit lobortis ex rhoncus vitae.',
-        icon: 'tabler:award',
-      },
-    ]}
-  />
-
-  <!-- Features2 Widget ************** -->
-
-  <Features2
-    title="Our locations"
-    tagline="Find us"
-    columns={4}
-    items={[
-      {
-        title: 'EE.UU',
-        description: '1234 Lorem Ipsum St, 12345, Miami',
-      },
-      {
-        title: 'Spain',
-        description: '5678 Lorem Ipsum St, 56789, Madrid',
-      },
-      {
-        title: 'Australia',
-        description: '9012 Lorem Ipsum St, 90123, Sydney',
-      },
-      {
-        title: 'Brazil',
-        description: '3456 Lorem Ipsum St, 34567, São Paulo',
-      },
-    ]}
-  />
-
-  <!-- Features2 Widget ************** -->
-
-  <Features2
-    title="Technical Support"
-    tagline="Contact us"
-    columns={2}
-    items={[
-      {
-        title: 'Chat with us',
-        description:
-          'Integer luctus laoreet libero, auctor varius purus rutrum sit amet. Ut nec molestie nisi, quis eleifend mi.',
-        icon: 'tabler:messages',
-      },
-      {
-        title: 'Call us',
-        description:
-          'Mauris faucibus finibus orci, in posuere elit viverra non. In hac habitasse platea dictumst. Cras lobortis metus a hendrerit congue.',
-        icon: 'tabler:headset',
-      },
-    ]}
-  />
 </Layout>

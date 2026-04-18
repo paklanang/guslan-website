@@ -1,0 +1,176 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+
+const metadata = {
+  title: 'FAQ — Pertanyaan Seputar Jasa Akuntansi F&B Bali | Guslan Putra',
+  description:
+    'Jawaban lengkap untuk pertanyaan umum seputar layanan konsultan keuangan F&B, biaya, proses kerja, pajak restoran, dan COGS di Bali.',
+};
+---
+
+<Layout metadata={metadata}>
+
+  <HeroText
+    tagline="FAQ"
+    title="Ada yang Ingin Anda Tanyakan?"
+    subtitle="Kumpulan pertanyaan yang paling sering masuk — dijawab jujur, tanpa jargon."
+  />
+
+  <!-- ═══ LAYANAN & PROSES ═══ -->
+  <FAQs
+    title="Layanan & Proses Kerja"
+    tagline="Umum"
+    classes={{ container: 'max-w-4xl' }}
+    items={[
+      {
+        title: 'Apa yang membedakan Anda dari akuntan biasa?',
+        description:
+          'Akuntan biasa membuat laporan. Saya bekerja sebagai finance & growth partner — artinya saya tidak hanya mencatat angka, tapi membantu Anda memahami cerita di baliknya dan menggunakannya untuk keputusan bisnis. Setiap laporan saya jelaskan dengan bahasa yang bisa langsung ditindaklanjuti.',
+      },
+      {
+        title: 'Apakah bisa konsultasi secara online?',
+        description:
+          'Ya, semua layanan bisa dilakukan remote via WhatsApp, Zoom, atau Google Meet. Klien saya tersebar di Bali, Jakarta, Surabaya, Lombok, dan kota lain di Indonesia. Meeting tatap muka tersedia untuk area Badung dan Denpasar.',
+      },
+      {
+        title: 'Berapa lama proses onboarding sampai sistem berjalan?',
+        description:
+          'Sekitar 4–8 minggu untuk fully operational. Minggu 1–3: akses sistem & integrasi POS. Minggu 3–5: setup Chart of Accounts & cleanup data historis. Minggu 5–8: training tim & handover SOP. Setelah itu sistem sudah bisa berjalan mandiri.',
+      },
+      {
+        title: 'Apakah ada kontrak jangka panjang yang wajib?',
+        description:
+          'Tidak ada lock-in period wajib. Paket retainer berlangsung bulanan dengan pemberitahuan 30 hari jika ingin berhenti. Ada diskon 3–15% untuk komitmen 3, 6, atau 12 bulan — tapi itu pilihan, bukan kewajiban.',
+      },
+      {
+        title: 'Bisa upgrade atau downgrade paket di tengah jalan?',
+        description:
+          'Tentu. Anda bisa naik atau turun paket dengan pemberitahuan 30 hari. Saya justru mendorong ini — paket yang tepat adalah yang sesuai kondisi bisnis Anda saat ini, bukan yang paling mahal.',
+      },
+      {
+        title: 'Apakah data keuangan bisnis saya aman?',
+        description:
+          'Kerahasiaan data adalah prioritas. Semua engagement dilindungi NDA. Data keuangan Anda tidak pernah dibagikan ke pihak ketiga tanpa izin tertulis. Kewajiban kerahasiaan berlaku selama masa engagement + 5 tahun setelahnya.',
+      },
+    ]}
+  />
+
+  <!-- ═══ BIAYA ═══ -->
+  <FAQs
+    title="Biaya & Investasi"
+    tagline="Harga"
+    classes={{ container: 'max-w-4xl' }}
+    items={[
+      {
+        title: 'Berapa biaya layanan Anda?',
+        description:
+          'Paket retainer bulanan mulai dari Rp 3,5 juta/bulan untuk Paket Starter (cafe/restoran baru, 0–200 transaksi/bulan). Paket Growth mulai Rp 5,5 juta/bulan, dan Paket Multi-Outlet mulai Rp 9 juta/bulan. Harga final ditentukan setelah assessment singkat — konsultasi pertama gratis.',
+      },
+      {
+        title: 'Apakah ada biaya tersembunyi?',
+        description:
+          'Tidak ada. Yang tidak termasuk dalam paket saya jelaskan transparan di halaman Services: biaya software pihak ketiga (Accurate, ESB, dll), biaya legalitas & notaris, audit eksternal KAP, dan kasus pajak banding/pengadilan. Semua di luar itu sudah included.',
+      },
+      {
+        title: 'Apakah cocok untuk bisnis kecil yang baru mulai?',
+        description:
+          'Sangat cocok. Justru membangun sistem yang benar sejak awal jauh lebih mudah dan murah daripada memperbaiki yang sudah kacau. Paket Starter dirancang khusus untuk bisnis baru atau yang selama ini kelola keuangan manual.',
+      },
+      {
+        title: 'Berapa lama sebelum hasilnya terasa?',
+        description:
+          'Dalam 2–4 minggu pertama, sistem sudah lebih rapi dan Anda punya visibilitas dasar. Dalam 1–3 bulan, Anda sudah punya gambaran penuh kondisi keuangan bisnis dan bisa mulai buat keputusan berbasis data.',
+      },
+    ]}
+  />
+
+  <!-- ═══ COGS & KEUANGAN F&B ═══ -->
+  <FAQs
+    title="COGS, HPP & Keuangan F&B"
+    tagline="Teknis"
+    classes={{ container: 'max-w-4xl' }}
+    items={[
+      {
+        title: 'Berapa HPP (food cost) yang ideal untuk restoran?',
+        description:
+          'Tergantung jenis bisnisnya. Cafe & coffee shop idealnya 28–32%, restoran casual/fine dining 30–35%, bakery & pastry 35–40%, warung modern 32–38%. Kalau HPP Anda di atas kisaran ini, ada potensi kebocoran yang bisa diperbaiki.',
+      },
+      {
+        title: 'Kenapa omzet saya naik tapi profit tidak berubah?',
+        description:
+          'Ini masalah klasik F&B. Biasanya penyebabnya: biaya operasional naik tidak diimbangi kenaikan harga menu, porsi tidak standar sehingga food cost ikut naik, atau ada kebocoran di inventory dan pembelian bahan. Perlu audit HPP per menu untuk tahu sumbernya.',
+      },
+      {
+        title: 'Apa itu prime cost dan kenapa penting?',
+        description:
+          'Prime cost adalah total food cost + labor cost. Ini dua komponen biaya terbesar di bisnis F&B. Standar prime cost yang sehat adalah di bawah 65% dari omzet. Kalau di atas itu, margin bersih Anda sangat tipis dan bisnis rentan rugi saat ada kenaikan biaya.',
+      },
+      {
+        title: 'Bagaimana cara menghitung harga jual menu yang tepat?',
+        description:
+          'Formula dasarnya: harga jual = COGS ÷ target food cost percentage. Misal COGS satu porsi pasta Rp 35.000 dan target food cost 30%, maka harga jual minimum = Rp 35.000 ÷ 0,30 = Rp 116.667. Tapi ini baru titik awal — perlu disesuaikan dengan positioning, kompetitor, dan willingness to pay pelanggan.',
+      },
+      {
+        title: 'Saya tidak tahu berapa COGS bisnis saya. Dari mana mulai?',
+        description:
+          'Mulai dari mencatat pembelian bahan baku bulan ini, hitung nilai inventory awal dan akhir bulan, lalu gunakan rumus: COGS = Inventory Awal + Pembelian – Inventory Akhir. Hasilnya bagi dengan omzet untuk dapat food cost percentage. Kalau ini terasa rumit, saya bisa bantu audit dari awal.',
+      },
+    ]}
+  />
+
+  <!-- ═══ PAJAK ═══ -->
+  <FAQs
+    title="Pajak Restoran & Cafe"
+    tagline="Pajak"
+    classes={{ container: 'max-w-4xl' }}
+    items={[
+      {
+        title: 'Pajak apa saja yang wajib dibayar restoran di Bali?',
+        description:
+          'Tergantung skala dan status bisnis. Yang paling umum: PB1 (Pajak Bangunan — 10% dari omzet, disetor ke Pemda), PPh 21 (pajak karyawan), PPh Final (untuk UMKM omzet di bawah Rp 4,8 M/tahun — tarifnya 0,5%), dan PPN (jika sudah PKP). Banyak owner F&B yang tidak tahu soal PB1 dan akhirnya kena denda.',
+      },
+      {
+        title: 'Kapan saya harus menjadi PKP (Pengusaha Kena Pajak)?',
+        description:
+          'Secara hukum, wajib mendaftar PKP jika omzet dalam 12 bulan terakhir melebihi Rp 4,8 miliar. Tapi ada pertimbangan strategis: jika klien Anda banyak perusahaan yang butuh faktur pajak, mendaftar PKP lebih awal bisa jadi keuntungan kompetitif. Saya bisa bantu analisis mana yang lebih menguntungkan untuk bisnis Anda.',
+      },
+      {
+        title: 'Apa risiko kalau saya tidak lapor pajak dengan benar?',
+        description:
+          'Risikonya nyata: denda 2% per bulan dari kurang bayar, sanksi administrasi 50–150% untuk kasus tertentu, bahkan pidana pajak untuk kasus yang disengaja. Yang lebih sering terjadi: kena pemeriksaan pajak karena ada ketidakcocokan data di sistem DJP.',
+      },
+      {
+        title: 'Apakah Anda juga menangani kasus sengketa pajak?',
+        description:
+          'Untuk kasus banding dan pengadilan pajak yang kompleks, saya referensikan ke konsultan pajak bersertifikat (BKP) di jaringan saya. Tapi untuk pencegahan, pastikan laporan dan pembukuan selalu rapi dan itu akan saya tangani penuh.',
+      },
+    ]}
+  />
+
+  <!-- ═══ CTA ═══ -->
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Tanya Langsung via WhatsApp',
+        href: 'https://wa.me/628213141688?text=Halo%20Guslan,%20saya%20punya%20pertanyaan%20seputar%20layanan%20Anda',
+        target: '_blank',
+        icon: 'tabler:brand-whatsapp',
+      },
+      {
+        text: 'Lihat Paket Layanan',
+        href: '/services',
+      },
+    ]}
+  >
+    <Fragment slot="title">Pertanyaan Anda Tidak Ada di Sini?</Fragment>
+    <Fragment slot="subtitle">
+      Kirim langsung via WhatsApp.<br class="hidden md:inline" />
+      Saya jawab sendiri, biasanya dalam hitungan jam.
+    </Fragment>
+  </CallToAction>
+
+</Layout>

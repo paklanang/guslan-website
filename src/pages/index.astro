@@ -1,10 +1,9 @@
 ---
+// src/pages/index.astro
 import Layout from '~/layouts/PageLayout.astro';
-
 import Hero from '~/components/widgets/Hero.astro';
 import Note from '~/components/widgets/Note.astro';
 import Features from '~/components/widgets/Features.astro';
-import Features2 from '~/components/widgets/Features2.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import Content from '~/components/widgets/Content.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
@@ -13,387 +12,455 @@ import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
-  title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
+  title: 'Guslan Putra — Konsultan Keuangan & Akuntansi F&B Bali',
   ignoreTitleTemplate: true,
 };
 ---
 
 <Layout metadata={metadata}>
-  <!-- Hero Widget ******************* -->
 
+  <!-- ═══════════════════════════════════════════
+       HERO — Pain-driven, dari guslan.id lama
+  ══════════════════════════════════════════════ -->
   <Hero
     actions={[
       {
         variant: 'primary',
-        text: 'Get template',
-        href: 'https://github.com/arthelokyo/astrowind',
+        text: 'Free Financial Health Check',
+        href: 'https://wa.me/628213141688?text=Halo%20Guslan,%20saya%20ingin%20jadwalkan%20Financial%20Health%20Check%20gratis%2045%20menit',
         target: '_blank',
-        icon: 'tabler:download',
+        icon: 'tabler:brand-whatsapp',
       },
-      { text: 'Learn more', href: '#features' },
+      { text: 'Download Template Gratis', href: '/templates' },
     ]}
-    image={{ src: '~/assets/images/hero-image.png', alt: 'AstroWind Hero Image' }}
+    image={{
+      src: '~/assets/images/Guslan-Putra-konsultan-keuangan-fnb-2.webp',
+      alt: 'Konsultan Keuangan F&B Bali — Guslan Putra',
+    }}
   >
     <Fragment slot="title">
-      Free template for <span class="hidden xl:inline">creating websites with</span>
-      <span class="text-accent dark:text-white"> Astro 5.0</span> + Tailwind CSS
+      Restoran Ramai Tiap Hari,<br />
+      Tapi Uang di Bank
+      <span class="text-accent dark:text-white"> Selalu Menipis?</span>
     </Fragment>
 
     <Fragment slot="subtitle">
-      <span class="hidden sm:inline">
-        <span class="font-semibold">AstroWind</span> is a free, customizable and production-ready template for Astro 5.0
-        + Tailwind CSS.</span
-      >
-      <span class="block mb-1 sm:hidden font-bold text-blue-600">AstroWind: Production-ready.</span>
-      Suitable for Startups, Small Business, SaaS websites, Professional Portfolios, Marketing websites, Landing Pages &
-      Blogs.
+      Saatnya memahami cerita di balik angka —
+      <span class="font-semibold">bukan dengan feeling, tapi dengan data.</span>
+      <br />
+      Saya bantu restoran dan cafe Anda punya sistem keuangan yang jelas,
+      pajak yang tertata, dan keputusan bisnis berbasis fakta.
     </Fragment>
   </Hero>
 
-  <!-- Note Widget ******************* -->
+  <!-- ═══════════════════════════════════════════
+       NOTE
+  ══════════════════════════════════════════════ -->
+  <Note
+    title="Finance Growth Partner"
+    description="Bukan sekadar akuntan — saya bantu Anda paham angka, kontrol keuangan, dan tumbuh dengan data yang jelas."
+  />
 
-  <Note title="Philosophy:" description="Simplicity, Best Practices and High Performance" />
-
-  <!-- Features Widget *************** -->
-
+  <!-- ═══════════════════════════════════════════
+       4 PAIN POINTS — Dari guslan.id lama
+  ══════════════════════════════════════════════ -->
   <Features
-    id="features"
-    tagline="Features"
-    title="What you get with AstroWind"
-    subtitle="One of the most professional and comprehensive templates currently on the market. Most starred & forked Astro theme in 2022, 2023 and 2024."
+    id="masalah"
+    tagline="Kenali Tandanya"
+    title="4 Tanda Bisnis F&B Anda Butuh Sistem Keuangan yang Lebih Baik"
+    subtitle="Jika Anda merasakan minimal 2 dari situasi ini, sudah waktunya berbenah."
     items={[
       {
-        title: 'Astro + Tailwind CSS Integration',
+        title: 'Profit Besar di Laporan, Kas Menipis di Bank',
         description:
-          'A seamless integration between two great frameworks that offer high productivity, performance and versatility.',
-        icon: 'tabler:brand-tailwind',
+          'Omzet ratusan juta tapi selalu bertanya-tanya: "uang ke mana ya?" Tidak ada pemisahan jelas antara modal, operasional, dan profit.',
+        icon: 'tabler:building-bank',
       },
       {
-        title: 'Ready-to-use Components',
+        title: 'Tidak Tahu Menu Mana yang Benar-Benar Untung',
         description:
-          'Widgets made with Tailwind CSS ready to be used in Marketing Websites, SaaS, Blogs, Personal Profiles, Small Business...',
-        icon: 'tabler:components',
+          'Menu signature yang ramai bisa jadi yang margin-nya paling tipis. Tanpa COGS yang akurat, Anda baru tahu setelah rugi besar.',
+        icon: 'tabler:tools-kitchen-2',
       },
       {
-        title: 'Best Practices',
+        title: 'Cemas Soal Pajak Restoran',
         description:
-          'Creating secure, efficient, and user-friendly websites that deliver exceptional experiences and lasting value.',
-        icon: 'tabler:list-check',
+          'PKP atau Non-PKP? PPN, PPh, PB1 — semuanya membingungkan. Banyak cafe di Bali kena masalah bukan karena niat jahat, tapi karena tidak paham sistemnya.',
+        icon: 'tabler:receipt-tax',
       },
       {
-        title: 'Excellent Page Speed',
+        title: 'Keputusan Bisnis Pakai Feeling, Bukan Data',
         description:
-          'Having a good page speed impacts organic search ranking, improves user experience (UI/UX) and increase conversion rates.',
-        icon: 'tabler:rocket',
-      },
-      {
-        title: 'Search Engine Optimization (SEO)',
-        description:
-          "SEO lies in its ability to enhance a website's visibility, driving organic traffic and enabling it to reach a wider audience.",
-        icon: 'tabler:arrows-right-left',
-      },
-      {
-        title: 'Open to new ideas and contributions',
-        description:
-          'Embracing a culture that is open to new ideas and contributions is integral fostering innovation, collaboration, and a dynamic user experience.',
-        icon: 'tabler:bulb',
+          'Mau buka cabang? Tambah menu? Rekrut staf? Tanpa data yang jelas, semua keputusan seperti gambling — risiko tinggi, return tidak pasti.',
+        icon: 'tabler:chart-bar-off',
       },
     ]}
   />
 
-  <!-- Content Widget **************** -->
+  <!-- ═══════════════════════════════════════════
+       KALKULATOR HPP — Ide Gemini, diperbaiki
+  ══════════════════════════════════════════════ -->
+  <section id="kalkulator" class="bg-blue-50 dark:bg-slate-800 py-16 px-4 scroll-mt-16">
+    <div class="max-w-2xl mx-auto">
+      <div class="text-center mb-10">
+        <p class="text-sm font-semibold uppercase tracking-widest text-primary mb-2">Mini Health Check</p>
+        <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-3">
+          Cek HPP Bisnis F&B Anda Sekarang
+        </h2>
+        <p class="text-slate-500 dark:text-slate-400">
+          Masukkan 2 angka, dapatkan gambaran awal kondisi keuangan bisnis Anda.
+        </p>
+      </div>
 
-  <Content
-    isReversed
-    tagline="Inside template"
-    title="AstroWind's Blueprint: Fun Meets Functionality!"
+      <div class="bg-white dark:bg-slate-900 rounded-2xl shadow-xl p-8 border border-slate-100 dark:border-slate-700">
+        <!-- Input Row -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-6">
+          <div>
+            <label for="omzet" class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+              Omzet Bulanan (Rp)
+            </label>
+            <input
+              type="number"
+              id="omzet"
+              placeholder="Contoh: 150000000"
+              min="0"
+              class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition"
+            />
+          </div>
+          <div>
+            <label for="hpp" class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+              HPP / Food Cost (%)
+            </label>
+            <input
+              type="number"
+              id="hpp"
+              placeholder="Contoh: 38"
+              min="0"
+              max="100"
+              class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition"
+            />
+          </div>
+        </div>
+
+        <!-- Tidak tahu HPP? -->
+        <p class="text-sm text-slate-500 dark:text-slate-400 mb-5">
+          Tidak yakin berapa HPP Anda?
+          <a
+            href="https://wa.me/628213141688?text=Halo%20Guslan,%20saya%20tidak%20tahu%20HPP%20bisnis%20saya.%20Bisa%20bantu%3F"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-primary font-semibold hover:underline"
+          >
+            Tanya Guslan gratis →
+          </a>
+        </p>
+
+        <!-- Tombol Cek -->
+        <button
+          id="calcBtn"
+          class="w-full bg-primary hover:bg-primary-dark text-white font-bold py-3.5 rounded-xl transition-all duration-200 hover:shadow-lg active:scale-[0.98]"
+        >
+          Cek Kondisi HPP Saya
+        </button>
+
+        <!-- Hasil -->
+        <div id="result" class="hidden mt-6 rounded-xl p-5 border-l-4 transition-all">
+          <div class="flex items-start gap-3">
+            <span id="resultIcon" class="text-2xl mt-0.5 shrink-0"></span>
+            <div>
+              <p id="resultStatus" class="font-bold text-base mb-1"></p>
+              <p id="resultText" class="text-sm leading-relaxed text-slate-600 dark:text-slate-300"></p>
+              <p id="resultAction" class="text-sm mt-3 font-medium"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Disclaimer kecil -->
+      <p class="text-center text-xs text-slate-400 mt-4">
+        Hasil ini adalah estimasi awal. Kondisi nyata bisnis Anda bisa berbeda tergantung jenis F&B dan struktur biaya.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       LEAD MAGNET — Dua jalur gratis
+  ══════════════════════════════════════════════ -->
+  <Features
+    id="mulai"
+    tagline="Mulai dari Sini"
+    title="Pilih Cara yang Paling Sesuai — Keduanya Gratis"
+    subtitle="Tidak ada komitmen, tidak ada tekanan. Mulai dari mana yang paling nyaman untuk Anda."
     items={[
       {
-        title: 'Built on top of Astro 5.0',
+        title: 'Download Template HPP + Cash Flow',
         description:
-          'Benefiting from the performance and developer-friendly features of this modern static site generator.',
+          'Kalkulator HPP per menu & cash flow tracker bulanan untuk cafe/restoran. Lengkap dengan video tutorial dan Checklist Finansial Pemilik F&B. Cocok untuk Anda yang ingin mulai kelola keuangan sendiri.',
+        icon: 'tabler:file-spreadsheet',
       },
       {
-        title: 'Styled using Tailwind CSS',
+        title: 'Free Financial Health Check (45 Menit)',
         description:
-          'Facilitating rapid design and consistent styling with this highly popular utility-first CSS framework.',
+          'Video call langsung dengan saya: quick review kondisi keuangan bisnis, identifikasi 3 masalah finansial terbesar, dan rekomendasi prioritas perbaikan. Cocok untuk yang ingin rekomendasi personal dan spesifik.',
+        icon: 'tabler:stethoscope',
+      },
+    ]}
+  />
+
+  <!-- ═══════════════════════════════════════════
+       CARA KERJA — 4 langkah
+  ══════════════════════════════════════════════ -->
+  <Steps
+    title="Cara Saya Bekerja Dengan Anda"
+    subtitle="Sederhana, transparan, kolaboratif — tidak ada jargon yang membingungkan."
+    items={[
+      {
+        title: 'Step 1: <span class="font-medium">Assessment</span>',
+        description:
+          'Sesi konsultasi awal untuk memahami struktur bisnis, sistem yang sudah ada, dan tantangan utama Anda. Output: rekomendasi langkah konkret yang bisa diambil segera.',
+        icon: 'tabler:clipboard-list',
       },
       {
-        title: 'Cross-browser compatibility',
+        title: 'Step 2: <span class="font-medium">Review & Diagnose</span>',
         description:
-          'Ensure your website looks and functions consistently across various web browsers, delivering a seamless experience to all users.',
+          'Audit laporan keuangan dan sistem yang berjalan. Identifikasi masalah utama: arus kas, COGS, margin, pajak. Output: Financial Health Report + prioritas perbaikan.',
+        icon: 'tabler:search',
+      },
+      {
+        title: 'Step 3: <span class="font-medium">Setup & Integration</span>',
+        description:
+          'Bangun sistem pembukuan yang rapi — Chart of Accounts F&B, integrasi POS (MOKA, ESB, Accurate), dashboard real-time, SOP, dan training tim. Output: sistem yang berjalan otomatis.',
+        icon: 'tabler:settings',
+      },
+      {
+        title: 'Step 4: <span class="font-medium">Monitoring & Growth</span>',
+        description:
+          'Monthly financial review, analisa tren, dan rekomendasi optimasi pricing dan menu. Output: business insights yang actionable setiap bulan untuk keputusan berbasis data.',
+        icon: 'tabler:trending-up',
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Colorful Image',
+      src: '~/assets/images/Guslan-Putra-konsultan-keuangan-fnb-3.webp',
+      alt: 'Proses kerja konsultasi keuangan F&B Guslan Putra',
+    }}
+  />
+
+  <!-- ═══════════════════════════════════════════
+       KENAPA GUSLAN
+  ══════════════════════════════════════════════ -->
+  <Content
+    isReversed
+    tagline="Tentang Saya"
+    title="Konsultan yang Benar-Benar Paham Bisnis Kuliner"
+    items={[
+      {
+        title: 'Spesialis F&B — Bukan Akuntan Generalis',
+        description:
+          'Saya hanya fokus di restoran, cafe, bakery & Pastry, ghost Kitchen, warung. Paham bedanya food cost warung nasi vs kafe specialty coffee vs fine dining.',
+      },
+      {
+        title: '15 Tahun di Industri, 5 Tahun Fokus F&B',
+        description:
+          'Bukan teori dari buku teks — pengalaman langsung di keuangan pariwisata dan operasional F&B Bali. Paham seasonal, cash flow harian, dan dinamika unik bisnis kuliner.',
+      },
+      {
+        title: 'Bahasa Manusia, Bukan Bahasa Akuntan',
+        description:
+          'Laporan dijelaskan dengan contoh konkret yang bisa langsung Anda gunakan untuk keputusan. Tidak ada laporan tebal yang berakhir di laci.',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/Guslan-Putra-Konsultan-Keuangan-FnB-Bali-1.webp',
+      alt: 'Guslan Putra — Konsultan Keuangan F&B Bali',
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Building on modern foundations</h3>
-      Gain a competitive advantage by incorporating industry leading practices
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Berbasis di Bali, Melayani Seluruh Indonesia
+      </h3>
+      Remote-friendly. Klien dari Bali, Jakarta, Surabaya, hingga Lombok — semua dilayani dengan support penuh.
     </Fragment>
-
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
   </Content>
 
-  <!-- Content Widget **************** -->
-
-  <Content
-    isAfterContent
-    items={[
-      {
-        title: 'High level of customization',
-        description: `Tailor the template effortlessly to match your brand's identity and requirements, making your website distinct and saving you time.`,
-      },
-      {
-        title: 'Multiple layout possibilities',
-        description:
-          'Explore various layout options to find the structure that best presents your content, enhancing user engagement and navigation.',
-      },
-      {
-        title: 'Fully responsive design',
-        description:
-          "Ensure your website's optimal performance on various devices and screen sizes, providing a consistent and enjoyable user experience.",
-      },
-      {
-        title: 'Integration of media',
-        description:
-          'Seamlessly incorporate images, videos, and multimedia elements that enhance your content and engage visitors effectively.',
-      },
+  <!-- ═══════════════════════════════════════════
+       STATS
+  ══════════════════════════════════════════════ -->
+  <Stats
+    stats={[
+      { title: 'Tahun Pengalaman Keuangan', amount: '15+' },
+      { title: 'Fokus Operasional F&B', amount: '5 Thn' },
+      { title: 'Sistem Keuangan Dirapikan', amount: '20+' },
+      { title: 'Kota di Bali Dilayani', amount: '6' },
     ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2194&q=80',
-      alt: 'Blueprint Image',
-    }}
-  >
-    <Fragment slot="content">Ensure your online presence truly represents you.</Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isReversed
-    isAfterContent
-    items={[
-      {
-        title: 'Enhanced user engagement',
-        description:
-          'Captivate your audience with interactive elements, intuitive navigation, and visually appealing layouts, encouraging longer visits.',
-      },
-      {
-        title: 'Continuous improvement',
-        description:
-          'Ensure your website stays aligned with the latest trends and technologies through regular updates and enhancements.',
-      },
-      {
-        title: 'Time and resource efficiency',
-        description:
-          'Skip the time-consuming process of building a website from scratch and launch your online presence sooner with AstroWind.',
-      },
-      {
-        title: 'Community support',
-        description: `Join the growing AstroWind community for insights, resources, and assistance, ensuring you're never alone on your web development journey.`,
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1611462985358-60d3498e0364?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Astronauts Image',
-    }}
-  >
-    <Fragment slot="content">Designed to foster growth and success.</Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Steps Widget ****************** -->
-
-  <Steps
-    title="Get your dream website up and running in no time with AstroWind."
-    items={[
-      {
-        title: 'Step 1: <span class="font-medium">Download</span>',
-        description:
-          "Kickstart with GitHub! Either fork the AstroWind template or simply click 'Use this template'. Your canvas awaits, ready for your digital masterpiece. In just a few clicks, you've already set the foundation.",
-        icon: 'tabler:package',
-      },
-      {
-        title: 'Step 2: <span class="font-medium">Add content</span>',
-        description:
-          "Pour your vision into it. Add images, text, and all that jazz to breathe life into your digital space. Remember, it's the content that tells your story, so make it captivating.",
-        icon: 'tabler:letter-case',
-      },
-      {
-        title: 'Step 3: <span class="font-medium">Customize styles</span>',
-        description:
-          'Give it your personal touch. Tailor colors, fonts, and layouts until it feels just right. Your unique flair, amplified by AstroWind! Precision in design ensures a seamless user experience.',
-        icon: 'tabler:paint',
-      },
-      {
-        title: 'Ready!',
-        icon: 'tabler:check',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1616198814651-e71f960c3180?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
-      alt: 'Steps image',
-    }}
   />
 
-  <!-- Features2 Widget ************** -->
-
-  <Features2
-    title="Most used widgets"
-    subtitle="Provides frequently used components for building websites using Tailwind CSS"
-    tagline="Components"
-    items={[
-      {
-        title: 'Headers',
-        description: "Ever tried driving without GPS? Boom! That's why websites need headers for direction.",
-        icon: 'flat-color-icons:template',
-      },
-      {
-        title: 'Heros',
-        description:
-          "Picture a superhero landing – epic, right? That's the job of a Hero section, making grand entrances!",
-        icon: 'flat-color-icons:gallery',
-      },
-      {
-        title: 'Features',
-        description:
-          'Where websites strut their stuff and show off superpowers. No holding back on the bragging rights here!',
-        icon: 'flat-color-icons:approval',
-      },
-      {
-        title: 'Content',
-        description:
-          "Dive into the meat and potatoes of a site; without it, you'd just be window shopping. Content is king.",
-        icon: 'flat-color-icons:document',
-      },
-      {
-        title: 'Call-to-Action',
-        description:
-          'That enthusiastic friend who\'s always urging, "Do it! Do it!"? Yeah, that\'s this button nudging you towards adventure.',
-        icon: 'flat-color-icons:advertising',
-      },
-      {
-        title: 'Pricing',
-        description: 'Behold the dessert menu of the website world. Tempting choices await, can you resist?',
-        icon: 'flat-color-icons:currency-exchange',
-      },
-      {
-        title: 'Testimonial',
-        description: 'Step into the gossip corner! Here, other visitors spill the beans and share the juicy details.',
-        icon: 'flat-color-icons:voice-presentation',
-      },
-      {
-        title: 'Contact',
-        description:
-          'Like a digital mailbox, but faster! Drop a line, ask a question, or send a virtual high-five. Ding! Message in.',
-        icon: 'flat-color-icons:business-contact',
-      },
-      {
-        title: 'Footers',
-        description: "The footer's like the credits of a movie but sprinkled with easter eggs. Time to hunt!",
-        icon: 'flat-color-icons:database',
-      },
-    ]}
-  >
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Features2>
-
-  <!-- HighlightedPosts Widget ******* -->
-
+  <!-- ═══════════════════════════════════════════
+       BLOG
+  ══════════════════════════════════════════════ -->
   <BlogLatestPosts
-    title="Find out more content in our Blog"
-    information={`The blog is used to display AstroWind documentation.
-                        Each new article will be an important step that you will need to know to be an expert in creating a website using Astro + Tailwind CSS.
-                        Astro is a very interesting technology. Thanks.
-                `}
+    title="Edukasi Gratis untuk Owner F&B"
+    information="Artikel praktis seputar keuangan, pajak, dan HPP khusus bisnis kuliner. Langsung bisa diterapkan — tidak perlu background akuntansi."
   />
 
-  <!-- FAQs Widget ******************* -->
-
+  <!-- ═══════════════════════════════════════════
+       FAQ
+  ══════════════════════════════════════════════ -->
   <FAQs
-    title="Frequently Asked Questions"
-    subtitle="Dive into the following questions to gain insights into the powerful features that AstroWind offers and how it can elevate your web development journey."
-    tagline="FAQs"
+    title="Pertanyaan yang Sering Ditanyakan"
+    tagline="FAQ"
     classes={{ container: 'max-w-6xl' }}
     items={[
       {
-        title: 'Why AstroWind?',
+        title: 'Apakah bisa konsultasi secara online?',
         description:
-          "Michael Knight a young loner on a crusade to champion the cause of the innocent. The helpless. The powerless in a world of criminals who operate above the law. Here he comes Here comes Speed Racer. He's a demon on wheels.",
+          'Ya, semua layanan bisa dilakukan remote via WhatsApp atau Zoom. Klien saya ada di Bali, Jakarta, Surabaya, dan kota lainnya di Indonesia.',
       },
       {
-        title: 'What do I need to start?',
+        title: 'Melayani area mana saja di Bali?',
         description:
-          'Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds. Many say exploration is part of our destiny, but it’s actually our duty to future generations.',
+          'Tatap muka untuk area Badung dan Denpasar: Canggu, Seminyak, Kuta, Ubud, Jimbaran, Nusa Dua, Sanur. Area lain di Bali dan luar Bali via konsultasi online dengan support penuh.',
       },
       {
-        title: 'How to install the Astro + Tailwind CSS template?',
+        title: 'Apakah cocok untuk bisnis kecil yang baru mulai?',
         description:
-          "Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows.",
+          'Sangat cocok. Justru membangun sistem yang benar sejak awal jauh lebih mudah dan murah daripada memperbaiki yang sudah kacau.',
       },
       {
-        title: "What's something that you don't understand?",
+        title: 'Apakah saya perlu paham akuntansi dulu?',
         description:
-          "A flower in my garden, a mystery in my panties. Heart attack never stopped old Big Bear. I didn't even know we were calling him Big Bear.",
+          'Tidak perlu sama sekali. Saya yang urus teknisnya — Anda cukup pahami angka-angka kunci bisnis Anda. Saya jelaskan dengan bahasa yang mudah dipahami.',
       },
       {
-        title: 'What is something that you would like to try again?',
+        title: 'Berapa biaya layanannya?',
         description:
-          "A business big enough that it could be listed on the NASDAQ goes belly up. Disappears! It ceases to exist without me. No, you clearly don't know who you're talking to, so let me clue you in.",
+          'Disesuaikan dengan skala bisnis dan kebutuhan Anda. Konsultasi pertama gratis — tidak ada komitmen, tidak ada tekanan.',
       },
       {
-        title: 'If you could only ask one question to each person you meet, what would that question be?',
+        title: 'Berapa lama sebelum hasilnya terasa?',
         description:
-          "This is not about revenge. This is about justice. A lot of things can change in twelve years, Admiral. Well, that's certainly good to know. About four years. I got tired of hearing how young I looked.",
+          'Dalam 2–4 minggu pertama, sistem sudah lebih rapi. Dalam 1–3 bulan, Anda sudah punya visibilitas penuh atas kondisi keuangan bisnis.',
       },
     ]}
   />
 
-  <!-- Stats Widget ****************** -->
+  <!-- Link ke FAQ lengkap -->
+  <div class="text-center pb-10 -mt-4">
+    <p class="text-slate-500 dark:text-slate-400 text-sm">
+      Masih ada pertanyaan?
+      <a href="/faq" class="text-primary font-semibold hover:underline ml-1">Lihat 20+ FAQ lengkap →</a>
+    </p>
+  </div>
 
-  <Stats
-    stats={[
-      { title: 'Downloads', amount: '132K' },
-      { title: 'Stars', amount: '24.8K' },
-      { title: 'Forks', amount: '10.3K' },
-      { title: 'Users', amount: '48.4K' },
-    ]}
-  />
-
-  <!-- CallToAction Widget *********** -->
-
+  <!-- ═══════════════════════════════════════════
+       CTA FINAL
+  ══════════════════════════════════════════════ -->
   <CallToAction
     actions={[
       {
         variant: 'primary',
-        text: 'Get template',
-        href: 'https://github.com/arthelokyo/astrowind',
+        text: 'Jadwalkan Financial Health Check Gratis',
+        href: 'https://wa.me/628213141688?text=Halo%20Guslan,%20saya%20ingin%20jadwalkan%20Financial%20Health%20Check%20gratis',
         target: '_blank',
-        icon: 'tabler:download',
+        icon: 'tabler:brand-whatsapp',
+      },
+      {
+        text: 'Download Template Gratis',
+        href: '/templates',
       },
     ]}
   >
     <Fragment slot="title">
-      Astro&nbsp;+&nbsp;<br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Tailwind CSS</span>
+      Jangan Biarkan Keuangan yang Berantakan<br class="block sm:hidden" />
+      <span class="sm:whitespace-nowrap"> Menghambat Pertumbuhan Bisnis Anda</span>
     </Fragment>
-
     <Fragment slot="subtitle">
-      Be very surprised by these huge fake numbers you are seeing on this page. <br class="hidden md:inline" />Don't
-      waste more time! :P
+      Dengan sistem yang tepat, Anda fokus ke menu, tim, dan pelanggan —<br class="hidden md:inline" />
+      sementara saya bantu handle angka dan kepatuhan pajak.
     </Fragment>
   </CallToAction>
+
+  <!-- ═══════════════════════════════════════════
+     KALKULATOR SCRIPT — Sederhana tapi informatif
+══════════════════════════════════════════════ -->
+<script is:inline>
+  document.getElementById('calcBtn').addEventListener('click', function () {
+    const omzetVal = parseFloat(document.getElementById('omzet').value);
+    const hppVal = parseFloat(document.getElementById('hpp').value);
+    const resultDiv = document.getElementById('result');
+    const resultIcon = document.getElementById('resultIcon');
+    const resultStatus = document.getElementById('resultStatus');
+    const resultText = document.getElementById('resultText');
+    const resultAction = document.getElementById('resultAction');
+
+    if (!omzetVal || !hppVal || omzetVal <= 0 || hppVal <= 0 || hppVal > 100) {
+      resultDiv.className = 'mt-6 rounded-xl p-5 border-l-4 bg-yellow-50 dark:bg-yellow-900/20 border-yellow-400';
+      resultIcon.textContent = '⚠️';
+      resultStatus.textContent = 'Data belum lengkap';
+      resultStatus.className = 'font-bold text-base mb-1 text-yellow-700 dark:text-yellow-300';
+      resultText.textContent = 'Masukkan omzet bulanan dan persentase HPP Anda terlebih dahulu.';
+      resultAction.textContent = '';
+      resultDiv.classList.remove('hidden');
+      return;
+    }
+
+    const biayaHPP = omzetVal * (hppVal / 100);
+    const sisaSetelahHPP = omzetVal - biayaHPP;
+    const formatRp = (n) =>
+      'Rp ' + Math.round(n).toLocaleString('id-ID');
+
+    let icon, status, statusClass, text, action;
+
+    if (hppVal <= 28) {
+      icon = '🟢';
+      statusClass = 'font-bold text-base mb-1 text-green-700 dark:text-green-300';
+      status = 'HPP Sangat Efisien';
+      text = `Dari omzet ${formatRp(omzetVal)}, biaya bahan baku Anda ${formatRp(biayaHPP)} (${hppVal}%). Sisa ${formatRp(sisaSetelahHPP)} untuk menutup biaya operasional lain dan profit. HPP Anda di bawah standar industri — bagus! Fokus selanjutnya: pastikan biaya operasional lain juga terkontrol.`;
+      action = '✅ Langkah selanjutnya: optimalkan biaya tenaga kerja dan overhead untuk maksimalkan profit bersih.';
+      resultDiv.className = 'mt-6 rounded-xl p-5 border-l-4 bg-green-50 dark:bg-green-900/20 border-green-400';
+    } else if (hppVal <= 35) {
+      icon = '🔵';
+      statusClass = 'font-bold text-base mb-1 text-blue-700 dark:text-blue-300';
+      status = 'HPP Normal — Masih Sehat';
+      text = `Dari omzet ${formatRp(omzetVal)}, biaya bahan baku Anda ${formatRp(biayaHPP)} (${hppVal}%). Sisa ${formatRp(sisaSetelahHPP)} untuk biaya operasional dan profit. HPP Anda berada di kisaran sehat (28–35% untuk restoran/cafe).`;
+      action = '💡 Langkah selanjutnya: lakukan audit menu untuk tahu menu mana yang paling menguntungkan.';
+      resultDiv.className = 'mt-6 rounded-xl p-5 border-l-4 bg-blue-50 dark:bg-blue-900/20 border-blue-400';
+    } else if (hppVal <= 45) {
+      icon = '🟡';
+      statusClass = 'font-bold text-base mb-1 text-yellow-700 dark:text-yellow-300';
+      status = 'HPP Di Atas Normal — Perlu Perhatian';
+      text = `Dari omzet ${formatRp(omzetVal)}, biaya bahan baku Anda ${formatRp(biayaHPP)} (${hppVal}%). Dengan HPP ${hppVal}%, margin Anda menyempit. Ada potensi kebocoran di pembelian bahan baku, porsi, atau waste yang belum terkontrol.`;
+      action = '⚡ Disarankan: audit porsi dan supplier sekarang sebelum margin terus terkikis.';
+      resultDiv.className = 'mt-6 rounded-xl p-5 border-l-4 bg-yellow-50 dark:bg-yellow-900/20 border-yellow-400';
+    } else {
+      icon = '🔴';
+      statusClass = 'font-bold text-base mb-1 text-red-700 dark:text-red-300';
+      status = 'HPP Kritis — Bisnis Berpotensi Rugi';
+      text = `Dari omzet ${formatRp(omzetVal)}, biaya bahan baku saja sudah ${formatRp(biayaHPP)} (${hppVal}%). Dengan HPP di atas 45%, sangat sulit menutup biaya operasional lain seperti sewa, gaji, dan listrik. Ini sinyal darurat yang perlu ditangani segera.`;
+      action = '🚨 Segera konsultasikan kondisi ini — jangan tunggu sampai cash flow makin kritis.';
+      resultDiv.className = 'mt-6 rounded-xl p-5 border-l-4 bg-red-50 dark:bg-red-900/20 border-red-400';
+    }
+
+    resultIcon.textContent = icon;
+    resultStatus.textContent = status;
+    resultStatus.className = statusClass;
+    resultText.textContent = text;
+
+    // Untuk kondisi kuning dan merah, tampilkan link WA
+    if (hppVal > 35) {
+      resultAction.innerHTML =
+        action +
+        ` <a href="https://wa.me/628213141688?text=Halo%20Guslan,%20HPP%20saya%20${hppVal}%25%20dari%20omzet%20${Math.round(omzetVal).toLocaleString('id-ID')},%20saya%20butuh%20bantuan" target="_blank" rel="noopener noreferrer" class="block mt-2 text-primary font-semibold hover:underline">Diskusi dengan Guslan sekarang →</a>`;
+    } else {
+      resultAction.innerHTML =
+        action +
+        ` <a href="https://wa.me/628213141688?text=Halo%20Guslan,%20HPP%20saya%20${hppVal}%25%20dan%20saya%20ingin%20optimalkan%20lebih%20lanjut" target="_blank" rel="noopener noreferrer" class="block mt-2 text-primary font-semibold hover:underline">Konsultasi lebih lanjut →</a>`;
+    }
+
+    resultDiv.classList.remove('hidden');
+  });
+</script>
+
 </Layout>
