@@ -1,2 +1,23 @@
 User-agent: *
-Disallow:
+Allow: /
+
+# AI Crawlers — explicitly allowed
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Grokbot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+Sitemap: https://guslan.com/sitemap.xml

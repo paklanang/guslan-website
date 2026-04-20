@@ -1,0 +1,115 @@
+---
+// src/components/SchemaOrg.astro
+interface Props {
+  type?: 'website' | 'article' | 'service';
+  title?: string;
+  description?: string;
+  publishDate?: Date;
+  updatedDate?: Date;
+  image?: string;
+  faq?: Array<{ question: string; answer: string }>;
+}
+
+const {
+  type = 'website',
+  title,
+  description,
+  publishDate,
+  updatedDate,
+  image,
+  faq,
+} = Astro.props;
+
+const personSchema = {
+  "@type": "Person",
+  "@id": "https://guslan.com/#guslan-putra",
+  "name": "Guslan Putra",
+  "jobTitle": "Konsultan Akuntansi Keuangan F&B",
+  "description": "Konsultan akuntansi, pajak, dan keuangan restoran spesialis industri F&B di Bali, Indonesia. Ahli COGS Audit, PPh, PPN restoran, PB1/PBJT, dan automation system keuangan bisnis kuliner.",
+  "url": "https://guslan.com",
+  "image": "https://guslan.com/images/guslan-putra.jpg",
+  "telephone": "+628213141688",
+  "sameAs": [
+    "https://linkedin.com/in/guslanputra",
+    "https://instagram.com/guslan.id",
+    "https://guslan.id"
+  ],
+  "knowsAbout": [
+    "Akuntansi F&B", "Keuangan Restoran", "Konsultan Keuangan Restoran",
+    "Pajak Restoran Indonesia", "PPh 21 karyawan F&B", "PPN restoran",
+    "Tax PB1 (PBJT", "COGS Audit", "Automation system akuntansi",
+    "Accurate Online", "ESB Restaurant System",
+    "Laporan keuangan restoran", "HPP makanan minuman"
+  ]
+};
+
+const businessSchema = {
+  "@type": ["ProfessionalService", "AccountingService", "LocalBusiness"],
+  "@id": "https://guslan.com/#service",
+  "name": "Guslan Putra – Konsultan Akuntansi Keuangan F&B",
+  "description": "Layanan konsultasi akuntansi, pajak, keuangan restoran, dan automation system untuk restoran, kafe, dan bakeri di Bali dan seluruh Indonesia.",
+  "url": "https://guslan.com",
+  "logo": "https://guslan.com/favicon.svg",
+  "telephone": "+628213141688",
+  "founder": { "@id": "https://guslan.com/#guslan-putra" },
+  "priceRange": "$$",
+  "currenciesAccepted": "IDR",
+  "paymentAccepted": "Transfer Bank, QRIS",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Kuta - Badung",
+    "addressRegion": "Bali",
+    "addressCountry": "ID"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": -8.629578885719324,
+    "longitude": 115.16620342883489
+  },
+  "areaServed": [
+    { "@type": "City", "name": "Seminyak" },
+    { "@type": "City", "name": "Canggu" },
+    { "@type": "City", "name": "Ubud" },
+    { "@type": "City", "name": "Denpasar" },
+    { "@type": "Country", "name": "Indonesia" }
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+628213141688",
+    "contactType": "customer service",
+    "availableLanguage": ["Indonesian", "English"]
+  }
+};
+
+const articleSchema = type === 'article' && title ? {
+  "@type": "Article",
+  "headline": title,
+  "description": description,
+  "image": image || "https://guslan.com/og-image.jpg",
+  "datePublished": publishDate?.toISOString(),
+  "dateModified": (updatedDate || publishDate)?.toISOString(),
+  "author": { "@id": "https://guslan.com/#guslan-putra" },
+  "publisher": { "@id": "https://guslan.com/#service" }
+} : null;
+
+const faqSchema = faq && faq.length > 0 ? {
+  "@type": "FAQPage",
+  "mainEntity": faq.map(item => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.answer
+    }
+  }))
+} : null;
+
+const graph = [personSchema, businessSchema];
+if (articleSchema) graph.push(articleSchema);
+if (faqSchema) graph.push(faqSchema);
+---
+
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": graph
+})} />
