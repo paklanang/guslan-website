@@ -15,6 +15,10 @@ metadata:
   openGraph:
     site_name: Guslan Putra
     type: website
+    images:
+      - url: 'https://guslan.com/og-image.jpg'
+        width: 1200
+        height: 630
 
 i18n:
   language: id
