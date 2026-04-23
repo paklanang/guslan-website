@@ -1,0 +1,14 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HppCalculator from '~/components/tools/HppCalculator.astro';
+
+const metadata = {
+  title: 'Kalkulator HPP F&B Gratis — Guslan',
+  description:
+    'Hitung food cost dan HPP menu Anda secara instan. Masukkan bahan, yield, dan harga jual — langsung tahu status GOOD, CAUTION, atau DANGER.',
+};
+---
+
+<Layout metadata={metadata}>
+  <HppCalculator />
+</Layout>

@@ -1,0 +1,198 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: 'F&B Financial Tools Gratis — Guslan Putra',
+  description:
+    'Alat bantu keuangan gratis untuk owner F&B: HPP Calculator sudah live! BEP Analysis, Pricing Calculator, What-If Simulator segera hadir.',
+};
+
+const tools = [
+  {
+    status: 'live',
+    icon: `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19h12M6 16l3-4 3 3 4-6"/><circle cx="15" cy="4" r="2" fill="#FF851B" stroke="none"/></svg>`,
+    iconBg: 'bg-blue-50 dark:bg-blue-900/20',
+    iconColor: 'text-[#0074D9]',
+    title: 'HPP Calculator',
+    desc: 'Hitung food cost dan HPP menu Anda secara akurat. Masukkan bahan, yield, dan harga jual, langsung tahu status GOOD, CAUTION, atau DANGER.',
+    tag: 'Food Cost · Recipe Builder · Pricing',
+    tagColor: 'text-[#0074D9]',
+    href: '/tools/hpp-calculator',
+    cta: 'Hitung HPP Sekarang →',
+    ctaClass: 'bg-[#0074D9] hover:bg-[#005faf] text-white',
+  },
+  {
+    status: 'soon',
+    icon: `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 2v8l4 4"/><circle cx="10" cy="10" r="8"/></svg>`,
+    iconBg: 'bg-orange-50 dark:bg-orange-900/20',
+    iconColor: 'text-[#FF851B]',
+    title: 'BEP Analysis',
+    desc: 'Hitung titik impas bisnis Anda. Berapa porsi harus terjual per hari agar bisnis tidak rugi. Per menu, per outlet.',
+    tag: 'Break Even · Fixed Cost · Contribution Margin',
+    tagColor: 'text-[#FF851B]',
+    href: null,
+    cta: null,
+    waMsg: 'Halo Guslan, saya mau early access BEP Analysis Tool',
+  },
+  {
+    status: 'soon',
+    icon: `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 10h14M3 6h14M3 14h8"/><path d="M15 13l2 2 4-4" stroke-width="2"/></svg>`,
+    iconBg: 'bg-emerald-50 dark:bg-emerald-900/20',
+    iconColor: 'text-emerald-600',
+    title: 'Pricing Calculator',
+    desc: 'Tentukan harga jual yang profitable berdasarkan HPP, target margin, dan posisi kompetitor di pasar.',
+    tag: 'Target Margin · Market Positioning · Markup',
+    tagColor: 'text-emerald-600',
+    href: null,
+    cta: null,
+    waMsg: 'Halo Guslan, saya mau early access Pricing Calculator Tool',
+  },
+  {
+    status: 'soon',
+    icon: `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 2v16M2 10h16"/><circle cx="10" cy="10" r="7"/></svg>`,
+    iconBg: 'bg-purple-50 dark:bg-purple-900/20',
+    iconColor: 'text-purple-600',
+    title: 'What-If Simulator',
+    desc: 'Simulasi skenario bisnis: harga bahan naik 20%, porsi diperkecil, menu dihapus dan lihat dampaknya ke profit sebelum eksekusi.',
+    tag: 'Scenario Analysis · Sensitivity · Forecast',
+    tagColor: 'text-purple-600',
+    href: null,
+    cta: null,
+    waMsg: 'Halo Guslan, saya mau early access What-If Simulator Tool',
+  },
+  {
+    status: 'soon',
+    icon: `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="7" height="7" rx="1.5"/><rect x="11" y="2" width="7" height="7" rx="1.5"/><rect x="2" y="11" width="7" height="7" rx="1.5"/><rect x="11" y="11" width="7" height="7" rx="1.5"/></svg>`,
+    iconBg: 'bg-sky-50 dark:bg-sky-900/20',
+    iconColor: 'text-sky-600',
+    title: 'Menu Engineering',
+    desc: 'BCG Matrix otomatis untuk seluruh menu Anda. Tahu mana yang Star, Plow Horse, Puzzle, atau Dog dan apa yang harus dilakukan.',
+    tag: 'BCG Matrix · Star · Dog · Plow Horse',
+    tagColor: 'text-sky-600',
+    href: null,
+    cta: null,
+    waMsg: 'Halo Guslan, saya mau early access Menu Engineering Tool',
+  },
+];
+---
+
+<Layout metadata={metadata}>
+
+  <!-- HERO -->
+  <section class="pt-16 pb-4 px-4 text-center">
+    <div class="max-w-2xl mx-auto">
+      <div class="inline-flex items-center gap-2 bg-[#0074D9]/10 text-[#0074D9] text-[10px] font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-5 border border-[#0074D9]/20">
+        <span class="w-2 h-2 rounded-full bg-[#FF851B]"></span>
+        Alat Bantu Gratis untuk Owner F&amp;B
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mb-4 tracking-tight leading-tight">
+        F&amp;B Financial Tools
+      </h1>
+      <p class="text-slate-500 dark:text-slate-400 leading-relaxed max-w-xl mx-auto text-[15px]">
+        Saya membangun suite tools keuangan khusus untuk owner F&amp;B. Dirancang dari pengalaman nyata di lapangan, bukan teori semata.
+        <strong class="text-slate-700 dark:text-slate-200">HPP Calculator sudah bisa digunakan sekarang.</strong>
+      </p>
+    </div>
+  </section>
+
+  <!-- TOOLS GRID -->
+  <section class="py-8 px-4">
+    <div class="max-w-5xl mx-auto">
+
+      <!-- LIVE TOOL — full width featured -->
+      {tools.filter(t => t.status === 'live').map(tool => (
+        <div class="relative mb-6 rounded-2xl border-2 border-[#0074D9]/30 bg-gradient-to-br from-[#0074D9]/5 to-white dark:from-[#0074D9]/10 dark:to-slate-900 shadow-lg overflow-hidden group">
+          <div class="absolute top-4 right-4">
+            <span class="inline-flex items-center gap-1.5 bg-emerald-50 dark:bg-emerald-900/30 border border-emerald-200 dark:border-emerald-700 text-emerald-700 dark:text-emerald-400 text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+              Live Sekarang
+            </span>
+          </div>
+          <div class="p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center gap-6">
+            <div class={`w-14 h-14 rounded-2xl ${tool.iconBg} ${tool.iconColor} flex items-center justify-center flex-shrink-0`}>
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" class="w-7 h-7">
+                <path d="M4 19h12M6 16l3-4 3 3 4-6"/>
+                <circle cx="15" cy="4" r="2" fill="#FF851B" stroke="none"/>
+              </svg>
+            </div>
+            <div class="flex-1 min-w-0">
+              <h2 class="text-xl font-extrabold text-slate-900 dark:text-white mb-2">{tool.title}</h2>
+              <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-3 max-w-lg">{tool.desc}</p>
+              <p class={`text-[10px] font-bold uppercase tracking-wider ${tool.tagColor}`}>{tool.tag}</p>
+            </div>
+            <div class="flex-shrink-0">
+              <a
+                href={tool.href}
+                class={`inline-flex items-center gap-2 px-6 h-12 rounded-xl font-bold text-sm transition-all ${tool.ctaClass} shadow-md hover:shadow-lg hover:-translate-y-0.5`}
+              >
+                {tool.cta}
+              </a>
+            </div>
+          </div>
+        </div>
+      ))}
+
+      <!-- DIVIDER -->
+      <div class="flex items-center gap-4 mb-6">
+        <div class="flex-1 h-px bg-slate-200 dark:bg-slate-700"></div>
+        <span class="text-[11px] font-bold uppercase tracking-widest text-slate-400">Segera Hadir</span>
+        <div class="flex-1 h-px bg-slate-200 dark:bg-slate-700"></div>
+      </div>
+
+      <!-- COMING SOON GRID -->
+      <div class="grid sm:grid-cols-2 gap-4">
+        {tools.filter(t => t.status === 'soon').map(tool => (
+          <div class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/60 p-5 flex flex-col gap-4 group hover:border-[#0074D9]/40 hover:shadow-md transition-all duration-200">
+            <div class="flex items-start gap-4">
+              <div class={`w-11 h-11 rounded-xl ${tool.iconBg} ${tool.iconColor} flex items-center justify-center flex-shrink-0`}>
+                <Fragment set:html={tool.icon} />
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 mb-1">
+                  <h3 class="text-sm font-bold text-slate-900 dark:text-white">{tool.title}</h3>
+                  <span class="text-[9px] font-bold uppercase tracking-widest bg-slate-100 dark:bg-slate-700 text-slate-400 px-2 py-0.5 rounded-full">Coming Soon</span>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">{tool.desc}</p>
+                <p class={`text-[9px] font-bold uppercase tracking-wider mt-2 ${tool.tagColor}`}>{tool.tag}</p>
+              </div>
+            </div>
+            <a
+              href={`https://wa.me/628213141688?text=${encodeURIComponent(tool.waMsg)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2 h-9 px-4 rounded-xl border border-slate-200 dark:border-slate-600 text-slate-500 dark:text-slate-400 text-xs font-semibold hover:border-[#0074D9]/40 hover:text-[#0074D9] transition-all mt-auto"
+            >
+              <svg viewBox="0 0 20 20" class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2c4.418 0 8 3.134 8 7s-3.582 7-8 7a8.08 8.08 0 0 1-3.5-.787L2 17l1.5-4A6.96 6.96 0 0 1 2 9c0-3.866 3.582-7 8-7z"/></svg>
+              Notify Me via WhatsApp
+            </a>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- BOTTOM CTA -->
+  <section class="py-12 px-4">
+    <div class="max-w-2xl mx-auto text-center">
+      <div class="rounded-2xl bg-gradient-to-br from-[#0074D9]/8 to-[#FF851B]/8 border border-[#0074D9]/20 p-8">
+        <h2 class="text-xl font-extrabold text-slate-900 dark:text-white mb-3">Butuh Analisis yang Lebih Dalam?</h2>
+        <p class="text-sm text-slate-500 dark:text-slate-400 mb-6 leading-relaxed max-w-md mx-auto">
+          Tools di atas adalah versi gratis. Untuk analisis seluruh outlet, BCG Matrix otomatis, dan Profit Simulation lengkap, gunakan <strong class="text-slate-700 dark:text-slate-200">Guslan Cost Engine Enterprise.</strong>
+        </p>
+        <a
+          href="https://wa.me/628213141688?text=Halo%20Guslan%2C%20saya%20ingin%20konsultasi%20Guslan%20Cost%20Engine%20Enterprise"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 bg-[#0074D9] hover:bg-[#005faf] text-white font-bold py-3.5 px-8 rounded-xl transition-all text-sm shadow-md hover:shadow-lg hover:-translate-y-0.5"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.847L.057 23.882l6.197-1.623A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.887 9.887 0 01-5.031-1.371l-.361-.214-3.741.981 1.001-3.645-.235-.374A9.856 9.856 0 012.106 12C2.106 6.58 6.58 2.106 12 2.106S21.894 6.58 21.894 12 17.42 21.894 12 21.894z"/>
+          </svg>
+          Konsultasi Cost Engine Enterprise
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

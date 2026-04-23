@@ -1,0 +1,748 @@
+---
+// src/components/tools/HppCalculator.astro
+// Guslan Cost Engine - HPP Calculator v11
+// PDF: jsPDF client-side, no print dialog, guaranteed 1 page
+---
+
+<style>
+  /* SLIDER */
+  #wasteSlider {
+    -webkit-appearance: none; appearance: none;
+    width: 100%; height: 6px; border-radius: 9999px; outline: none; cursor: pointer;
+    background: linear-gradient(to right, #FF851B 0%, #FF851B var(--val,25%), #e2e8f0 var(--val,25%), #e2e8f0 100%);
+  }
+  #wasteSlider::-webkit-slider-thumb {
+    -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%;
+    background: #FF851B; cursor: pointer; box-shadow: 0 0 0 3px rgba(255,133,27,0.22);
+  }
+  #wasteSlider::-moz-range-thumb {
+    width: 18px; height: 18px; border-radius: 50%; background: #FF851B; cursor: pointer; border: none;
+  }
+  #wasteSlider::-moz-range-track { height: 6px; border-radius: 9999px; background: #e2e8f0; }
+
+  .status-default { background: rgba(255,255,255,0.12); border-radius: 12px; padding: 12px; }
+  .status-good    { background: #16a34a; border-radius: 12px; padding: 12px; }
+  .status-caution { background: #d97706; border-radius: 12px; padding: 12px; }
+  .status-danger  { background: #dc2626; border-radius: 12px; padding: 12px; }
+
+  .hpp-field-label {
+    display: block;
+    font-size: 9px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .07em;
+    color: #94a3b8; margin-bottom: 3px;
+  }
+  .hpp-field-input {
+    width: 100%; background: #f8fafc;
+    border: 1px solid #e2e8f0; border-radius: 8px;
+    padding: 5px 9px; font-size: 12px; font-weight: 600;
+    color: #1e293b; font-family: inherit; outline: none;
+    transition: border-color .15s, background .15s; min-width: 0;
+  }
+  .hpp-field-input:focus { border-color: #0074D9; background: #fff; }
+  .hpp-field-input::placeholder { color: #cbd5e1; font-weight: 400; font-size: 11px; }
+  .dark .hpp-field-input { background: #1e293b; border-color: #334155; color: #e2e8f0; }
+  .dark .hpp-field-input:focus { border-color: #0074D9; background: #0f172a; }
+  .dark .hpp-field-input::placeholder { color: #475569; }
+
+  #addBtnWrap { padding: 12px 16px 16px; border-top: 1px solid #f1f5f9; }
+  .dark #addBtnWrap { border-top-color: rgba(255,255,255,0.06); }
+</style>
+
+<!-- jsPDF CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+<!-- jsPDF AutoTable plugin for clean table rendering -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js" defer></script>
+
+<section class="py-12 px-4">
+  <div class="max-w-4xl mx-auto">
+
+    <!-- HERO -->
+    <div class="text-center mb-10">
+      <div class="inline-flex items-center gap-2 bg-[#0074D9]/10 text-[#0074D9] text-[10px] font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-4 border border-[#0074D9]/20">
+        <span class="w-2 h-2 rounded-full bg-[#FF851B]"></span>
+        GRATIS · LANGSUNG PAKAI · TANPA AKUN
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mb-3 leading-tight">
+        Hitung HPP menu Anda<br/>dalam hitungan menit.
+      </h1>
+      <p class="text-slate-500 dark:text-slate-400 text-sm max-w-lg mx-auto leading-relaxed">
+        Masukkan bahan, berat, dan harga jual. Sistem langsung tunjukkan apakah bisnis Anda
+        <strong class="text-emerald-600">GOOD</strong>,
+        <strong class="text-amber-500">CAUTION</strong>, atau
+        <strong class="text-red-500">DANGER</strong>.
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-6">
+      <!-- LEFT PANEL -->
+      <div class="lg:col-span-2 space-y-5">
+
+        <!-- NAMA MENU -->
+        <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-5 shadow-sm">
+          <label class="block text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2">Nama Menu</label>
+          <input id="menuName" type="text" placeholder="Contoh: Ayam Geprek Signature"
+            class="w-full bg-transparent text-slate-900 dark:text-white text-base font-semibold placeholder:text-slate-300 dark:placeholder:text-slate-600 border-none outline-none" />
+        </div>
+
+        <!-- BAHAN LIST -->
+        <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden">
+          <div class="px-5 py-3 border-b border-slate-100 dark:border-slate-700 flex items-center justify-between">
+            <div>
+              <h3 class="text-xs font-bold text-slate-600 dark:text-slate-300 uppercase tracking-widest">Daftar Bahan</h3>
+              <p id="ingredientHint" class="text-[10px] text-slate-400 mt-0.5">0/7 bahan ditambahkan.</p>
+            </div>
+            <span id="hppBadge" class="text-[10px] font-bold text-[#0074D9] bg-[#0074D9]/10 px-2 py-0.5 rounded-full">0 bahan</span>
+          </div>
+          <div id="ingredientCards" class="divide-y divide-slate-100 dark:divide-slate-700/50"></div>
+          <div id="emptyState" class="py-8 px-5 text-center">
+            <svg viewBox="0 0 48 48" class="w-9 h-9 mx-auto mb-2 text-slate-200 dark:text-slate-700" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="8" y="12" width="32" height="28" rx="3"/>
+              <path d="M16 12V9a4 4 0 0 1 8 0v3M20 22v8M16 26h8"/>
+            </svg>
+            <p class="text-xs text-slate-400">Belum ada bahan. Klik <strong class="text-[#0074D9]">+ Tambah Bahan</strong> di bawah.</p>
+          </div>
+          <div id="addBtnWrap">
+            <button id="addIngredientBtn"
+              class="w-full inline-flex items-center justify-center gap-2 border-2 border-dashed border-[#0074D9]/30 hover:border-[#0074D9] hover:bg-[#0074D9]/5 text-[#0074D9] text-xs font-bold px-4 py-2.5 rounded-xl transition-all">
+              <svg viewBox="0 0 16 16" class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 3v10M3 8h10"/></svg>
+              Tambah Bahan
+            </button>
+          </div>
+        </div>
+
+        <!-- WASTE + HARGA JUAL -->
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-5 shadow-sm">
+            <div class="flex items-center justify-between mb-3">
+              <div>
+                <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Invisible Waste</span>
+                <div class="flex items-center gap-1 mt-0.5">
+                  <svg viewBox="0 0 14 14" class="w-3 h-3 text-amber-400" fill="currentColor"><path d="M7 1l1.5 4h4l-3.3 2.4 1.3 4L7 9l-3.5 2.4 1.3-4L1.5 5h4z"/></svg>
+                  <span class="text-[10px] text-slate-400">Minyak, gas, bumbu terbuang</span>
+                </div>
+              </div>
+              <span id="wasteVal" class="text-lg font-extrabold text-[#FF851B]">2%</span>
+            </div>
+            <input id="wasteSlider" type="range" min="1" max="5" value="2" step="0.5" />
+            <div class="flex justify-between text-[9px] mt-2">
+              <span class="text-slate-300 dark:text-slate-600">1%</span>
+              <span class="text-emerald-500 font-semibold">Aman: 2-3%</span>
+              <span class="text-slate-300 dark:text-slate-600">5%</span>
+            </div>
+          </div>
+          <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-5 shadow-sm">
+            <label class="block text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1">Target Harga Jual (Rp)</label>
+            <p class="text-[10px] text-slate-400 mb-3">Food cost % dihitung real-time setelah isi angka ini.</p>
+            <div class="relative">
+              <span class="absolute left-0 top-1/2 -translate-y-1/2 text-sm font-bold text-slate-400">Rp</span>
+              <input id="sellingPrice" type="text" inputmode="numeric" placeholder="55.000"
+                class="w-full pl-7 bg-transparent text-slate-900 dark:text-white text-lg font-extrabold placeholder:text-slate-300 dark:placeholder:text-slate-600 border-none outline-none" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: LIVE HPP -->
+      <div class="lg:col-span-1">
+        <div class="sticky top-24 space-y-4">
+          <div class="bg-[#0074D9] rounded-2xl p-5 text-white shadow-lg">
+            <div class="flex items-center gap-2 mb-4">
+              <svg viewBox="0 0 16 16" class="w-4 h-4 opacity-80" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12l3-4 3 3 4-5 3 3"/><path d="M13 4h2v2" stroke-width="1.5"/></svg>
+              <span class="text-[10px] font-bold uppercase tracking-widest opacity-80">Live HPP Panel</span>
+            </div>
+            <div class="grid grid-cols-2 gap-3 mb-4">
+              <div class="bg-white/10 rounded-xl p-3">
+                <div class="text-[9px] font-bold uppercase tracking-widest opacity-70 mb-1">Base Recipe Cost</div>
+                <div id="baseCost" class="text-lg font-extrabold">Rp0</div>
+              </div>
+              <div class="bg-white/10 rounded-xl p-3">
+                <div class="text-[9px] font-bold uppercase tracking-widest opacity-70 mb-1">Total HPP + Waste</div>
+                <div id="totalHpp" class="text-lg font-extrabold">Rp0</div>
+              </div>
+              <div class="bg-white/10 rounded-xl p-3">
+                <div class="text-[9px] font-bold uppercase tracking-widest opacity-70 mb-1">Food Cost %</div>
+                <div id="foodCostPct" class="text-lg font-extrabold">-</div>
+              </div>
+              <div class="bg-white/10 rounded-xl p-3">
+                <div class="text-[9px] font-bold uppercase tracking-widest opacity-70 mb-1">Gross Margin/Porsi</div>
+                <div id="grossMargin" class="text-lg font-extrabold">-</div>
+              </div>
+            </div>
+            <div id="statusCard" class="status-default">
+              <div class="text-[9px] font-bold uppercase tracking-widest text-white/70 mb-1">Status Menu</div>
+              <div id="statusLabel" class="text-xs text-white/80">Masukkan bahan dan harga jual untuk melihat diagnosis menu Anda.</div>
+            </div>
+          </div>
+
+          <div id="recoCard" class="hidden bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 shadow-sm">
+            <div class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2">Rekomendasi Guslan</div>
+            <p id="recoText" class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed"></p>
+          </div>
+
+          <button id="downloadBtn"
+            class="w-full bg-[#FF851B] hover:bg-[#e07410] text-white font-bold py-3.5 rounded-xl text-sm transition-all shadow-md flex items-center justify-center gap-2">
+            <svg viewBox="0 0 16 16" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v8M4 7l4 4 4-4"/><path d="M2 13h12"/></svg>
+            Download Rincian Resep (PDF)
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- UPSELL -->
+    <div class="mt-10 rounded-2xl border border-[#0074D9]/20 bg-gradient-to-r from-[#0074D9]/5 to-[#FF851B]/5 p-6">
+      <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+        <div class="flex items-center gap-3 flex-shrink-0">
+          <div class="w-12 h-12 rounded-full bg-[#0074D9]/10 flex items-center justify-center">
+            <svg viewBox="0 0 24 24" class="w-6 h-6 text-[#0074D9]" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <div>
+            <div class="text-[9px] font-bold uppercase tracking-widest text-[#0074D9]">Guslan Cost Engine</div>
+            <div class="text-xs font-bold text-slate-700 dark:text-slate-200">Enterprise</div>
+          </div>
+        </div>
+        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed flex-1">
+          Hasil ini hanya simulasi 1 menu. Ingin mengunci profit seluruh outlet Anda dan melihat BCG Matrix (Menu Star/Dog) secara otomatis? Gunakan <strong class="text-slate-700 dark:text-slate-200">Guslan Cost Engine Enterprise.</strong>
+        </p>
+        <a href="https://wa.me/628213141688?text=Halo%20Guslan%2C%20saya%20tertarik%20dengan%20Guslan%20Cost%20Engine%20Enterprise"
+          target="_blank" rel="noopener noreferrer"
+          class="flex-shrink-0 inline-flex items-center gap-2 bg-[#0074D9] hover:bg-[#005faf] text-white text-xs font-bold px-5 py-2.5 rounded-xl transition-all shadow-sm">
+          Pelajari Enterprise
+          <svg viewBox="0 0 16 16" class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- LEAD MODAL -->
+<div id="leadModal" class="fixed inset-0 z-[200] hidden items-center justify-center p-4">
+  <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" id="modalOverlay"></div>
+  <div class="relative bg-white dark:bg-slate-800 rounded-2xl shadow-2xl w-full max-w-md p-6 z-[201]">
+    <button id="modalClose" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors">
+      <svg viewBox="0 0 16 16" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l8 8M12 4l-8 8"/></svg>
+    </button>
+    <div class="mb-5">
+      <div class="w-10 h-10 rounded-xl bg-[#0074D9]/10 flex items-center justify-center mb-3">
+        <svg viewBox="0 0 16 16" class="w-5 h-5 text-[#0074D9]" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v8M4 7l4 4 4-4"/><path d="M2 13h12"/></svg>
+      </div>
+      <h2 class="text-lg font-extrabold text-slate-900 dark:text-white mb-1">Download Rincian Resep</h2>
+      <p class="text-xs text-slate-500 dark:text-slate-400">Isi data singkat. File PDF langsung ter-download otomatis.</p>
+    </div>
+    <div class="space-y-3">
+      <div>
+        <label class="block text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1">Nama Anda <span class="text-red-400">*</span></label>
+        <input id="leadName" type="text" placeholder="Contoh: Budi Santoso"
+          class="w-full border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 rounded-xl px-4 py-2.5 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 outline-none focus:border-[#0074D9] transition-colors" />
+      </div>
+      <div>
+        <label class="block text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1">Nama Bisnis</label>
+        <input id="leadBusiness" type="text" placeholder="Contoh: Warung Makan Sederhana"
+          class="w-full border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 rounded-xl px-4 py-2.5 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 outline-none focus:border-[#0074D9] transition-colors" />
+      </div>
+      <div>
+        <label class="block text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1">WhatsApp / Email <span class="text-red-400">*</span></label>
+        <input id="leadContact" type="text" placeholder="08xx atau nama@email.com"
+          class="w-full border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 rounded-xl px-4 py-2.5 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 outline-none focus:border-[#0074D9] transition-colors" />
+      </div>
+    </div>
+    <div id="leadError" class="hidden mt-3 text-xs text-red-500 font-medium"></div>
+    <button id="leadSubmit"
+      class="w-full mt-4 bg-[#0074D9] hover:bg-[#005faf] text-white font-bold py-3 rounded-xl text-sm transition-all flex items-center justify-center gap-2">
+      <svg viewBox="0 0 16 16" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v8M4 7l4 4 4-4"/><path d="M2 13h12"/></svg>
+      Generate & Download PDF
+    </button>
+    <p class="text-[10px] text-slate-400 text-center mt-3">Data Anda aman. Tidak ada spam.</p>
+  </div>
+</div>
+
+<script is:inline>
+(function () {
+
+  var ingredients = [];
+  var MAX = 7;
+  var _lastCalc = { baseCost:0, totalHpp:0, fcPct:null, grossMargin:null, waste:2, sellPrice:0 };
+
+  /* UTILS */
+  function toRaw(s) { var n=parseInt(String(s).replace(/\./g,'').replace(/[^0-9]/g,'')); return isNaN(n)?0:n; }
+  function fmtK(n)  { return n>0?n.toLocaleString('id-ID'):''; }
+  function fmtD(n)  { return 'Rp'+Math.round(n).toLocaleString('id-ID'); }
+  function pct(n)   { return n.toFixed(1)+'%'; }
+  function el(id)   { return document.getElementById(id); }
+  function setTxt(id,v){ var e=el(id); if(e) e.textContent=v; }
+
+  /* SLIDER */
+  function syncSlider() {
+    var s=el('wasteSlider'); if(!s) return;
+    var p=((parseFloat(s.value)-1)/4)*100;
+    s.style.setProperty('--val',p.toFixed(1)+'%');
+    setTxt('wasteVal',s.value+'%');
+  }
+
+  /* FORMAT */
+  function applyFmtBlur(inp){ inp.value=fmtK(toRaw(inp.value)); }
+  function readRaw(inp){ return toRaw(inp?inp.value:'0'); }
+
+  /* CREATE CARD */
+  function createCard(idx) {
+    var card=document.createElement('div');
+    card.id='card-'+idx;
+    card.style.cssText='padding:12px 16px;';
+
+    var titleRow=document.createElement('div');
+    titleRow.style.cssText='display:flex;align-items:center;gap:8px;margin-bottom:8px;';
+
+    var badge=document.createElement('span');
+    badge.style.cssText='width:20px;height:20px;border-radius:50%;background:#0074D9;color:white;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;';
+    badge.textContent=idx+1;
+
+    var nameInp=document.createElement('input');
+    nameInp.type='text';
+    nameInp.placeholder='Nama bahan (contoh: Ayam Utuh)';
+    nameInp.className='hpp-field-input';
+    nameInp.style.cssText='flex:1;font-size:12px;font-weight:600;';
+    nameInp.dataset.idx=idx; nameInp.dataset.field='nama';
+
+    var rmBtn=document.createElement('button');
+    rmBtn.type='button'; rmBtn.dataset.remove=idx;
+    rmBtn.setAttribute('aria-label','Hapus bahan '+(idx+1));
+    rmBtn.style.cssText='width:24px;height:24px;display:flex;align-items:center;justify-content:center;background:#fee2e2;border:none;cursor:pointer;color:#ef4444;border-radius:6px;flex-shrink:0;transition:background .15s;';
+    rmBtn.innerHTML='<svg viewBox="0 0 14 14" style="width:11px;height:11px;pointer-events:none" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 3l8 8M11 3l-8 8"/></svg>';
+    rmBtn.onmouseenter=function(){this.style.background='#fecaca';};
+    rmBtn.onmouseleave=function(){this.style.background='#fee2e2';};
+
+    titleRow.appendChild(badge);
+    titleRow.appendChild(nameInp);
+    titleRow.appendChild(rmBtn);
+
+    var grid=document.createElement('div');
+    grid.style.cssText='display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-left:28px;';
+
+    function makeField(labelTxt,field,ph,isK){
+      var wrap=document.createElement('div');
+      var lbl=document.createElement('label');
+      lbl.className='hpp-field-label'; lbl.textContent=labelTxt;
+      var inp=document.createElement('input');
+      inp.type='text'; inp.inputMode='numeric'; inp.placeholder=ph;
+      inp.className='hpp-field-input';
+      inp.dataset.idx=idx; inp.dataset.field=field; inp.dataset.isK=isK?'1':'0';
+      wrap.appendChild(lbl); wrap.appendChild(inp);
+      return {wrap:wrap,inp:inp};
+    }
+
+    var harga =makeField('Harga Beli (Rp)','hargaBeli','35.000',true);
+    var berat =makeField('Berat Kotor (gr)','beratKotor','1.000',true);
+    var yield_=makeField('Yield %','yield','100',false);
+    var qty   =makeField('Qty / Porsi (gr)','qty','200',false);
+
+    grid.appendChild(harga.wrap); grid.appendChild(berat.wrap);
+    grid.appendChild(yield_.wrap); grid.appendChild(qty.wrap);
+
+    var sub=document.createElement('div');
+    sub.id='sub-'+idx;
+    sub.style.cssText='margin-left:28px;margin-top:6px;font-size:10px;color:#64748b;background:#f1f5f9;border-radius:6px;padding:4px 10px;display:none;';
+
+    card.appendChild(titleRow); card.appendChild(grid); card.appendChild(sub);
+    return card;
+  }
+
+  function updateSubtext(idx){
+    var ing=ingredients[idx], sub=el('sub-'+idx);
+    if(!sub||!ing) return;
+    if(ing.hargaBeli>0&&ing.beratKotor>0&&ing.yield>0&&ing.qty>0){
+      var eff=(ing.hargaBeli/ing.beratKotor)/(ing.yield/100);
+      var used=eff*ing.qty;
+      sub.style.display='block';
+      sub.innerHTML='<span style="color:#0074D9;font-weight:700;">Eff. Cost:</span> Rp'+Math.round(eff).toLocaleString('id-ID')+'/gr &nbsp;&nbsp;<span style="color:#0074D9;font-weight:700;">Cost Dipakai:</span> <strong>Rp'+Math.round(used).toLocaleString('id-ID')+'</strong>';
+    } else { sub.style.display='none'; }
+  }
+
+  /* CALCULATE */
+  function calculate(){
+    var waste=parseFloat((el('wasteSlider')||{value:2}).value)/100;
+    var sellPrice=readRaw(el('sellingPrice'));
+    var baseCost=0;
+    for(var i=0;i<ingredients.length;i++){
+      var ing=ingredients[i];
+      if(ing.hargaBeli>0&&ing.beratKotor>0&&ing.yield>0&&ing.qty>0)
+        baseCost+=((ing.hargaBeli/ing.beratKotor)/(ing.yield/100))*ing.qty;
+    }
+    var totalHpp=baseCost*(1+waste);
+    var fcPct=sellPrice>0?(totalHpp/sellPrice)*100:null;
+    var grossMargin=sellPrice>0?sellPrice-totalHpp:null;
+
+    _lastCalc={baseCost:baseCost,totalHpp:totalHpp,fcPct:fcPct,grossMargin:grossMargin,waste:waste*100,sellPrice:sellPrice};
+
+    setTxt('baseCost',fmtD(baseCost));
+    setTxt('totalHpp',fmtD(totalHpp));
+    setTxt('foodCostPct',fcPct!==null?pct(fcPct):'-');
+    setTxt('grossMargin',grossMargin!==null?fmtD(grossMargin):'-');
+
+    var sc=el('statusCard'),sl=el('statusLabel'),rc=el('recoCard'),rt=el('recoText');
+    if(fcPct===null||baseCost===0){
+      if(sc) sc.className='status-default';
+      if(sl){sl.innerHTML='Masukkan bahan dan harga jual untuk melihat diagnosis menu Anda.';sl.style.color='rgba(255,255,255,.8)';}
+      if(rc) rc.classList.add('hidden');
+      return;
+    }
+    var status,cls,icon,reco;
+    if(fcPct<=30){
+      status='GOOD';cls='status-good';
+      icon='<svg viewBox="0 0 18 18" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:5px" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 9l4 4 8-8"/></svg>';
+      reco='Food cost Anda sehat di bawah 30%. Pertahankan kontrol bahan baku dan lakukan review HPP setiap bulan agar tetap di zona aman.';
+    } else if(fcPct<=40){
+      status='CAUTION';cls='status-caution';
+      icon='<svg viewBox="0 0 18 18" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:5px" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6v4M9 12v.5"/><path d="M2 16L9 3l7 13H2z"/></svg>';
+      reco='Food cost mendekati batas atas. Pertimbangkan negosiasi harga bahan baku, perkecil porsi bertahap, atau naikkan harga jual 5-10%.';
+    } else {
+      status='DANGER';cls='status-danger';
+      icon='<svg viewBox="0 0 18 18" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:5px" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4l10 10M14 4L4 14"/></svg>';
+      reco='Food cost di atas 40% adalah sinyal bahaya. Lakukan audit bahan baku segera, evaluasi supplier, dan cek kembali relevansi harga jual di pasar.';
+    }
+    if(sc) sc.className=cls;
+    if(sl){
+      sl.style.color='white';
+      sl.innerHTML='<div style="display:flex;align-items:center;margin-bottom:2px;">'+icon+'<span style="font-size:16px;font-weight:900;">'+status+'</span></div><span style="font-size:11px;opacity:.9;">Food Cost: '+pct(fcPct)+'</span>';
+    }
+    if(rc) rc.classList.remove('hidden');
+    if(rt) rt.textContent=reco;
+  }
+
+  function updateHint(){
+    var n=ingredients.length;
+    setTxt('ingredientHint',n+'/7 bahan ditambahkan.');
+    var badge=el('hppBadge'); if(badge) badge.textContent=n+' bahan';
+    var btn=el('addIngredientBtn');
+    if(btn){btn.disabled=n>=MAX;btn.style.opacity=n>=MAX?'.4':'1';btn.style.cursor=n>=MAX?'not-allowed':'pointer';}
+  }
+
+  function renderCards(){
+    var container=el('ingredientCards'),empty=el('emptyState');
+    container.innerHTML='';
+    if(!ingredients.length){if(empty) empty.style.display='';updateHint();return;}
+    if(empty) empty.style.display='none';
+    for(var i=0;i<ingredients.length;i++){
+      var card=createCard(i),ing=ingredients[i];
+      var inps=card.querySelectorAll('input');
+      inps[0].value=ing.nama||'';
+      inps[1].value=fmtK(ing.hargaBeli);
+      inps[2].value=fmtK(ing.beratKotor);
+      inps[3].value=ing.yield>0?ing.yield:'';
+      inps[4].value=ing.qty>0?ing.qty:'';
+      container.appendChild(card);
+      updateSubtext(i);
+    }
+    updateHint();
+  }
+
+  function addIngredient(){
+    if(ingredients.length>=MAX) return;
+    ingredients.push({nama:'',hargaBeli:0,beratKotor:0,yield:100,qty:0});
+    var container=el('ingredientCards'),empty=el('emptyState');
+    if(empty) empty.style.display='none';
+    var idx=ingredients.length-1,card=createCard(idx);
+    container.appendChild(card);
+    updateHint();
+    setTimeout(function(){
+      var c=el('card-'+idx);
+      if(c){var inp=c.querySelector('input');if(inp) inp.focus();c.scrollIntoView({behavior:'smooth',block:'nearest'});}
+    },30);
+  }
+
+  function removeIngredient(idx){ingredients.splice(idx,1);renderCards();calculate();}
+
+  function onCardInput(e){
+    var inp=e.target;
+    if(!inp.dataset||!inp.dataset.field) return;
+    var idx=parseInt(inp.dataset.idx,10),field=inp.dataset.field;
+    if(isNaN(idx)||!ingredients[idx]) return;
+    if(field==='nama'){
+      ingredients[idx].nama=inp.value;
+    } else if(inp.dataset.isK==='1'){
+      ingredients[idx][field]=toRaw(inp.value);
+    } else {
+      var num=parseFloat(inp.value)||0;
+      if(field==='yield'&&num>100){num=100;inp.value='100';}
+      ingredients[idx][field]=num;
+    }
+    updateSubtext(idx);
+    calculate();
+  }
+
+  function onCardBlur(e){
+    var inp=e.target;
+    if(!inp.dataset||inp.dataset.isK!=='1') return;
+    inp.value=fmtK(toRaw(inp.value));
+  }
+
+  function onCardClick(e){
+    var btn=e.target.closest('[data-remove]');
+    if(btn) removeIngredient(parseInt(btn.dataset.remove,10));
+  }
+
+  /* MODAL */
+  function openModal(){var m=el('leadModal');if(m){m.classList.remove('hidden');m.classList.add('flex');}}
+  function closeModal(){var m=el('leadModal');if(m){m.classList.add('hidden');m.classList.remove('flex');}}
+
+  /* ═══════════════════════════════════════
+     jsPDF GENERATOR - 1 halaman A4 summary
+     ═══════════════════════════════════════ */
+  function generatePDF(leadName, leadBiz, leadContact) {
+    var jsPDF = window.jspdf ? window.jspdf.jsPDF : (window.jsPDF);
+    if (!jsPDF) { alert('PDF library belum siap. Coba lagi dalam 2 detik.'); return; }
+
+    var doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+    var menuName = (el('menuName')||{value:''}).value || 'Resep HPP';
+    var calc     = _lastCalc;
+    var dateStr  = new Date().toLocaleDateString('id-ID',{year:'numeric',month:'long',day:'numeric'});
+    var W = 210, margin = 14, contentW = W - margin * 2;
+
+    // STATUS color
+    var statusTxt, statusColor;
+    if (calc.fcPct === null || calc.baseCost === 0) {
+      statusTxt = '-'; statusColor = [100,116,139];
+    } else if (calc.fcPct <= 30) {
+      statusTxt = 'GOOD';    statusColor = [22,163,74];
+    } else if (calc.fcPct <= 40) {
+      statusTxt = 'CAUTION'; statusColor = [217,119,6];
+    } else {
+      statusTxt = 'DANGER';  statusColor = [220,38,38];
+    }
+
+    var y = margin;
+
+    // ── HEADER BAR ──
+    doc.setFillColor(0, 116, 217);
+    doc.rect(0, 0, W, 22, 'F');
+    doc.setTextColor(255,255,255);
+    doc.setFontSize(7);
+    doc.setFont('helvetica','bold');
+    doc.text('GUSLAN COST ENGINE', margin, 8);
+    doc.setFont('helvetica','normal');
+    doc.setFontSize(6);
+    doc.text('guslan.com  |  wa.me/628213141688', margin, 13);
+
+    // Status pill top right
+    doc.setFillColor(statusColor[0], statusColor[1], statusColor[2]);
+    doc.roundedRect(W - margin - 32, 4, 32, 14, 3, 3, 'F');
+    doc.setTextColor(255,255,255);
+    doc.setFontSize(10);
+    doc.setFont('helvetica','bold');
+    doc.text(statusTxt, W - margin - 16, 12, {align:'center'});
+    if (calc.fcPct !== null) {
+      doc.setFontSize(6);
+      doc.setFont('helvetica','normal');
+      doc.text('Food Cost: '+calc.fcPct.toFixed(1)+'%', W - margin - 16, 16.5, {align:'center'});
+    }
+
+    y = 28;
+
+    // ── TITLE ──
+    doc.setTextColor(15, 23, 42);
+    doc.setFontSize(16);
+    doc.setFont('helvetica','bold');
+    doc.text('Rincian HPP: ' + menuName, margin, y);
+    y += 6;
+
+    doc.setFontSize(8);
+    doc.setFont('helvetica','normal');
+    doc.setTextColor(100, 116, 139);
+    var metaParts = [];
+    if (leadBiz)     metaParts.push('Bisnis: ' + leadBiz);
+    if (leadName)    metaParts.push('Oleh: ' + leadName);
+    metaParts.push('Dicetak: ' + dateStr);
+    doc.text(metaParts.join('  |  '), margin, y);
+    y += 4;
+
+    // Divider
+    doc.setDrawColor(0, 116, 217);
+    doc.setLineWidth(0.5);
+    doc.line(margin, y, W - margin, y);
+    y += 6;
+
+    // ── BAHAN TABLE ──
+    var tableRows = [];
+    for (var i = 0; i < ingredients.length; i++) {
+      var ing = ingredients[i];
+      if (ing.hargaBeli > 0 && ing.beratKotor > 0 && ing.yield > 0 && ing.qty > 0) {
+        var eff  = (ing.hargaBeli / ing.beratKotor) / (ing.yield / 100);
+        var cost = eff * ing.qty;
+        tableRows.push([
+          (ing.nama || 'Bahan '+(i+1)),
+          'Rp' + ing.hargaBeli.toLocaleString('id-ID'),
+          ing.beratKotor.toLocaleString('id-ID') + ' gr',
+          ing.yield + '%',
+          ing.qty + ' gr',
+          'Rp' + Math.round(eff).toLocaleString('id-ID') + '/gr',
+          'Rp' + Math.round(cost).toLocaleString('id-ID')
+        ]);
+      }
+    }
+
+    if (tableRows.length === 0) {
+      tableRows.push(['(Tidak ada bahan)','','','','','','']);
+    }
+
+    doc.autoTable({
+      startY: y,
+      head: [['Bahan','H. Beli','B. Kotor','Yield','Qty/Porsi','Eff. Cost','Cost Dipakai']],
+      body: tableRows,
+      theme: 'grid',
+      styles: { fontSize: 7.5, cellPadding: 2.5, textColor: [30,41,59], lineColor: [226,232,240], lineWidth: 0.2 },
+      headStyles: { fillColor: [0,116,217], textColor: 255, fontStyle: 'bold', fontSize: 7.5 },
+      columnStyles: {
+        0: { cellWidth: 40, overflow: 'ellipsize' },
+        1: { cellWidth: 24, halign: 'right' },
+        2: { cellWidth: 22, halign: 'right' },
+        3: { cellWidth: 14, halign: 'center' },
+        4: { cellWidth: 20, halign: 'right' },
+        5: { cellWidth: 26, halign: 'right' },
+        6: { cellWidth: 28, halign: 'right', fontStyle: 'bold', textColor: [0,116,217] }
+      },
+      alternateRowStyles: { fillColor: [248,250,252] },
+      margin: { left: margin, right: margin }
+    });
+
+    y = doc.lastAutoTable.finalY + 7;
+
+    // ── SUMMARY BOXES (2x3 grid) ──
+    var boxW = (contentW - 6) / 3;
+    var boxH = 18;
+    var boxes = [
+      { label: 'BASE RECIPE COST',    val: fmtD(calc.baseCost),    col: [248,250,252], valCol: [15,23,42] },
+      { label: 'INVISIBLE WASTE ('+calc.waste.toFixed(0)+'%)', val: '+ '+fmtD(calc.baseCost * calc.waste / 100), col: [255,247,237], valCol: [217,119,6] },
+      { label: 'TOTAL HPP + WASTE',   val: fmtD(calc.totalHpp),    col: [239,246,255], valCol: [0,116,217] },
+      { label: 'TARGET HARGA JUAL',   val: calc.sellPrice > 0 ? fmtD(calc.sellPrice) : '-', col: [248,250,252], valCol: [15,23,42] },
+      { label: 'FOOD COST %',         val: calc.fcPct !== null ? pct(calc.fcPct) : '-', col: [255,255,255], valCol: statusColor },
+      { label: 'GROSS MARGIN/PORSI',  val: calc.grossMargin !== null ? fmtD(calc.grossMargin) : '-', col: [255,255,255], valCol: statusColor }
+    ];
+
+    for (var b = 0; b < boxes.length; b++) {
+      var bx = margin + (b % 3) * (boxW + 3);
+      var by = y + Math.floor(b / 3) * (boxH + 3);
+      var box = boxes[b];
+
+      doc.setFillColor(box.col[0], box.col[1], box.col[2]);
+      doc.setDrawColor(226, 232, 240);
+      doc.setLineWidth(0.2);
+      doc.roundedRect(bx, by, boxW, boxH, 2, 2, 'FD');
+
+      doc.setFontSize(6);
+      doc.setFont('helvetica','bold');
+      doc.setTextColor(100, 116, 139);
+      doc.text(box.label, bx + 4, by + 5.5);
+
+      doc.setFontSize(b >= 4 ? 13 : 10);
+      doc.setFont('helvetica','bold');
+      doc.setTextColor(box.valCol[0], box.valCol[1], box.valCol[2]);
+      doc.text(box.val, bx + 4, by + 14);
+    }
+
+    y += boxH * 2 + 3 * 2 + 8;
+
+    // ── REKOMENDASI ──
+    if (calc.fcPct !== null) {
+      var reco = '';
+      if (calc.fcPct <= 30) reco = 'Food cost Anda sehat di bawah 30%. Pertahankan kontrol bahan baku dan lakukan review HPP setiap bulan agar tetap di zona aman.';
+      else if (calc.fcPct <= 40) reco = 'Food cost mendekati batas atas. Pertimbangkan negosiasi harga bahan baku, perkecil porsi bertahap atau naikkan harga jual 5-10%.';
+      else reco = 'Food cost di atas 40% berarti setiap penjualan menggerus profit Anda. Audit bahan baku sekarang dan konsultasikan dengan kami untuk solusi cepat.';
+
+      // Hitung tinggi dinamis berdasarkan panjang teks
+      doc.setFontSize(7);
+      var recoLines = doc.splitTextToSize(reco, contentW - 6);
+      var recoH = 8 + (recoLines.length * 4);
+
+      // Background box: warna terang sesuai status (bukan alpha transparan)
+      var recoBg;
+      if (calc.fcPct <= 30)       recoBg = [240, 253, 244]; // hijau muda
+      else if (calc.fcPct <= 40)  recoBg = [255, 251, 235]; // kuning muda
+      else                        recoBg = [254, 242, 242]; // merah muda
+
+      doc.setFillColor(recoBg[0], recoBg[1], recoBg[2]);
+      doc.setDrawColor(statusColor[0], statusColor[1], statusColor[2]);
+      doc.setLineWidth(0.3);
+      doc.roundedRect(margin, y, contentW, recoH, 2, 2, 'FD');
+      doc.setFontSize(7);
+      doc.setFont('helvetica','bold');
+      doc.setTextColor(statusColor[0], statusColor[1], statusColor[2]);
+      doc.text('Rekomendasi Guslan:', margin + 3, y + 5.5);
+      doc.setFont('helvetica','normal');
+      doc.setTextColor(30, 41, 59);
+      doc.text(recoLines, margin + 3, y + 10.5);
+      y += recoH + 4;
+    }
+
+    // ── UPSELL FOOTER ──
+    doc.setFillColor(239, 246, 255);
+    doc.setDrawColor(191, 219, 254);
+    doc.setLineWidth(0.2);
+    doc.roundedRect(margin, y, contentW, 16, 2, 2, 'FD');
+    doc.setFontSize(7);
+    doc.setFont('helvetica','bold');
+    doc.setTextColor(0, 116, 217);
+    doc.text('Tingkatkan Profit Outlet Anda!', margin + 3, y + 5.5);
+    doc.setFont('helvetica','normal');
+    doc.setTextColor(51, 65, 85);
+    doc.text(
+      'Ingin sistem yang mengunci margin seluruh outlet & analisis BCG Matrix (Menu Star/Dog) otomatis? Gunakan Guslan Cost Engine Enterprise.',
+      margin + 3, y + 10, { maxWidth: contentW - 40 }
+    );
+    doc.setFont('helvetica','bold');
+    doc.setTextColor(255, 133, 27);
+    doc.text('wa.me/628213141688', W - margin - 3, y + 10, { align: 'right' });
+
+    // ── SAVE ──
+    var safeName = menuName.replace(/[^a-zA-Z0-9\s]/g,'').trim().replace(/\s+/g,'-') || 'HPP';
+    doc.save('Guslan-HPP-' + safeName + '.pdf');
+  }
+
+  /* LEAD */
+  function handleLeadSubmit(){
+    var name    = (el('leadName')||{value:''}).value.trim();
+    var contact = (el('leadContact')||{value:''}).value.trim();
+    var biz     = (el('leadBusiness')||{value:''}).value.trim();
+    var errEl   = el('leadError');
+    if(!name||!contact){
+      if(errEl){errEl.textContent='Nama dan WhatsApp/Email wajib diisi.';errEl.classList.remove('hidden');}
+      return;
+    }
+    if(errEl) errEl.classList.add('hidden');
+    closeModal();
+    generatePDF(name, biz, contact);
+  }
+
+  /* INIT */
+  function init(){
+    syncSlider();
+    updateHint();
+
+    var slider=el('wasteSlider');
+    if(slider) slider.addEventListener('input',function(){syncSlider();calculate();});
+
+    var sp=el('sellingPrice');
+    if(sp){
+      sp.addEventListener('input',function(){calculate();});
+      sp.addEventListener('blur',function(){applyFmtBlur(sp);calculate();});
+    }
+
+    el('addIngredientBtn')&&el('addIngredientBtn').addEventListener('click',addIngredient);
+
+    var cards=el('ingredientCards');
+    if(cards){
+      cards.addEventListener('input',onCardInput);
+      cards.addEventListener('blur',onCardBlur,true);
+      cards.addEventListener('click',onCardClick);
+    }
+
+    el('downloadBtn')  &&el('downloadBtn').addEventListener('click',openModal);
+    el('modalClose')   &&el('modalClose').addEventListener('click',closeModal);
+    el('modalOverlay') &&el('modalOverlay').addEventListener('click',closeModal);
+    el('leadSubmit')   &&el('leadSubmit').addEventListener('click',handleLeadSubmit);
+  }
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',init);
+  } else { init(); }
+
+})();
+</script>

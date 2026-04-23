@@ -17,195 +17,246 @@ const metadata = {
 
 <Layout metadata={metadata}>
 
-  <!-- ═══ PRICING CUSTOM — Ganti <Prices .../> dengan ini ═══ -->
-<section class="py-16 px-4">
-  <div class="max-w-6xl mx-auto">
+  <!-- ═══ PRICING CUSTOM ═══ -->
+  <section class="py-16 px-4">
+    <div class="max-w-6xl mx-auto">
 
-    <!-- Header -->
-    <div class="text-center mb-12">
-      <p class="text-sm font-semibold uppercase tracking-widest text-primary mb-2">Paket Retainer Bulanan</p>
-      <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-3">
-        Pilih Paket yang Sesuai Tahap Bisnis Anda
-      </h2>
-      <p class="text-slate-500 dark:text-slate-400 max-w-xl mx-auto">
-        Semua paket include laporan bulanan, perhitungan pajak rutin, dan monthly review. 
-        Tidak cocok? Mari diskusikan,tidak ada paket yang tidak bisa disesuaikan.
+      <!-- Header -->
+      <div class="text-center mb-12">
+        <p class="text-sm font-semibold uppercase tracking-widest text-primary mb-2">Paket Retainer Bulanan</p>
+        <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-3">
+          Pilih Paket yang Sesuai Tahap Bisnis Anda
+        </h2>
+        <p class="text-slate-500 dark:text-slate-400 max-w-xl mx-auto">
+          Semua paket include laporan bulanan, rekonsiliasi, dan monthly review.
+          Pajak & payroll tersedia sebagai layanan tambahan.
+          Tidak cocok? Mari diskusikan — tidak ada paket yang tidak bisa disesuaikan.
+        </p>
+      </div>
+
+      <!-- 3 Kartu Paket -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+
+        <!-- STARTER -->
+        <div class="relative flex flex-col bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-8 shadow-sm hover:shadow-md transition-shadow">
+          <div class="mb-6">
+            <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-1">Paket</p>
+            <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Starter</h3>
+            <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">
+              Cafe atau restoran baru. Membangun fondasi yang benar sejak awal.
+            </p>
+          </div>
+
+          <!-- Harga -->
+          <div class="mb-6 pb-6 border-b border-slate-100 dark:border-slate-700">
+            <div class="flex items-baseline gap-1">
+              <span class="text-sm font-medium text-slate-500">Mulai</span>
+              <span class="text-3xl font-bold text-slate-900 dark:text-white">Rp 3,5 juta</span>
+            </div>
+            <p class="text-sm text-slate-400 mt-1">per bulan</p>
+          </div>
+
+          <!-- Fitur -->
+          <ul class="flex-1 space-y-3 mb-8">
+            {[
+              'Bookkeeping & rekonsiliasi bank bulanan',
+              'Monthly P&L dan Balance Sheet (bahasa mudah)',
+              'Basic cash flow report',
+              'Basic COGS per kategori menu',
+              '1× monthly review meeting (60 menit)',
+            ].map((item) => (
+              <li class="flex items-start gap-2.5 text-sm text-slate-600 dark:text-slate-300">
+                <svg class="w-4 h-4 mt-0.5 shrink-0 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+
+          <a
+            href="https://wa.me/628213141688?text=Halo%20Guslan,%20saya%20tertarik%20Paket%20Starter.%20Boleh%20konsultasi%20gratis%3F"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block text-center py-3 px-6 rounded-xl border-2 border-primary text-primary font-semibold text-sm hover:bg-primary hover:text-white transition-all duration-200"
+          >
+            Mulai Konsultasi Gratis
+          </a>
+        </div>
+
+        <!-- GROWTH — Featured -->
+        <div class="relative flex flex-col bg-primary dark:bg-primary rounded-2xl p-8 shadow-xl scale-[1.02]">
+          <!-- Badge -->
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2">
+            <span class="bg-[#FF851B] text-white text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full shadow-md">
+              Paling Populer
+            </span>
+          </div>
+
+          <div class="mb-6">
+            <p class="text-xs font-bold uppercase tracking-widest text-blue-200 mb-1">Paket</p>
+            <h3 class="text-2xl font-bold text-white">Growth</h3>
+            <p class="text-sm text-blue-100 mt-1">
+              Bisnis stabil yang siap tumbuh lebih strategis dan efisien.
+            </p>
+          </div>
+
+          <!-- Harga -->
+          <div class="mb-6 pb-6 border-b border-white/20">
+            <div class="flex items-baseline gap-1">
+              <span class="text-sm font-medium text-blue-200">Mulai</span>
+              <span class="text-3xl font-bold text-white">Rp 5,5 juta</span>
+            </div>
+            <p class="text-sm text-blue-200 mt-1">per bulan</p>
+          </div>
+
+          <!-- Fitur -->
+          <ul class="flex-1 space-y-3 mb-8">
+            {[
+              'Semua fitur Paket Starter',
+              'Integrasi POS (MOKA, ESB, Accurate, GoBiz)',
+              'Weekly cash flow projection',
+              'Menu profitability analysis (HPP vs harga jual)',
+              '2× monthly meeting (operasional + strategis)',
+              'Basic budgeting & BEP analysis',
+            ].map((item) => (
+              <li class="flex items-start gap-2.5 text-sm text-white">
+                <svg class="w-4 h-4 mt-0.5 shrink-0 text-[#FF851B]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+
+          <a
+            href="https://wa.me/628213141688?text=Halo%20Guslan,%20saya%20tertarik%20Paket%20Growth.%20Boleh%20konsultasi%20gratis%3F"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block text-center py-3 px-6 rounded-xl bg-white text-primary font-bold text-sm hover:bg-[#FF851B] hover:text-white transition-all duration-200"
+          >
+            Mulai Konsultasi Gratis
+          </a>
+        </div>
+
+        <!-- MULTI-OUTLET -->
+        <div class="relative flex flex-col bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-8 shadow-sm hover:shadow-md transition-shadow">
+          <div class="mb-6">
+            <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-1">Paket</p>
+            <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Multi-Outlet</h3>
+            <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">
+              Grup F&B, beach club, atau operasi kompleks multi-cabang.
+            </p>
+          </div>
+
+          <!-- Harga -->
+          <div class="mb-6 pb-6 border-b border-slate-100 dark:border-slate-700">
+            <div class="flex items-baseline gap-1">
+              <span class="text-sm font-medium text-slate-500">Mulai</span>
+              <span class="text-3xl font-bold text-slate-900 dark:text-white">Rp 9 juta</span>
+            </div>
+            <p class="text-sm text-slate-400 mt-1">per bulan</p>
+          </div>
+
+          <!-- Fitur -->
+          <ul class="flex-1 space-y-3 mb-8">
+            {[
+              'Semua fitur Paket Growth',
+              'Consolidated reporting multi-outlet',
+              'Custom dashboard per cabang (real-time)',
+              'Weekly review & anomaly detection',
+              'Advanced margin & prime cost analysis',
+              'Annual budgeting & forecasting',
+              'Quarterly business review (QBR)',
+            ].map((item) => (
+              <li class="flex items-start gap-2.5 text-sm text-slate-600 dark:text-slate-300">
+                <svg class="w-4 h-4 mt-0.5 shrink-0 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+
+          <a
+            href="https://wa.me/628213141688?text=Halo%20Guslan,%20saya%20tertarik%20Paket%20Multi-Outlet.%20Boleh%20diskusi%3F"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block text-center py-3 px-6 rounded-xl border-2 border-primary text-primary font-semibold text-sm hover:bg-primary hover:text-white transition-all duration-200"
+          >
+            Diskusi Kebutuhan Anda
+          </a>
+        </div>
+
+      </div>
+
+      <!-- ═══ ADD-ON ═══ -->
+      <div class="mt-10 bg-slate-50 dark:bg-slate-800/60 rounded-2xl border border-slate-200 dark:border-slate-700 p-8">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+
+          <div>
+            <p class="text-xs font-bold uppercase tracking-widest text-primary mb-1">Layanan Tambahan</p>
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">
+              Payroll, Pelaporan Pajak & BPJS
+            </h3>
+            <p class="text-sm text-slate-500 dark:text-slate-400 max-w-lg">
+              Tersedia sebagai layanan add-on untuk semua paket. Meliputi perhitungan & slip gaji,
+              pelaporan PPh 21, PPh Badan, PPN (PKP), dan administrasi BPJS Ketenagakerjaan & Kesehatan.
+            </p>
+
+            <ul class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2">
+              {[
+                'Slip gaji & rekapitulasi payroll',
+                'Laporan PPh 21 bulanan',
+                'Pelaporan PPN (jika PKP)',
+                'Administrasi BPJS Ketenagakerjaan',
+                'SPT Masa PPh Badan',
+                'Administrasi BPJS Kesehatan',
+              ].map((item) => (
+                <li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
+                  <svg class="w-3.5 h-3.5 shrink-0 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- Harga + CTA -->
+          <div class="flex-shrink-0 text-center md:text-right">
+            <p class="text-sm text-slate-400 mb-1">Mulai dari</p>
+            <p class="text-3xl font-bold text-slate-900 dark:text-white">Rp 1,5 juta</p>
+            <p class="text-sm text-slate-400 mb-4">per bulan</p>
+            <a
+              href="https://wa.me/628213141688?text=Halo%20Guslan,%20saya%20tertarik%20add-on%20Payroll%20%26%20Pajak.%20Boleh%20diskusi%3F"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-block py-2.5 px-6 rounded-xl border-2 border-primary text-primary font-semibold text-sm hover:bg-primary hover:text-white transition-all duration-200 whitespace-nowrap"
+            >
+              Tanya Ketersediaan →
+            </a>
+            <p class="text-xs text-slate-400 mt-2">Harga final sesuai jumlah karyawan & kebutuhan</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Catatan bawah -->
+      <p class="text-center text-sm text-slate-400 mt-8">
+        Harga di atas adalah estimasi awal. Harga final ditentukan setelah assessment singkat —
+        <a
+          href="https://wa.me/628213141688?text=Halo%20Guslan,%20saya%20ingin%20konsultasi%20gratis"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-primary font-semibold hover:underline"
+        >
+          konsultasi gratis dulu →
+        </a>
       </p>
-    </div>
-
-    <!-- 3 Kartu Paket -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
-
-      <!-- STARTER -->
-      <div class="relative flex flex-col bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-8 shadow-sm hover:shadow-md transition-shadow">
-        <div class="mb-6">
-          <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-1">Paket</p>
-          <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Starter</h3>
-          <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">
-            Cafe atau restoran baru. Membangun fondasi yang benar sejak awal.
-          </p>
-        </div>
-
-        <!-- Harga -->
-        <div class="mb-6 pb-6 border-b border-slate-100 dark:border-slate-700">
-          <div class="flex items-baseline gap-1">
-            <span class="text-sm font-medium text-slate-500">Mulai</span>
-            <span class="text-3xl font-bold text-slate-900 dark:text-white">Rp 3,5 juta</span>
-          </div>
-          <p class="text-sm text-slate-400 mt-1">per bulan</p>
-        </div>
-
-        <!-- Fitur -->
-        <ul class="flex-1 space-y-3 mb-8">
-          {[
-            'Bookkeeping & rekonsiliasi bank bulanan',
-            'Monthly P&L dan Balance Sheet (bahasa mudah)',
-            'Basic cash flow report',
-            'Basic COGS per kategori menu',
-            'Perhitungan & pelaporan pajak rutin (Non-PKP)',
-            '1× monthly review meeting (60 menit)',
-          ].map((item) => (
-            <li class="flex items-start gap-2.5 text-sm text-slate-600 dark:text-slate-300">
-              <svg class="w-4 h-4 mt-0.5 shrink-0 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-              </svg>
-              {item}
-            </li>
-          ))}
-        </ul>
-
-        <a
-          href="https://wa.me/628213141688?text=Halo%20Guslan,%20saya%20tertarik%20Paket%20Starter.%20Boleh%20konsultasi%20gratis%3F"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="block text-center py-3 px-6 rounded-xl border-2 border-primary text-primary font-semibold text-sm hover:bg-primary hover:text-white transition-all duration-200"
-        >
-          Mulai Konsultasi Gratis
-        </a>
-      </div>
-
-      <!-- GROWTH — Featured -->
-      <div class="relative flex flex-col bg-primary dark:bg-primary rounded-2xl p-8 shadow-xl scale-[1.02]">
-        <!-- Badge -->
-        <div class="absolute -top-3 left-1/2 -translate-x-1/2">
-          <span class="bg-[#FF851B] text-white text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full shadow-md">
-            Paling Populer
-          </span>
-        </div>
-
-        <div class="mb-6">
-          <p class="text-xs font-bold uppercase tracking-widest text-blue-200 mb-1">Paket</p>
-          <h3 class="text-2xl font-bold text-white">Growth</h3>
-          <p class="text-sm text-blue-100 mt-1">
-            Bisnis stabil yang siap tumbuh lebih strategis dan efisien.
-          </p>
-        </div>
-
-        <!-- Harga -->
-        <div class="mb-6 pb-6 border-b border-white/20">
-          <div class="flex items-baseline gap-1">
-            <span class="text-sm font-medium text-blue-200">Mulai</span>
-            <span class="text-3xl font-bold text-white">Rp 5,5 juta</span>
-          </div>
-          <p class="text-sm text-blue-200 mt-1">per bulan</p>
-        </div>
-
-        <!-- Fitur -->
-        <ul class="flex-1 space-y-3 mb-8">
-          {[
-            'Semua fitur Paket Starter',
-            'Integrasi POS (MOKA, ESB, Accurate, GoBiz)',
-            'Weekly cash flow projection',
-            'Menu profitability analysis (HPP vs harga jual)',
-            'PPh 21 & PPN (jika PKP)',
-            '2× monthly meeting (operasional + strategis)',
-            'Basic budgeting & BEP analysis',
-          ].map((item) => (
-            <li class="flex items-start gap-2.5 text-sm text-white">
-              <svg class="w-4 h-4 mt-0.5 shrink-0 text-[#FF851B]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-              </svg>
-              {item}
-            </li>
-          ))}
-        </ul>
-
-        <a
-          href="https://wa.me/628213141688?text=Halo%20Guslan,%20saya%20tertarik%20Paket%20Growth.%20Boleh%20konsultasi%20gratis%3F"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="block text-center py-3 px-6 rounded-xl bg-white text-primary font-bold text-sm hover:bg-[#FF851B] hover:text-white transition-all duration-200"
-        >
-          Mulai Konsultasi Gratis
-        </a>
-      </div>
-
-      <!-- MULTI-OUTLET -->
-      <div class="relative flex flex-col bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-8 shadow-sm hover:shadow-md transition-shadow">
-        <div class="mb-6">
-          <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-1">Paket</p>
-          <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Multi-Outlet</h3>
-          <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">
-            Grup F&B, beach club, atau operasi kompleks multi-cabang.
-          </p>
-        </div>
-
-        <!-- Harga -->
-        <div class="mb-6 pb-6 border-b border-slate-100 dark:border-slate-700">
-          <div class="flex items-baseline gap-1">
-            <span class="text-sm font-medium text-slate-500">Mulai</span>
-            <span class="text-3xl font-bold text-slate-900 dark:text-white">Rp 9 juta</span>
-          </div>
-          <p class="text-sm text-slate-400 mt-1">per bulan</p>
-        </div>
-
-        <!-- Fitur -->
-        <ul class="flex-1 space-y-3 mb-8">
-          {[
-            'Semua fitur Paket Growth',
-            'Consolidated reporting multi-outlet',
-            'Custom dashboard per cabang (real-time)',
-            'Weekly review & anomaly detection',
-            'Advanced margin & prime cost analysis',
-            'Annual budgeting & forecasting',
-            'Quarterly business review (QBR)',
-          ].map((item) => (
-            <li class="flex items-start gap-2.5 text-sm text-slate-600 dark:text-slate-300">
-              <svg class="w-4 h-4 mt-0.5 shrink-0 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-              </svg>
-              {item}
-            </li>
-          ))}
-        </ul>
-
-        <a
-          href="https://wa.me/628213141688?text=Halo%20Guslan,%20saya%20tertarik%20Paket%20Multi-Outlet.%20Boleh%20diskusi%3F"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="block text-center py-3 px-6 rounded-xl border-2 border-primary text-primary font-semibold text-sm hover:bg-primary hover:text-white transition-all duration-200"
-        >
-          Diskusi Kebutuhan Anda
-        </a>
-      </div>
 
     </div>
-
-    <!-- Catatan bawah -->
-    <p class="text-center text-sm text-slate-400 mt-8">
-      Harga di atas adalah estimasi awal. Harga final ditentukan setelah assessment singkat —
-      <a
-        href="https://wa.me/628213141688?text=Halo%20Guslan,%20saya%20ingin%20konsultasi%20gratis"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="text-primary font-semibold hover:underline"
-      >
-        konsultasi gratis dulu →
-      </a>
-    </p>
-
-  </div>
-</section>
+  </section>
 
   <!-- ═══ DISKON KOMITMEN ═══ -->
   <section class="py-10 px-4">
@@ -313,7 +364,7 @@ const metadata = {
     </div>
   </section>
 
-  <!-- ═══ FAQ MINI (dari Services page lama) ═══ -->
+  <!-- ═══ FAQ ═══ -->
   <FAQs
     title="Pertanyaan Seputar Layanan"
     tagline="FAQ"
