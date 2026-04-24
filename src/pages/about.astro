@@ -1,17 +1,18 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+import guslanPhoto from '~/assets/images/guslan-putra.webp';
 
 const metadata = {
   title: 'Tentang Guslan Putra — Konsultan Keuangan F&B Bali',
   description:
-    '15 tahun di industri pariwisata Bali. Sejak 2021 fokus membantu owner cafe, restoran, bakery, dan bar membangun sistem keuangan yang solid dan mandiri.',
+    '15 tahun di industri keuangan Bali. Sejak 2021 fokus membantu owner cafe, restoran, dan bakery membangun sistem keuangan yang solid — mulai dari HPP, cash flow, hingga laporan yang benar-benar bisa dibaca.',
 };
 ---
 
 <Layout metadata={metadata}>
 
-  <!-- ═══ HERO ABOUT ═══ -->
+  <!-- HERO ABOUT -->
   <section class="py-16 px-4 md:py-24">
     <div class="max-w-6xl mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -20,16 +21,17 @@ const metadata = {
         <div>
           <p class="text-sm font-bold uppercase tracking-widest text-primary mb-3">Tentang Saya</p>
           <h1 class="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white leading-tight mb-5">
-            Finance & Growth Partner<br />untuk Bisnis F&B di Bali
+            Saya Mulai dari<br />Operasional, Bukan Laporan
           </h1>
-          <p class="text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
-            Saya <strong>Guslan Putra</strong> — konsultan keuangan dan akuntansi khusus untuk bisnis F&B di Bali.
-            Berbeda dengan akuntan konvensional yang hanya memberikan laporan bulanan, saya bekerja sebagai
-            <em>partner pertumbuhan</em> Anda.
+          <p class="text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+            Saya <strong>Guslan Putra</strong>. Konsultan keuangan yang hanya fokus di bisnis F&B.
+            Bukan karena tidak bisa yang lain — tapi karena industri ini punya dinamika tersendiri
+            yang tidak bisa dipahami hanya dari buku akuntansi.
           </p>
           <p class="text-slate-500 dark:text-slate-400 leading-relaxed">
-            Tujuan saya bukan hanya membuat pembukuan Anda rapi — tapi memastikan Anda memahami cerita di balik
-            angka dan tahu apa yang harus dilakukan untuk meningkatkan profitabilitas.
+            Setiap engagement saya mulai dari memahami operasional bisnis Anda dulu.
+            Baru kemudian saya tahu sistem apa yang benar-benar dibutuhkan,
+            bukan sistem yang terlihat bagus di atas kertas.
           </p>
 
           <div class="flex flex-wrap gap-3 mt-8">
@@ -49,63 +51,131 @@ const metadata = {
               href="/services"
               class="inline-flex items-center gap-2 border-2 border-slate-200 dark:border-slate-600 text-slate-700 dark:text-slate-300 font-semibold py-3 px-6 rounded-xl hover:border-primary hover:text-primary transition-colors text-sm"
             >
-              Lihat Paket Layanan →
+              Lihat Paket Layanan &rarr;
             </a>
           </div>
         </div>
 
-        <!-- Stats Visual -->
-        <div class="grid grid-cols-2 gap-4">
-          {[
-            { angka: '15+', label: 'Tahun di industri keuangan & pariwisata Bali' },
-            { angka: '2021', label: 'Mulai fokus penuh ke F&B consulting' },
-            { angka: '4', label: 'Tipe bisnis: cafe, restoran, bakery, Warung Modern & Kuliner lokal' },
-            { angka: '3', label: 'Area: Denpasar, Ubud & Canggu' },
-          ].map(({ angka, label }) => (
-            <div class="bg-slate-50 dark:bg-slate-800 rounded-2xl p-6 border border-slate-100 dark:border-slate-700">
-              <p class="text-3xl font-bold text-primary mb-1">{angka}</p>
-              <p class="text-sm text-slate-500 dark:text-slate-400 leading-snug">{label}</p>
-            </div>
-          ))}
+        <!-- Foto + Stats -->
+        <div class="space-y-4">
+          <!-- Foto Guslan Putra -->
+            <img
+            src={guslanPhoto.src}
+            alt="Guslan Putra, Konsultan Keuangan F&B Bali"
+            class="w-full aspect-[4/3] object-cover object-top rounded-2xl"
+            width="600"
+            height="450"
+            loading="eager"
+        />
+
+          <!-- Stats strip -->
+          <div class="grid grid-cols-3 gap-3">
+            {[
+              { angka: "15+", label: "Tahun di industri keuangan" },
+              { angka: "2021", label: "Fokus penuh F&B" },
+              { angka: "Bali", label: "Melayani seluruh Indonesia" },
+            ].map(({ angka, label }) => (
+              <div class="bg-slate-50 dark:bg-slate-800 rounded-xl p-4 border border-slate-100 dark:border-slate-700 text-center">
+                <p class="text-xl font-bold text-primary mb-0.5">{angka}</p>
+                <p class="text-xs text-slate-500 dark:text-slate-400 leading-snug">{label}</p>
+              </div>
+            ))}
+          </div>
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- ═══ PERJALANAN ═══ -->
-  <section class="py-16 px-4 bg-slate-50 dark:bg-slate-900">
+  <!-- HASIL NYATA -->
+  <section class="py-16 px-4 bg-primary/5 dark:bg-slate-900">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-10">
+        <p class="text-sm font-bold uppercase tracking-widest text-primary mb-2">Hasil Nyata</p>
+        <h2 class="text-3xl font-bold text-slate-900 dark:text-white">Yang Berubah Setelah Ada Sistem</h2>
+        <p class="text-slate-500 dark:text-slate-400 mt-3 max-w-xl mx-auto text-sm">
+          Bukan janji. Ini hasil yang sudah terjadi di klien yang saya tangani.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {[
+          {
+            icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>`,
+            hasil: "Laporan keuangan pertama",
+            detail: "Bisnis yang sebelumnya hanya punya data POS akhirnya punya laporan laba rugi yang bisa dibaca dan digunakan untuk keputusan.",
+          },
+          {
+            icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>`,
+            hasil: "HPP dihitung ulang dari nol",
+            detail: "Harga jual sebelumnya mengikuti harga kompetitor. Setelah HPP dihitung per menu, beberapa harga dikoreksi dan margin naik signifikan.",
+          },
+          {
+            icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>`,
+            hasil: "Efisiensi tenaga kerja",
+            detail: "Analisis jadwal dan beban kerja membantu owner identifikasi shift yang tidak efisien dan restrukturisasi tim tanpa mengurangi kualitas layanan.",
+          },
+          {
+            icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>`,
+            hasil: "Penjualan naik 11%",
+            detail: "Kombinasi analisis menu, koreksi pricing, dan kontrol biaya operasional menghasilkan kenaikan penjualan 11% dalam 3 bulan pertama.",
+          },
+        ].map(({ icon, hasil, detail }) => (
+          <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-100 dark:border-slate-700 shadow-sm">
+            <div class="w-9 h-9 flex items-center justify-center text-primary bg-primary/10 rounded-xl mb-4" set:html={icon} />
+            <h3 class="font-bold text-slate-900 dark:text-white mb-2 text-sm">{hasil}</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">{detail}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PERJALANAN -->
+  <section class="py-16 px-4">
     <div class="max-w-4xl mx-auto">
       <p class="text-sm font-bold uppercase tracking-widest text-primary mb-2">Perjalanan Saya</p>
       <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-12">
         Dari Finance Manager ke Konsultan F&B
       </h2>
 
-      <!-- Timeline -->
       <div class="relative pl-8 border-l-2 border-slate-200 dark:border-slate-700 space-y-12">
 
         <div class="relative">
           <div class="absolute -left-[2.35rem] w-4 h-4 rounded-full bg-primary border-4 border-white dark:border-slate-900"></div>
           <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-1">15 Tahun</p>
-          <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Finance & Accounting Manager — Industri Pariwisata</h3>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Finance & Accounting Manager — Industri Pariwisata Bali</h3>
           <p class="text-slate-500 dark:text-slate-400 leading-relaxed text-sm">
-            Karir saya dimulai di travel agent yang melayani wisatawan ke Bali dan Nusa Tenggara. Selama 15 tahun
-            saya mengelola budget planning, cash flow multi-currency, financial reporting untuk investor, serta
-            compliance pajak dan audit tahunan. Pengalaman ini mengajarkan saya satu hal penting: bisnis pariwisata
-            bisa survive di low season hanya kalau cash flow-nya dikelola dengan disiplin.
+            Saya mulai karir di industri travel dan pariwisata Bali. Selama 15 tahun saya kelola
+            budget planning, cash flow multi-currency, financial reporting untuk investor, serta
+            compliance pajak dan audit tahunan. Pelajaran terpenting dari industri ini:
+            bisnis musiman hanya bisa survive kalau cash flow-nya dikelola dengan disiplin,
+            bukan dengan perkiraan.
+          </p>
+        </div>
+
+        <div class="relative">
+          <div class="absolute -left-[2.35rem] w-4 h-4 rounded-full bg-primary border-4 border-white dark:border-slate-900"></div>
+          <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-1">2021</p>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Masuk ke Industri F&B — Bakery & Pastry</h3>
+          <p class="text-slate-500 dark:text-slate-400 leading-relaxed text-sm">
+            Pandemi menghentikan industri pariwisata. Saya mulai membantu
+            sebuah restoran kecil milik teman yang mencoba bangkit setelah pandemi. Di sini saya melihat langsung realita keuangan bisnis F&B skala kecil:
+            tidak ada laporan laba rugi, tidak ada analisis penjualan, harga jual ditentukan
+            berdasarkan harga kompetitor. Owner yang hebat dalam produk tapi buta soal angka.
+            Dari sini saya mulai membangun sistem dari nol.
           </p>
         </div>
 
         <div class="relative">
           <div class="absolute -left-[2.35rem] w-4 h-4 rounded-full bg-primary border-4 border-white dark:border-slate-900"></div>
           <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-1">2021 — Sekarang</p>
-          <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Pivot ke F&B Specialist</h3>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Konsultan F&B — Restoran, Cafe, Bakery</h3>
           <p class="text-slate-500 dark:text-slate-400 leading-relaxed text-sm">
-            Saya melihat pola yang sama berulang di bisnis F&B skala kecil hingga menengah: owner yang brilliant
-            dalam menciptakan menu dan membangun brand, tapi terjebak masalah cash flow karena tidak ada sistem.
-            Pricing berdasarkan "kira-kira". Panik saat lapor pajak. Tidak tahu menu mana yang sebenarnya
-            menggerus margin. Saya memutuskan untuk fokus membantu segmen ini — karena masalahnya bisa diperbaiki,
-            dan dampaknya langsung terasa.
+            Dari restoran kecil, saya mulai menangani klien restoran di Ubud, kemudian berlanjut ke area Canggu,
+            Kuta, dan Denpasar. Setiap klien datang dengan masalah yang berbeda tapi akar masalahnya
+            sama: tidak ada sistem. Saya fokus di sini karena masalahnya konkret,
+            solusinya bisa diukur, dan dampaknya langsung terasa oleh owner.
           </p>
         </div>
 
@@ -113,34 +183,34 @@ const metadata = {
     </div>
   </section>
 
-  <!-- ═══ PENDEKATAN ═══ -->
-  <section class="py-16 px-4">
+  <!-- PENDEKATAN -->
+  <section class="py-16 px-4 bg-slate-50 dark:bg-slate-900">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-12">
-        <p class="text-sm font-bold uppercase tracking-widest text-primary mb-2">Pendekatan Saya</p>
-        <h2 class="text-3xl font-bold text-slate-900 dark:text-white">Sederhana, Transparan, Aplikatif</h2>
+        <p class="text-sm font-bold uppercase tracking-widest text-primary mb-2">Cara Saya Bekerja</p>
+        <h2 class="text-3xl font-bold text-slate-900 dark:text-white">Tiga Hal yang Selalu Saya Pegang</h2>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         {[
           {
-            icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-3 3z"/></svg>`,
-            judul: 'Komunikasi yang Jelas',
-            isi: 'Setiap laporan saya jelaskan dengan bahasa yang Anda mengerti. Kenapa omzet naik tapi profit turun? Menu mana yang menggerus margin? Setelah review bulanan, Anda tidak hanya tahu "apa yang terjadi" — tapi juga "kenapa" dan "apa yang harus dilakukan".',
+            nomor: "01",
+            judul: "Operasional Dulu, Laporan Kemudian",
+            isi: "Saya tidak langsung minta laporan keuangan di pertemuan pertama. Saya ingin pahami dulu bagaimana bisnis Anda berjalan sehari-hari: siapa yang pegang kas, bagaimana stok dikelola, bagaimana order diproses. Dari situ baru kelihatan sistem apa yang dibutuhkan.",
           },
           {
-            icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>`,
-            judul: 'Sistem yang Mandiri',
-            isi: 'Tujuan akhir saya adalah membuat Anda tidak bergantung pada saya. Sistem keuangan yang baik harus bisa berjalan dengan atau tanpa konsultan. Setiap setup include training tim, SOP dalam Bahasa Indonesia, dan dashboard real-time yang bisa Anda akses kapan saja.',
+            nomor: "02",
+            judul: "Santai, tapi Serius di Angka",
+            isi: "Banyak owner tidak nyaman bicara soal keuangan bisnis mereka karena takut dihakimi. Saya tidak bekerja seperti itu. Pendekatan saya santai dan terbuka agar Anda bisa jujur soal kondisi bisnis. Tapi soal angka, saya tetap serius dan presisi.",
           },
           {
-            icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>`,
-            judul: 'Data untuk Keputusan',
-            isi: 'Banyak akuntan fokus pada compliance saja. Saya ingin data keuangan Anda menjadi alat pengambilan keputusan: haruskah buka cabang? Berapa harga ideal menu ini? Staff mana yang perlu ditambah? Keputusan strategis butuh data yang akurat — bukan feeling.',
+            nomor: "03",
+            judul: "Lebih dari Sekadar Job Desk",
+            isi: "Kalau saya lihat ada masalah di luar scope keuangan yang bisa saya bantu, saya bantu. Pernah saya buatkan template jadwal kerja staf pakai Google Sheets karena sistem manual klien tidak efisien. Bukan bagian dari kontrak, tapi dampaknya langsung terasa ke efisiensi biaya.",
           },
-        ].map(({ icon, judul, isi }) => (
+        ].map(({ nomor, judul, isi }) => (
           <div class="bg-white dark:bg-slate-800 rounded-2xl p-8 border border-slate-100 dark:border-slate-700 shadow-sm">
-            <div class="w-10 h-10 flex items-center justify-center text-primary mb-4" set:html={icon} />
+            <p class="text-4xl font-bold text-primary/20 dark:text-primary/30 mb-4 leading-none">{nomor}</p>
             <h3 class="font-bold text-slate-900 dark:text-white mb-3">{judul}</h3>
             <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">{isi}</p>
           </div>
@@ -149,8 +219,8 @@ const metadata = {
     </div>
   </section>
 
-  <!-- ═══ DENGAN SIAPA SAYA BEKERJA ═══ -->
-  <section class="py-16 px-4 bg-slate-50 dark:bg-slate-900">
+  <!-- DENGAN SIAPA SAYA BEKERJA -->
+  <section class="py-16 px-4">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-12">
         <p class="text-sm font-bold uppercase tracking-widest text-primary mb-2">Klien Saya</p>
@@ -160,28 +230,28 @@ const metadata = {
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         {[
           {
-            tipe: 'Cafe & Coffee Shop',
-            omzet: 'Rp 80–150 juta/bulan',
-            cogs: 'COGS target: 28–32%',
-            tantangan: 'Inventory coffee beans, waste control, margin per SKU minuman',
+            tipe: "Cafe & Coffee Shop",
+            omzet: "Rp 80–150 juta/bulan",
+            cogs: "COGS target: 28–32%",
+            tantangan: "Inventory coffee beans, waste control, margin per SKU minuman",
           },
           {
-            tipe: 'Restoran',
-            omzet: 'Rp 100–500 juta/bulan',
-            cogs: 'COGS target: 30–35%',
-            tantangan: 'Menu profitability, staff efficiency, fine dining vs casual complexity',
+            tipe: "Restoran",
+            omzet: "Rp 100–500 juta/bulan",
+            cogs: "COGS target: 30–35%",
+            tantangan: "Menu profitability, efisiensi staf, kompleksitas fine dining vs casual",
           },
           {
-            tipe: 'Bakery & Pastry',
-            omzet: 'Rp 100–250 juta/bulan',
-            cogs: 'COGS target: 35–40%',
-            tantangan: 'Waste management (15–25%), equipment investment, pricing produksi',
+            tipe: "Bakery & Pastry",
+            omzet: "Rp 100–250 juta/bulan",
+            cogs: "COGS target: 35–40%",
+            tantangan: "Waste management (15–25%), investasi peralatan, pricing produksi",
           },
           {
-            tipe: 'Warung Modern',
-            omzet: 'Rp 50–150 juta/bulan',
-            cogs: 'COGS target: 32–38%',
-            tantangan: 'High-volume transactions, portion control, and volatile ingredient costs management',
+            tipe: "Warung Modern",
+            omzet: "Rp 50–150 juta/bulan",
+            cogs: "COGS target: 32–38%",
+            tantangan: "Transaksi volume tinggi, kontrol porsi, dan fluktuasi harga bahan baku",
           },
         ].map(({ tipe, omzet, cogs, tantangan }) => (
           <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-100 dark:border-slate-700">
@@ -205,48 +275,48 @@ const metadata = {
     </div>
   </section>
 
-  <!-- ═══ KEAHLIAN ═══ -->
-  <section class="py-16 px-4">
+  <!-- KEAHLIAN -->
+  <section class="py-16 px-4 bg-slate-50 dark:bg-slate-900">
     <div class="max-w-4xl mx-auto">
       <div class="text-center mb-12">
         <p class="text-sm font-bold uppercase tracking-widest text-primary mb-2">Keahlian & Tools</p>
         <h2 class="text-3xl font-bold text-slate-900 dark:text-white">Yang Saya Kuasai</h2>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
         {[
           {
-            kategori: 'Spesialisasi F&B',
+            kategori: "Spesialisasi F&B",
             items: [
-              'COGS calculation & menu profitability',
-              'Cash flow management (perishable inventory)',
-              'Setup Chart of Accounts khusus F&B',
-              'Prime cost & waste analysis',
-              'BEP & pricing strategy',
+              "COGS calculation & menu profitability",
+              "Cash flow management (perishable inventory)",
+              "Setup Chart of Accounts khusus F&B",
+              "Prime cost & waste analysis",
+              "BEP & pricing strategy",
             ],
           },
           {
-            kategori: 'Sistem & Tools',
+            kategori: "Sistem & Tools",
             items: [
-              'Integrasi POS: MOKA, ESB, Accurate, GoBiz',
-              'Dashboard: Google Sheets custom, Looker Studio',
-              'ERP & accounting software setup',
-              'Google Apps Script automation',
-              'Real-time reporting system',
+              "Integrasi POS: MOKA, ESB, Accurate, LarisPOS",
+              "Dashboard: Google Sheets custom, Looker Studio",
+              "ERP & accounting software setup",
+              "Google Apps Script automation",
+              "Real-time reporting system",
             ],
           },
           {
-            kategori: 'Pajak & Compliance',
+            kategori: "Pajak & Compliance",
             items: [
-              'PPh 21, PPh 23, PPN, PPh Final, PB1',
-              'Konsultasi PKP vs Non-PKP',
-              'Payroll compliance (5–50+ staf)',
-              'Pelaporan pajak bulanan & tahunan',
+              "PPh 21, PPh 23, PPN, PPh Final, PB1",
+              "Konsultasi PKP vs Non-PKP",
+              "Payroll compliance (5–50+ staf)",
+              "Pelaporan pajak bulanan & tahunan",
             ],
           },
         ].map(({ kategori, items }) => (
           <div>
-            <h3 class="font-bold text-slate-900 dark:text-white mb-4 pb-2 border-b border-slate-100 dark:border-slate-700">{kategori}</h3>
+            <h3 class="font-bold text-slate-900 dark:text-white mb-4 pb-2 border-b border-slate-200 dark:border-slate-700">{kategori}</h3>
             <ul class="space-y-2.5">
               {items.map((item) => (
                 <li class="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-300">
@@ -260,29 +330,55 @@ const metadata = {
           </div>
         ))}
       </div>
+
+      <!-- LOGO STRIP TOOLS -->
+      <div class="border-t border-slate-200 dark:border-slate-700 pt-10">
+        <p class="text-xs font-bold uppercase tracking-widest text-slate-400 text-center mb-6">
+          Platform & Tools yang Saya Gunakan
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          {[
+            "MOKA POS",
+            "ESB POS",
+            "Accurate",
+            "Laris POS",
+            "Mekari Jurnal",
+            "Google Sheets",
+            "Looker Studio",
+          ].map((nama) => (
+            <div class="px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-xs font-semibold text-slate-500 dark:text-slate-400 hover:border-primary hover:text-primary transition-colors">
+              {nama}
+            </div>
+          ))}
+        </div>
+        <!-- Catatan developer: ganti badge teks di atas dengan logo resmi setelah aset tersedia.
+             Contoh: <img src="~/assets/logos/moka.svg" alt="MOKA POS" class="h-6 grayscale hover:grayscale-0 transition-all" />
+        -->
+      </div>
+
     </div>
   </section>
 
-  <!-- ═══ CTA ═══ -->
+  <!-- CTA -->
   <CallToAction
     actions={[
       {
-        variant: 'primary',
-        text: 'Chat Saya via WhatsApp',
-        href: 'https://wa.me/628213141688?text=Halo%20Guslan,%20saya%20ingin%20diskusi%20kondisi%20keuangan%20bisnis%20saya',
-        target: '_blank',
-        icon: 'tabler:brand-whatsapp',
+        variant: "primary",
+        text: "Chat Saya via WhatsApp",
+        href: "https://wa.me/628213141688?text=Halo%20Guslan,%20saya%20ingin%20diskusi%20kondisi%20keuangan%20bisnis%20saya",
+        target: "_blank",
+        icon: "tabler:brand-whatsapp",
       },
       {
-        text: 'Lihat Paket Layanan',
-        href: '/services',
+        text: "Lihat Paket Layanan",
+        href: "/services",
       },
     ]}
   >
-    <Fragment slot="title">Siap Membangun Sistem Keuangan yang Kuat?</Fragment>
+    <Fragment slot="title">Ceritakan Kondisi Bisnis Anda</Fragment>
     <Fragment slot="subtitle">
-      Mari kita bicara. Konsultasi awal gratis 15–30 menit, tanpa komitmen.<br class="hidden md:inline" />
-      Saya siap membantu Anda membangun fondasi keuangan yang solid untuk pertumbuhan jangka panjang.
+      Konsultasi awal gratis 15 sampai 30 menit.<br class="hidden md:inline" />
+      Saya bantu identifikasi masalah dan langkah pertama yang bisa diambil segera.
     </Fragment>
   </CallToAction>
 

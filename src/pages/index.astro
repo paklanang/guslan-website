@@ -19,9 +19,7 @@ const metadata = {
 
 <Layout metadata={metadata}>
 
-  <!-- ═══════════════════════════════════════════
-       HERO — Pain-driven, dari guslan.id
-  ══════════════════════════════════════════════ -->
+  <!-- HERO -->
   <Hero
     actions={[
       {
@@ -34,7 +32,7 @@ const metadata = {
       { text: 'Download Template Gratis', href: '/templates' },
     ]}
     image={{
-      src: '~/assets/images/Guslan-Putra-konsultan-keuangan-f&b-.webp',
+      src: '~/assets/images/Guslan-Putra-konsultan-keuangan-FnB.webp',
       alt: 'Konsultan Keuangan F&B Bali — Guslan Putra',
     }}
   >
@@ -45,51 +43,46 @@ const metadata = {
     </Fragment>
 
     <Fragment slot="subtitle">
-      Saatnya memahami cerita di balik angka. 
-      <span class="font-semibold">Bukan dengan feeling, tapi dengan data.</span>
+      Masalahnya bukan di omzet. Masalahnya di sistem.
+      <span class="font-semibold">Saya bantu Anda baca angka, kontrol biaya, dan ambil keputusan berbasis data.</span>
       <br />
-      Saya membantu restoran dan cafe Anda punya sistem keuangan yang jelas,
-      pajak yang tertata, dan keputusan bisnis berbasis fakta.
+      Bukan dengan feeling. Bukan dengan laporan tebal yang berakhir di laci.
     </Fragment>
   </Hero>
 
-  <!-- ═══════════════════════════════════════════
-       NOTE
-  ══════════════════════════════════════════════ -->
+  <!-- NOTE -->
   <Note
     title="Finance Growth Partner"
-    description="Bukan sekadar akuntan. Saya membantu Anda paham angka, kontrol keuangan, dan tumbuh dengan data yang jelas."
+    description="Saya bantu Anda paham angka bisnis sendiri, kontrol keuangan dari bulan ke bulan, dan tumbuh dengan keputusan berbasis data."
   />
 
-  <!-- ═══════════════════════════════════════════
-       4 PAIN POINTS
-  ══════════════════════════════════════════════ -->
+  <!-- 4 PAIN POINTS -->
   <Features
     id="masalah"
     tagline="Kenali Tandanya"
     title="4 Tanda Bisnis F&B Anda Butuh Sistem Keuangan yang Lebih Baik"
-    subtitle="Jika Anda merasakan minimal 2 dari situasi ini, sudah waktunya berbenah."
+    subtitle="Kalau Anda merasakan minimal 2 dari situasi ini, sudah waktunya berbenah."
     items={[
       {
         title: 'Profit Besar di Laporan, Kas Menipis di Bank',
         description:
-          'Omzet ratusan juta tapi selalu bertanya-tanya: "uang ke mana ya?" Tidak ada pemisahan jelas antara modal, operasional, dan profit.',
+          'Omzet ratusan juta tapi selalu bertanya-tanya: uang ke mana? Tidak ada pemisahan jelas antara modal, operasional, dan profit.',
         icon: 'tabler:building-bank',
       },
       {
         title: 'Tidak Tahu Menu Mana yang Benar-Benar Untung',
         description:
-          'Menu signature yang ramai bisa jadi yang margin-nya paling tipis. Tanpa COGS yang akurat, Anda baru tahu setelah rugi besar.',
+          'Menu signature yang paling ramai bisa jadi yang margin-nya paling tipis. Tanpa COGS yang akurat, Anda baru tahu setelah rugi besar.',
         icon: 'tabler:tools-kitchen-2',
       },
       {
         title: 'Cemas Soal Pajak Restoran',
         description:
-          'PKP atau Non-PKP? PPN, PPh, PB1? Semuanya membingungkan. Banyak cafe di Bali kena masalah bukan karena niat jahat, tapi karena tidak paham sistemnya.',
+          'PKP atau Non-PKP? PPN, PPh, PB1? Banyak cafe di Bali kena masalah bukan karena niat jahat, tapi karena tidak paham sistemnya.',
         icon: 'tabler:receipt-tax',
       },
       {
-        title: 'Keputusan Bisnis Pakai Feeling, Bukan Data',
+        title: 'Keputusan Bisnis Pakai Feeling',
         description:
           'Mau buka cabang? Tambah menu? Rekrut staf? Tanpa data yang jelas, semua keputusan seperti gambling. Risiko tinggi, return tidak pasti.',
         icon: 'tabler:chart-bar-off',
@@ -97,9 +90,7 @@ const metadata = {
     ]}
   />
 
-  <!-- ═══════════════════════════════════════════
-       KALKULATOR HPP
-  ══════════════════════════════════════════════ -->
+  <!-- KALKULATOR HPP -->
   <section id="kalkulator" class="bg-blue-50 dark:bg-slate-800 py-16 px-4 scroll-mt-16">
     <div class="max-w-2xl mx-auto">
       <div class="text-center mb-10">
@@ -108,12 +99,11 @@ const metadata = {
           Cek HPP Bisnis F&B Anda Sekarang
         </h2>
         <p class="text-slate-500 dark:text-slate-400">
-          Masukkan 2 angka, dapatkan gambaran awal kondisi keuangan bisnis Anda.
+          Masukkan 2 angka. Lihat langsung kondisi keuangan bisnis Anda.
         </p>
       </div>
 
       <div class="bg-white dark:bg-slate-900 rounded-2xl shadow-xl p-8 border border-slate-100 dark:border-slate-700">
-        <!-- Input Row -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-6">
           <div>
             <label for="omzet" class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
@@ -142,7 +132,6 @@ const metadata = {
           </div>
         </div>
 
-        <!-- Tidak tahu HPP? -->
         <p class="text-sm text-slate-500 dark:text-slate-400 mb-5">
           Tidak yakin berapa HPP Anda?
           <a
@@ -151,11 +140,10 @@ const metadata = {
             rel="noopener noreferrer"
             class="text-primary font-semibold hover:underline"
           >
-            Tanya Guslan gratis →
+            Tanya Guslan gratis &rarr;
           </a>
         </p>
 
-        <!-- Tombol Cek -->
         <button
           id="calcBtn"
           class="w-full bg-primary hover:bg-primary-dark text-white font-bold py-3.5 rounded-xl transition-all duration-200 hover:shadow-lg active:scale-[0.98]"
@@ -163,7 +151,6 @@ const metadata = {
           Cek Kondisi HPP Saya
         </button>
 
-        <!-- Hasil -->
         <div id="result" class="hidden mt-6 rounded-xl p-5 border-l-4 transition-all">
           <div class="flex items-start gap-3">
             <span id="resultIcon" class="text-2xl mt-0.5 shrink-0"></span>
@@ -176,97 +163,90 @@ const metadata = {
         </div>
       </div>
 
-      <!-- Disclaimer kecil -->
       <p class="text-center text-xs text-slate-400 mt-4">
         Hasil ini adalah estimasi awal. Kondisi nyata bisnis Anda bisa berbeda tergantung jenis F&B dan struktur biaya.
       </p>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════
-       LEAD MAGNET — Dua jalur gratis
-  ══════════════════════════════════════════════ -->
+  <!-- LEAD MAGNET -->
   <Features
     id="mulai"
     tagline="Mulai dari Sini"
-    title="Pilih Cara yang Paling Sesuai. Keduanya Gratis"
-    subtitle="Tidak ada komitmen, tidak ada tekanan. Mulai dari mana yang paling nyaman untuk Anda."
+    title="Dua Cara untuk Memulai. Keduanya Gratis"
+    subtitle="Pilih yang paling sesuai kondisi Anda sekarang."
     items={[
       {
         title: 'Download Template HPP + Cash Flow',
         description:
-          'Kalkulator HPP per menu & cash flow tracker bulanan untuk cafe/restoran. Lengkap dengan video tutorial dan Checklist Finansial Pemilik F&B. Cocok untuk Anda yang ingin mulai kelola keuangan sendiri.',
+          'Kalkulator HPP per menu dan cash flow tracker bulanan untuk cafe atau restoran. Tersedia video tutorial dan Checklist Finansial Pemilik F&B. Cocok untuk Anda yang ingin mulai mengelola keuangan sendiri.',
         icon: 'tabler:file-spreadsheet',
       },
       {
         title: 'Free Financial Health Check (45 Menit)',
         description:
-          'Video call langsung dengan saya: quick review kondisi keuangan bisnis, identifikasi 3 masalah finansial terbesar, dan rekomendasi prioritas perbaikan. Cocok untuk yang ingin rekomendasi personal dan spesifik.',
+          'Video call langsung dengan saya: review kondisi keuangan bisnis, identifikasi 3 masalah finansial terbesar, dan rekomendasi prioritas perbaikan.',
         icon: 'tabler:stethoscope',
       },
     ]}
   />
 
-  <!-- ═══════════════════════════════════════════
-       CARA KERJA — 4 langkah
-  ══════════════════════════════════════════════ -->
+  <!-- CARA KERJA -->
   <Steps
-    title="Cara Saya Bekerja Dengan Anda"
-    subtitle="Sederhana, transparan, kolaboratif. Tidak ada jargon yang membingungkan."
+    title="Cara Saya Bekerja dengan Anda"
+    subtitle="Empat langkah. Masing-masing punya output yang jelas."
     items={[
       {
         title: 'Step 1: <span class="font-medium">Assessment</span>',
         description:
-          'Sesi konsultasi awal untuk memahami struktur bisnis, sistem yang sudah ada, dan tantangan utama Anda. Output: rekomendasi langkah konkret yang bisa diambil segera.',
+          'Sesi awal untuk memahami struktur bisnis, sistem yang sudah berjalan, dan tantangan utama Anda. Output: daftar langkah konkret yang bisa diambil segera.',
         icon: 'tabler:clipboard-list',
       },
       {
         title: 'Step 2: <span class="font-medium">Review & Diagnose</span>',
         description:
-          'Audit laporan keuangan dan sistem yang berjalan. Identifikasi masalah utama: arus kas, COGS, margin, pajak. Output: Financial Health Report + prioritas perbaikan.',
+          'Audit laporan keuangan dan sistem yang ada. Identifikasi masalah di arus kas, COGS, margin, dan pajak. Output: Financial Health Report beserta prioritas perbaikan.',
         icon: 'tabler:search',
       },
       {
         title: 'Step 3: <span class="font-medium">Setup & Integration</span>',
         description:
-          'Bangun sistem pembukuan yang rapi. Chart of Accounts F&B, integrasi POS (MOKA, ESB, Accurate), dashboard real-time, SOP, dan training tim. Output: sistem yang berjalan otomatis.',
+          'Bangun sistem pembukuan yang rapi: Chart of Accounts F&B, integrasi POS (MOKA, ESB, Accurate), dashboard real-time, SOP, dan training tim. Output: sistem yang berjalan otomatis.',
         icon: 'tabler:settings',
       },
       {
         title: 'Step 4: <span class="font-medium">Monitoring & Growth</span>',
         description:
-          'Monthly financial review, analisa tren, dan rekomendasi optimasi pricing dan menu. Output: business insights yang actionable setiap bulan untuk keputusan berbasis data.',
+          'Monthly financial review, analisis tren, dan rekomendasi optimasi pricing serta menu. Output: business insights setiap bulan untuk keputusan berbasis data.',
         icon: 'tabler:trending-up',
       },
     ]}
     image={{
-      src: '~/assets/images/Guslan-Putra-proses-konsultasi-keuangan-FnB.webp',
+      src: '~/assets/images/Guslan-Putra-proses-konsultasi-keuangan-FnB-2.webp',
       alt: 'Proses kerja konsultasi keuangan F&B Guslan Putra',
     }}
   />
 
-  <!-- ═══════════════════════════════════════════
-       KENAPA GUSLAN
-  ══════════════════════════════════════════════ -->
+  <!-- KENAPA GUSLAN -->
   <Content
     isReversed
     tagline="Tentang Saya"
-    title="Konsultan yang Benar-Benar Paham Bisnis Kuliner"
+    title="Spesialis F&B, Bukan Akuntan Generalis"
     items={[
       {
-        title: 'Spesialis F&B, Bukan Akuntan Generalis',
+        title: 'Hanya Fokus di Bisnis Kuliner',
         description:
-          'Saya hanya fokus di restoran, cafe, bakery & Pastry, ghost Kitchen, warung. Paham bedanya food cost warung nasi vs kafe specialty coffee vs fine dining.',
+          'Restoran, cafe, bakery, pastry, ghost kitchen, warung. Saya paham bedanya food cost warung nasi vs cafe specialty coffee vs fine dining.',
       },
       {
-        title: '15 Tahun di Industri, 5 Tahun Fokus F&B',
+        title: '15 Tahun di Industri, Fokus F&B sejak 2021',
         description:
-          'Bukan teori dari buku teks. Pengalaman langsung di keuangan pariwisata dan operasional F&B Bali. Paham seasonal, cash flow harian, dan dinamika unik bisnis kuliner.',
+          'Pengalaman langsung di keuangan pariwisata dan operasional F&B Bali. Paham seasonal, cash flow harian, dan dinamika bisnis kuliner yang tidak ada di buku teks.',
       },
       {
-        title: 'Bahasa Manusia, Bukan Bahasa Akuntan',
+        title: 'Laporan yang Bisa Langsung Dipakai',
         description:
-          'Laporan dijelaskan dengan contoh konkret yang bisa langsung Anda gunakan untuk keputusan. Tidak ada laporan tebal yang berakhir di laci.',
+          'Setiap angka dijelaskan dengan contoh konkret untuk keputusan nyata. Bukan laporan tebal yang berakhir di laci.',
       },
     ]}
     image={{
@@ -278,36 +258,30 @@ const metadata = {
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
         Berbasis di Bali, Melayani Seluruh Indonesia
       </h3>
-      Remote-friendly. Siap melayani klien dari Bali, Jakarta, Surabaya dan seluruh wilayah Indonesia. Semua dilayani dengan support penuh.
+      Remote-friendly. Siap melayani klien dari seluruh Indonesia dengan support penuh.
     </Fragment>
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
   </Content>
 
-  <!-- ═══════════════════════════════════════════
-       STATS
-  ══════════════════════════════════════════════ -->
+  <!-- STATS -->
   <Stats
     stats={[
       { title: 'Tahun Pengalaman Keuangan', amount: '15+' },
       { title: 'Fokus Operasional F&B', amount: '5 Thn' },
-      { title: 'Sistem Keuangan Dirapikan', amount: '20+' },
+      { title: 'Tipe Bisnis F&B Ditangani', amount: '4' },
       { title: 'Kota di Bali Dilayani', amount: '6' },
     ]}
   />
 
-  <!-- ═══════════════════════════════════════════
-       BLOG
-  ══════════════════════════════════════════════ -->
+  <!-- BLOG -->
   <BlogLatestPosts
     title="Edukasi Gratis untuk Owner F&B"
-    information="Artikel praktis seputar keuangan, pajak, dan HPP khusus bisnis kuliner. Langsung bisa diterapkan — tidak perlu background akuntansi."
+    information="Artikel praktis seputar keuangan, pajak, dan HPP khusus bisnis kuliner. Ditulis untuk owner, bukan untuk akuntan."
   />
 
-  <!-- ═══════════════════════════════════════════
-       FAQ
-  ══════════════════════════════════════════════ -->
+  <!-- FAQ -->
   <FAQs
     title="Pertanyaan yang Sering Ditanyakan"
     tagline="FAQ"
@@ -316,47 +290,44 @@ const metadata = {
       {
         title: 'Apakah bisa konsultasi secara online?',
         description:
-          'Ya, semua layanan bisa dilakukan remote via WhatsApp atau Zoom. Siap melayani klien di Bali, Jakarta, Surabaya dan kota lainnya di Indonesia.',
+          'Ya. Semua layanan bisa dilakukan remote via WhatsApp atau Zoom. Siap melayani klien dari seluruh Indonesia.',
       },
       {
         title: 'Melayani area mana saja di Bali?',
         description:
-          'Tatap muka untuk area Badung dan Denpasar: Canggu, Seminyak, Kuta, Ubud, Jimbaran, Nusa Dua, Sanur. Area lain di Bali dan luar Bali via konsultasi online dengan support penuh.',
+          'Tatap muka untuk area Badung dan Denpasar: Canggu, Seminyak, Kuta, Ubud, Jimbaran, Nusa Dua, Sanur. Area lain via konsultasi online.',
       },
       {
-        title: 'Apakah cocok untuk bisnis kecil yang baru mulai?',
+        title: 'Apakah cocok untuk bisnis yang baru mulai?',
         description:
-          'Sangat cocok. Justru membangun sistem yang benar sejak awal jauh lebih mudah dan murah daripada memperbaiki yang sudah kacau.',
+          'Cocok. Membangun sistem yang benar sejak awal jauh lebih mudah daripada memperbaiki sistem yang sudah kacau.',
       },
       {
         title: 'Apakah saya perlu paham akuntansi dulu?',
         description:
-          'Tidak perlu sama sekali. Saya yang urus teknisnya. Anda cukup pahami angka-angka kunci bisnis Anda. Saya jelaskan dengan bahasa yang mudah dipahami.',
+          'Tidak perlu. Saya yang urus teknisnya. Anda cukup pahami angka-angka kunci bisnis Anda sendiri.',
       },
       {
         title: 'Berapa biaya layanannya?',
         description:
-          'Disesuaikan dengan skala bisnis dan kebutuhan Anda. Konsultasi pertama gratis. Tidak ada komitmen, tidak ada tekanan.',
+          'Disesuaikan dengan skala bisnis dan kebutuhan Anda. Konsultasi pertama gratis.',
       },
       {
         title: 'Berapa lama sebelum hasilnya terasa?',
         description:
-          'Dalam 2–4 minggu pertama, sistem sudah lebih rapi. Dalam 1–3 bulan, Anda sudah punya visibilitas penuh atas kondisi keuangan bisnis.',
+          'Dalam 2 sampai 4 minggu pertama, sistem sudah lebih rapi. Dalam 1 sampai 3 bulan, Anda sudah punya gambaran penuh atas kondisi keuangan bisnis.',
       },
     ]}
   />
 
-  <!-- Link ke FAQ lengkap -->
-<div class="text-center py-6 relative z-10">
-  <p class="text-slate-500 dark:text-slate-400 text-sm">
-    Masih ada pertanyaan?
-    <a href="/faq" class="text-primary font-semibold hover:underline ml-1">Lihat 20+ FAQ lengkap →</a>
-  </p>
-</div>
+  <div class="text-center py-6 relative z-10">
+    <p class="text-slate-500 dark:text-slate-400 text-sm">
+      Masih ada pertanyaan?
+      <a href="/faq" class="text-primary font-semibold hover:underline ml-1">Lihat 20+ FAQ lengkap &rarr;</a>
+    </p>
+  </div>
 
-  <!-- ═══════════════════════════════════════════
-       CTA FINAL
-  ══════════════════════════════════════════════ -->
+  <!-- CTA FINAL -->
   <CallToAction
     actions={[
       {
@@ -373,94 +344,91 @@ const metadata = {
     ]}
   >
     <Fragment slot="title">
-      Jangan Biarkan Keuangan yang Berantakan<br class="block sm:hidden" />
-      <span class="sm:whitespace-nowrap"> Menghambat Pertumbuhan Bisnis Anda</span>
+      Sudah Waktunya Bisnis Anda<br class="block sm:hidden" />
+      <span class="sm:whitespace-nowrap"> Punya Sistem Keuangan yang Jelas</span>
     </Fragment>
     <Fragment slot="subtitle">
-      Dengan sistem yang tepat, Anda fokus ke menu, tim dan pelanggan. <br class="hidden md:inline" />
-      Sementara saya bantu handle angka dan kepatuhan pajak.
+      Anda fokus ke menu, tim, dan pelanggan.<br class="hidden md:inline" />
+      Angka dan kepatuhan pajak, saya yang handle.
     </Fragment>
   </CallToAction>
 
-  <!-- ═══════════════════════════════════════════
-     KALKULATOR SCRIPT
-══════════════════════════════════════════════ -->
-<script is:inline>
-  document.getElementById('calcBtn').addEventListener('click', function () {
-    const omzetVal = parseFloat(document.getElementById('omzet').value);
-    const hppVal = parseFloat(document.getElementById('hpp').value);
-    const resultDiv = document.getElementById('result');
-    const resultIcon = document.getElementById('resultIcon');
-    const resultStatus = document.getElementById('resultStatus');
-    const resultText = document.getElementById('resultText');
-    const resultAction = document.getElementById('resultAction');
+  <!-- KALKULATOR SCRIPT -->
+  <script is:inline>
+    document.getElementById('calcBtn').addEventListener('click', function () {
+      var omzetVal = parseFloat(document.getElementById('omzet').value);
+      var hppVal = parseFloat(document.getElementById('hpp').value);
+      var resultDiv = document.getElementById('result');
+      var resultIcon = document.getElementById('resultIcon');
+      var resultStatus = document.getElementById('resultStatus');
+      var resultText = document.getElementById('resultText');
+      var resultAction = document.getElementById('resultAction');
 
-    if (!omzetVal || !hppVal || omzetVal <= 0 || hppVal <= 0 || hppVal > 100) {
-      resultDiv.className = 'mt-6 rounded-xl p-5 border-l-4 bg-yellow-50 dark:bg-yellow-900/20 border-yellow-400';
-      resultIcon.textContent = '⚠️';
-      resultStatus.textContent = 'Data belum lengkap';
-      resultStatus.className = 'font-bold text-base mb-1 text-yellow-700 dark:text-yellow-300';
-      resultText.textContent = 'Masukkan omzet bulanan dan persentase HPP Anda terlebih dahulu.';
-      resultAction.textContent = '';
+      if (!omzetVal || !hppVal || omzetVal <= 0 || hppVal <= 0 || hppVal > 100) {
+        resultDiv.className = 'mt-6 rounded-xl p-5 border-l-4 bg-yellow-50 dark:bg-yellow-900/20 border-yellow-400';
+        resultIcon.textContent = '\u26A0\uFE0F';
+        resultStatus.textContent = 'Data belum lengkap';
+        resultStatus.className = 'font-bold text-base mb-1 text-yellow-700 dark:text-yellow-300';
+        resultText.textContent = 'Masukkan omzet bulanan dan persentase HPP Anda terlebih dahulu.';
+        resultAction.textContent = '';
+        resultDiv.classList.remove('hidden');
+        return;
+      }
+
+      var biayaHPP = omzetVal * (hppVal / 100);
+      var sisaSetelahHPP = omzetVal - biayaHPP;
+
+      function formatRp(n) {
+        return 'Rp ' + Math.round(n).toLocaleString('id-ID');
+      }
+
+      var icon, status, statusClass, text, action;
+
+      if (hppVal <= 28) {
+        icon = '\uD83D\uDFE2';
+        statusClass = 'font-bold text-base mb-1 text-green-700 dark:text-green-300';
+        status = 'HPP Sangat Efisien';
+        text = 'Dari omzet ' + formatRp(omzetVal) + ', biaya bahan baku Anda ' + formatRp(biayaHPP) + ' (' + hppVal + '%). Sisa ' + formatRp(sisaSetelahHPP) + ' untuk menutup biaya operasional lain dan profit. HPP Anda di bawah standar industri. Fokus selanjutnya: pastikan biaya operasional lain juga terkontrol.';
+        action = '\u2705 Langkah selanjutnya: optimalkan biaya tenaga kerja dan overhead untuk maksimalkan profit bersih.';
+        resultDiv.className = 'mt-6 rounded-xl p-5 border-l-4 bg-green-50 dark:bg-green-900/20 border-green-400';
+      } else if (hppVal <= 35) {
+        icon = '\uD83D\uDD35';
+        statusClass = 'font-bold text-base mb-1 text-blue-700 dark:text-blue-300';
+        status = 'HPP Normal — Masih Sehat';
+        text = 'Dari omzet ' + formatRp(omzetVal) + ', biaya bahan baku Anda ' + formatRp(biayaHPP) + ' (' + hppVal + '%). Sisa ' + formatRp(sisaSetelahHPP) + ' untuk biaya operasional dan profit. HPP Anda berada di kisaran sehat (28-35% untuk restoran dan cafe).';
+        action = '\uD83D\uDCA1 Langkah selanjutnya: audit menu untuk tahu menu mana yang paling menguntungkan.';
+        resultDiv.className = 'mt-6 rounded-xl p-5 border-l-4 bg-blue-50 dark:bg-blue-900/20 border-blue-400';
+      } else if (hppVal <= 45) {
+        icon = '\uD83D\uDFE1';
+        statusClass = 'font-bold text-base mb-1 text-yellow-700 dark:text-yellow-300';
+        status = 'HPP Di Atas Normal — Perlu Perhatian';
+        text = 'Dari omzet ' + formatRp(omzetVal) + ', biaya bahan baku Anda ' + formatRp(biayaHPP) + ' (' + hppVal + '%). Dengan HPP ' + hppVal + '%, margin Anda menyempit. Ada potensi kebocoran di pembelian bahan baku, porsi, atau waste yang belum terkontrol.';
+        action = '\u26A1 Disarankan: audit porsi dan supplier sekarang sebelum margin terus terkikis.';
+        resultDiv.className = 'mt-6 rounded-xl p-5 border-l-4 bg-yellow-50 dark:bg-yellow-900/20 border-yellow-400';
+      } else {
+        icon = '\uD83D\uDD34';
+        statusClass = 'font-bold text-base mb-1 text-red-700 dark:text-red-300';
+        status = 'HPP Kritis — Bisnis Berpotensi Rugi';
+        text = 'Dari omzet ' + formatRp(omzetVal) + ', biaya bahan baku saja sudah ' + formatRp(biayaHPP) + ' (' + hppVal + '%). Dengan HPP di atas 45%, sangat sulit menutup biaya operasional lain seperti sewa, gaji, dan listrik. Ini sinyal darurat yang perlu ditangani segera.';
+        action = '\uD83D\uDEA8 Segera konsultasikan kondisi ini. Jangan tunggu sampai cash flow makin kritis.';
+        resultDiv.className = 'mt-6 rounded-xl p-5 border-l-4 bg-red-50 dark:bg-red-900/20 border-red-400';
+      }
+
+      resultIcon.textContent = icon;
+      resultStatus.textContent = status;
+      resultStatus.className = statusClass;
+      resultText.textContent = text;
+
+      var omzetFormatted = Math.round(omzetVal).toLocaleString('id-ID');
+
+      if (hppVal > 35) {
+        resultAction.innerHTML = action + ' <a href="https://wa.me/628213141688?text=Halo%20Guslan,%20HPP%20saya%20' + hppVal + '%25%20dari%20omzet%20' + omzetFormatted + ',%20saya%20butuh%20bantuan" target="_blank" rel="noopener noreferrer" class="block mt-2 text-primary font-semibold hover:underline">Diskusi dengan Guslan sekarang &rarr;</a>';
+      } else {
+        resultAction.innerHTML = action + ' <a href="https://wa.me/628213141688?text=Halo%20Guslan,%20HPP%20saya%20' + hppVal + '%25%20dan%20saya%20ingin%20optimalkan%20lebih%20lanjut" target="_blank" rel="noopener noreferrer" class="block mt-2 text-primary font-semibold hover:underline">Konsultasi lebih lanjut &rarr;</a>';
+      }
+
       resultDiv.classList.remove('hidden');
-      return;
-    }
-
-    const biayaHPP = omzetVal * (hppVal / 100);
-    const sisaSetelahHPP = omzetVal - biayaHPP;
-    const formatRp = (n) =>
-      'Rp ' + Math.round(n).toLocaleString('id-ID');
-
-    let icon, status, statusClass, text, action;
-
-    if (hppVal <= 28) {
-      icon = '🟢';
-      statusClass = 'font-bold text-base mb-1 text-green-700 dark:text-green-300';
-      status = 'HPP Sangat Efisien';
-      text = `Dari omzet ${formatRp(omzetVal)}, biaya bahan baku Anda ${formatRp(biayaHPP)} (${hppVal}%). Sisa ${formatRp(sisaSetelahHPP)} untuk menutup biaya operasional lain dan profit. HPP Anda di bawah standar industri — bagus! Fokus selanjutnya: pastikan biaya operasional lain juga terkontrol.`;
-      action = '✅ Langkah selanjutnya: optimalkan biaya tenaga kerja dan overhead untuk maksimalkan profit bersih.';
-      resultDiv.className = 'mt-6 rounded-xl p-5 border-l-4 bg-green-50 dark:bg-green-900/20 border-green-400';
-    } else if (hppVal <= 35) {
-      icon = '🔵';
-      statusClass = 'font-bold text-base mb-1 text-blue-700 dark:text-blue-300';
-      status = 'HPP Normal — Masih Sehat';
-      text = `Dari omzet ${formatRp(omzetVal)}, biaya bahan baku Anda ${formatRp(biayaHPP)} (${hppVal}%). Sisa ${formatRp(sisaSetelahHPP)} untuk biaya operasional dan profit. HPP Anda berada di kisaran sehat (28–35% untuk restoran/cafe).`;
-      action = '💡 Langkah selanjutnya: lakukan audit menu untuk tahu menu mana yang paling menguntungkan.';
-      resultDiv.className = 'mt-6 rounded-xl p-5 border-l-4 bg-blue-50 dark:bg-blue-900/20 border-blue-400';
-    } else if (hppVal <= 45) {
-      icon = '🟡';
-      statusClass = 'font-bold text-base mb-1 text-yellow-700 dark:text-yellow-300';
-      status = 'HPP Di Atas Normal — Perlu Perhatian';
-      text = `Dari omzet ${formatRp(omzetVal)}, biaya bahan baku Anda ${formatRp(biayaHPP)} (${hppVal}%). Dengan HPP ${hppVal}%, margin Anda menyempit. Ada potensi kebocoran di pembelian bahan baku, porsi, atau waste yang belum terkontrol.`;
-      action = '⚡ Disarankan: audit porsi dan supplier sekarang sebelum margin terus terkikis.';
-      resultDiv.className = 'mt-6 rounded-xl p-5 border-l-4 bg-yellow-50 dark:bg-yellow-900/20 border-yellow-400';
-    } else {
-      icon = '🔴';
-      statusClass = 'font-bold text-base mb-1 text-red-700 dark:text-red-300';
-      status = 'HPP Kritis — Bisnis Berpotensi Rugi';
-      text = `Dari omzet ${formatRp(omzetVal)}, biaya bahan baku saja sudah ${formatRp(biayaHPP)} (${hppVal}%). Dengan HPP di atas 45%, sangat sulit menutup biaya operasional lain seperti sewa, gaji, dan listrik. Ini sinyal darurat yang perlu ditangani segera.`;
-      action = '🚨 Segera konsultasikan kondisi ini — jangan tunggu sampai cash flow makin kritis.';
-      resultDiv.className = 'mt-6 rounded-xl p-5 border-l-4 bg-red-50 dark:bg-red-900/20 border-red-400';
-    }
-
-    resultIcon.textContent = icon;
-    resultStatus.textContent = status;
-    resultStatus.className = statusClass;
-    resultText.textContent = text;
-
-    // Untuk kondisi kuning dan merah, tampilkan link WA
-    if (hppVal > 35) {
-      resultAction.innerHTML =
-        action +
-        ` <a href="https://wa.me/628213141688?text=Halo%20Guslan,%20HPP%20saya%20${hppVal}%25%20dari%20omzet%20${Math.round(omzetVal).toLocaleString('id-ID')},%20saya%20butuh%20bantuan" target="_blank" rel="noopener noreferrer" class="block mt-2 text-primary font-semibold hover:underline">Diskusi dengan Guslan sekarang →</a>`;
-    } else {
-      resultAction.innerHTML =
-        action +
-        ` <a href="https://wa.me/628213141688?text=Halo%20Guslan,%20HPP%20saya%20${hppVal}%25%20dan%20saya%20ingin%20optimalkan%20lebih%20lanjut" target="_blank" rel="noopener noreferrer" class="block mt-2 text-primary font-semibold hover:underline">Konsultasi lebih lanjut →</a>`;
-    }
-
-    resultDiv.classList.remove('hidden');
-  });
-</script>
+    });
+  </script>
 
 </Layout>
