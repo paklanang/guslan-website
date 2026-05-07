@@ -3,7 +3,8 @@ import Layout from '~/layouts/PageLayout.astro';
 
 const metadata = {
   title: 'Privacy Policy — Guslan Putra',
-  robots: 'noindex',
+  description: 'Privacy policy website guslan.com.',
+  robots: { index: false, follow: false },  // ✅ FIX: object, bukan string
 };
 ---
 
