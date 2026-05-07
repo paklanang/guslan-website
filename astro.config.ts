@@ -24,6 +24,7 @@ const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroInteg
 export default defineConfig({
   site: "https://guslan.com",
   output: 'static',
+  trailingSlash: 'never',        // ✅ TAMBAHAN 1: fix redirect 308 → 301
 
   integrations: [
     tailwind({
