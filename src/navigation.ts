@@ -1,4 +1,3 @@
-import type { Icon } from 'astro-icon/components';
 import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
 
 export const headerData = {

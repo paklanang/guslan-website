@@ -357,13 +357,13 @@ const metadata = {
   <!-- KALKULATOR SCRIPT -->
   <script is:inline>
     document.getElementById('calcBtn').addEventListener('click', function () {
-      var omzetVal = parseFloat(document.getElementById('omzet').value);
-      var hppVal = parseFloat(document.getElementById('hpp').value);
-      var resultDiv = document.getElementById('result');
-      var resultIcon = document.getElementById('resultIcon');
-      var resultStatus = document.getElementById('resultStatus');
-      var resultText = document.getElementById('resultText');
-      var resultAction = document.getElementById('resultAction');
+      const omzetVal = parseFloat(document.getElementById('omzet').value);
+      const hppVal = parseFloat(document.getElementById('hpp').value);
+      const resultDiv = document.getElementById('result');
+      const resultIcon = document.getElementById('resultIcon');
+      const resultStatus = document.getElementById('resultStatus');
+      const resultText = document.getElementById('resultText');
+      const resultAction = document.getElementById('resultAction');
 
       if (!omzetVal || !hppVal || omzetVal <= 0 || hppVal <= 0 || hppVal > 100) {
         resultDiv.className = 'mt-6 rounded-xl p-5 border-l-4 bg-yellow-50 dark:bg-yellow-900/20 border-yellow-400';
@@ -376,14 +376,14 @@ const metadata = {
         return;
       }
 
-      var biayaHPP = omzetVal * (hppVal / 100);
-      var sisaSetelahHPP = omzetVal - biayaHPP;
+      const biayaHPP = omzetVal * (hppVal / 100);
+      const sisaSetelahHPP = omzetVal - biayaHPP;
 
       function formatRp(n) {
         return 'Rp ' + Math.round(n).toLocaleString('id-ID');
       }
 
-      var icon, status, statusClass, text, action;
+      let icon, status, statusClass, text, action;
 
       if (hppVal <= 28) {
         icon = '\uD83D\uDFE2';
@@ -420,7 +420,7 @@ const metadata = {
       resultStatus.className = statusClass;
       resultText.textContent = text;
 
-      var omzetFormatted = Math.round(omzetVal).toLocaleString('id-ID');
+      const omzetFormatted = Math.round(omzetVal).toLocaleString('id-ID');
 
       if (hppVal > 35) {
         resultAction.innerHTML = action + ' <a href="https://wa.me/628213141688?text=Halo%20Guslan,%20HPP%20saya%20' + hppVal + '%25%20dari%20omzet%20' + omzetFormatted + ',%20saya%20butuh%20bantuan" target="_blank" rel="noopener noreferrer" class="block mt-2 text-primary font-semibold hover:underline">Diskusi dengan Guslan sekarang &rarr;</a>';

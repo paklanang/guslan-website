@@ -201,7 +201,7 @@
           </div>
         </div>
         <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed flex-1">
-          Hasil ini hanya simulasi 1 menu. Ingin mengunci profit seluruh outlet Anda dan melihat BCG Matrix (Menu Star/Dog) secara otomatis? Gunakan <strong class="text-slate-700 dark:text-slate-200">Guslan Cost Engine Enterprise.</strong>
+          Hasil ini hanya simulasi 1 menu. Ingin mengunci profit seluruh outlet Anda dan melihat BCG Matrix (Menu Star/Dog) secara otomatis? Gunakan <strong class="text-slate-700 dark:text-slate-200">Guslan Cost Engine.</strong>
         </p>
         <a href="https://wa.me/628213141688?text=Halo%20Guslan%2C%20saya%20tertarik%20dengan%20Guslan%20Cost%20Engine%20Enterprise"
           target="_blank" rel="noopener noreferrer"
@@ -259,22 +259,22 @@
 <script is:inline>
 (function () {
 
-  var ingredients = [];
-  var MAX = 7;
-  var _lastCalc = { baseCost:0, totalHpp:0, fcPct:null, grossMargin:null, waste:2, sellPrice:0 };
+  const ingredients = [];
+  const MAX = 7;
+  let _lastCalc = { baseCost:0, totalHpp:0, fcPct:null, grossMargin:null, waste:2, sellPrice:0 };
 
   /* UTILS */
-  function toRaw(s) { var n=parseInt(String(s).replace(/\./g,'').replace(/[^0-9]/g,'')); return isNaN(n)?0:n; }
+  function toRaw(s) { const n=parseInt(String(s).replace(/\./g,'').replace(/[^0-9]/g,'')); return isNaN(n)?0:n; }
   function fmtK(n)  { return n>0?n.toLocaleString('id-ID'):''; }
   function fmtD(n)  { return 'Rp'+Math.round(n).toLocaleString('id-ID'); }
   function pct(n)   { return n.toFixed(1)+'%'; }
   function el(id)   { return document.getElementById(id); }
-  function setTxt(id,v){ var e=el(id); if(e) e.textContent=v; }
+  function setTxt(id,v){ const e=el(id); if(e) e.textContent=v; }
 
   /* SLIDER */
   function syncSlider() {
-    var s=el('wasteSlider'); if(!s) return;
-    var p=((parseFloat(s.value)-1)/4)*100;
+    const s=el('wasteSlider'); if(!s) return;
+    const p=((parseFloat(s.value)-1)/4)*100;
     s.style.setProperty('--val',p.toFixed(1)+'%');
     setTxt('wasteVal',s.value+'%');
   }
@@ -285,25 +285,25 @@
 
   /* CREATE CARD */
   function createCard(idx) {
-    var card=document.createElement('div');
+    const card=document.createElement('div');
     card.id='card-'+idx;
     card.style.cssText='padding:12px 16px;';
 
-    var titleRow=document.createElement('div');
+    const titleRow=document.createElement('div');
     titleRow.style.cssText='display:flex;align-items:center;gap:8px;margin-bottom:8px;';
 
-    var badge=document.createElement('span');
+    const badge=document.createElement('span');
     badge.style.cssText='width:20px;height:20px;border-radius:50%;background:#0074D9;color:white;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;';
     badge.textContent=idx+1;
 
-    var nameInp=document.createElement('input');
+    const nameInp=document.createElement('input');
     nameInp.type='text';
     nameInp.placeholder='Nama bahan (contoh: Ayam Utuh)';
     nameInp.className='hpp-field-input';
     nameInp.style.cssText='flex:1;font-size:12px;font-weight:600;';
     nameInp.dataset.idx=idx; nameInp.dataset.field='nama';
 
-    var rmBtn=document.createElement('button');
+    const rmBtn=document.createElement('button');
     rmBtn.type='button'; rmBtn.dataset.remove=idx;
     rmBtn.setAttribute('aria-label','Hapus bahan '+(idx+1));
     rmBtn.style.cssText='width:24px;height:24px;display:flex;align-items:center;justify-content:center;background:#fee2e2;border:none;cursor:pointer;color:#ef4444;border-radius:6px;flex-shrink:0;transition:background .15s;';
@@ -315,14 +315,14 @@
     titleRow.appendChild(nameInp);
     titleRow.appendChild(rmBtn);
 
-    var grid=document.createElement('div');
+    const grid=document.createElement('div');
     grid.style.cssText='display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-left:28px;';
 
     function makeField(labelTxt,field,ph,isK){
-      var wrap=document.createElement('div');
-      var lbl=document.createElement('label');
+      const wrap=document.createElement('div');
+      const lbl=document.createElement('label');
       lbl.className='hpp-field-label'; lbl.textContent=labelTxt;
-      var inp=document.createElement('input');
+      const inp=document.createElement('input');
       inp.type='text'; inp.inputMode='numeric'; inp.placeholder=ph;
       inp.className='hpp-field-input';
       inp.dataset.idx=idx; inp.dataset.field=field; inp.dataset.isK=isK?'1':'0';
@@ -330,15 +330,15 @@
       return {wrap:wrap,inp:inp};
     }
 
-    var harga =makeField('Harga Beli (Rp)','hargaBeli','35.000',true);
-    var berat =makeField('Berat Kotor (gr)','beratKotor','1.000',true);
-    var yield_=makeField('Yield %','yield','100',false);
-    var qty   =makeField('Qty / Porsi (gr)','qty','200',false);
+    const harga =makeField('Harga Beli (Rp)','hargaBeli','35.000',true);
+    const berat =makeField('Berat Kotor (gr)','beratKotor','1.000',true);
+    const yield_=makeField('Yield %','yield','100',false);
+    const qty   =makeField('Qty / Porsi (gr)','qty','200',false);
 
     grid.appendChild(harga.wrap); grid.appendChild(berat.wrap);
     grid.appendChild(yield_.wrap); grid.appendChild(qty.wrap);
 
-    var sub=document.createElement('div');
+    const sub=document.createElement('div');
     sub.id='sub-'+idx;
     sub.style.cssText='margin-left:28px;margin-top:6px;font-size:10px;color:#64748b;background:#f1f5f9;border-radius:6px;padding:4px 10px;display:none;';
 
@@ -347,11 +347,11 @@
   }
 
   function updateSubtext(idx){
-    var ing=ingredients[idx], sub=el('sub-'+idx);
+    const ing=ingredients[idx], sub=el('sub-'+idx);
     if(!sub||!ing) return;
     if(ing.hargaBeli>0&&ing.beratKotor>0&&ing.yield>0&&ing.qty>0){
-      var eff=(ing.hargaBeli/ing.beratKotor)/(ing.yield/100);
-      var used=eff*ing.qty;
+      const eff=(ing.hargaBeli/ing.beratKotor)/(ing.yield/100);
+      const used=eff*ing.qty;
       sub.style.display='block';
       sub.innerHTML='<span style="color:#0074D9;font-weight:700;">Eff. Cost:</span> Rp'+Math.round(eff).toLocaleString('id-ID')+'/gr &nbsp;&nbsp;<span style="color:#0074D9;font-weight:700;">Cost Dipakai:</span> <strong>Rp'+Math.round(used).toLocaleString('id-ID')+'</strong>';
     } else { sub.style.display='none'; }
@@ -359,17 +359,17 @@
 
   /* CALCULATE */
   function calculate(){
-    var waste=parseFloat((el('wasteSlider')||{value:2}).value)/100;
-    var sellPrice=readRaw(el('sellingPrice'));
-    var baseCost=0;
-    for(var i=0;i<ingredients.length;i++){
-      var ing=ingredients[i];
+    const waste=parseFloat((el('wasteSlider')||{value:2}).value)/100;
+    const sellPrice=readRaw(el('sellingPrice'));
+    let baseCost=0;
+    for(let i=0;i<ingredients.length;i++){
+      const ing=ingredients[i];
       if(ing.hargaBeli>0&&ing.beratKotor>0&&ing.yield>0&&ing.qty>0)
         baseCost+=((ing.hargaBeli/ing.beratKotor)/(ing.yield/100))*ing.qty;
     }
-    var totalHpp=baseCost*(1+waste);
-    var fcPct=sellPrice>0?(totalHpp/sellPrice)*100:null;
-    var grossMargin=sellPrice>0?sellPrice-totalHpp:null;
+    const totalHpp=baseCost*(1+waste);
+    const fcPct=sellPrice>0?(totalHpp/sellPrice)*100:null;
+    const grossMargin=sellPrice>0?sellPrice-totalHpp:null;
 
     _lastCalc={baseCost:baseCost,totalHpp:totalHpp,fcPct:fcPct,grossMargin:grossMargin,waste:waste*100,sellPrice:sellPrice};
 
@@ -378,14 +378,14 @@
     setTxt('foodCostPct',fcPct!==null?pct(fcPct):'-');
     setTxt('grossMargin',grossMargin!==null?fmtD(grossMargin):'-');
 
-    var sc=el('statusCard'),sl=el('statusLabel'),rc=el('recoCard'),rt=el('recoText');
+    const sc=el('statusCard'),sl=el('statusLabel'),rc=el('recoCard'),rt=el('recoText');
     if(fcPct===null||baseCost===0){
       if(sc) sc.className='status-default';
       if(sl){sl.innerHTML='Masukkan bahan dan harga jual untuk melihat diagnosis menu Anda.';sl.style.color='rgba(255,255,255,.8)';}
       if(rc) rc.classList.add('hidden');
       return;
     }
-    var status,cls,icon,reco;
+    let status,cls,icon,reco;
     if(fcPct<=30){
       status='GOOD';cls='status-good';
       icon='<svg viewBox="0 0 18 18" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:5px" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 9l4 4 8-8"/></svg>';
@@ -409,21 +409,21 @@
   }
 
   function updateHint(){
-    var n=ingredients.length;
+    const n=ingredients.length;
     setTxt('ingredientHint',n+'/7 bahan ditambahkan.');
-    var badge=el('hppBadge'); if(badge) badge.textContent=n+' bahan';
-    var btn=el('addIngredientBtn');
+    const badge=el('hppBadge'); if(badge) badge.textContent=n+' bahan';
+    const btn=el('addIngredientBtn');
     if(btn){btn.disabled=n>=MAX;btn.style.opacity=n>=MAX?'.4':'1';btn.style.cursor=n>=MAX?'not-allowed':'pointer';}
   }
 
   function renderCards(){
-    var container=el('ingredientCards'),empty=el('emptyState');
+    const container=el('ingredientCards'),empty=el('emptyState');
     container.innerHTML='';
     if(!ingredients.length){if(empty) empty.style.display='';updateHint();return;}
     if(empty) empty.style.display='none';
-    for(var i=0;i<ingredients.length;i++){
-      var card=createCard(i),ing=ingredients[i];
-      var inps=card.querySelectorAll('input');
+    for(let i=0;i<ingredients.length;i++){
+      const card=createCard(i),ing=ingredients[i];
+      const inps=card.querySelectorAll('input');
       inps[0].value=ing.nama||'';
       inps[1].value=fmtK(ing.hargaBeli);
       inps[2].value=fmtK(ing.beratKotor);
@@ -438,30 +438,30 @@
   function addIngredient(){
     if(ingredients.length>=MAX) return;
     ingredients.push({nama:'',hargaBeli:0,beratKotor:0,yield:100,qty:0});
-    var container=el('ingredientCards'),empty=el('emptyState');
+    const container=el('ingredientCards'),empty=el('emptyState');
     if(empty) empty.style.display='none';
-    var idx=ingredients.length-1,card=createCard(idx);
+    const idx=ingredients.length-1,card=createCard(idx);
     container.appendChild(card);
     updateHint();
     setTimeout(function(){
-      var c=el('card-'+idx);
-      if(c){var inp=c.querySelector('input');if(inp) inp.focus();c.scrollIntoView({behavior:'smooth',block:'nearest'});}
+      const c=el('card-'+idx);
+      if(c){const inp=c.querySelector('input');if(inp) inp.focus();c.scrollIntoView({behavior:'smooth',block:'nearest'});}
     },30);
   }
 
   function removeIngredient(idx){ingredients.splice(idx,1);renderCards();calculate();}
 
   function onCardInput(e){
-    var inp=e.target;
+    const inp=e.target;
     if(!inp.dataset||!inp.dataset.field) return;
-    var idx=parseInt(inp.dataset.idx,10),field=inp.dataset.field;
+    const idx=parseInt(inp.dataset.idx,10),field=inp.dataset.field;
     if(isNaN(idx)||!ingredients[idx]) return;
     if(field==='nama'){
       ingredients[idx].nama=inp.value;
     } else if(inp.dataset.isK==='1'){
       ingredients[idx][field]=toRaw(inp.value);
     } else {
-      var num=parseFloat(inp.value)||0;
+      let num=parseFloat(inp.value)||0;
       if(field==='yield'&&num>100){num=100;inp.value='100';}
       ingredients[idx][field]=num;
     }
@@ -470,35 +470,35 @@
   }
 
   function onCardBlur(e){
-    var inp=e.target;
+    const inp=e.target;
     if(!inp.dataset||inp.dataset.isK!=='1') return;
     inp.value=fmtK(toRaw(inp.value));
   }
 
   function onCardClick(e){
-    var btn=e.target.closest('[data-remove]');
+    const btn=e.target.closest('[data-remove]');
     if(btn) removeIngredient(parseInt(btn.dataset.remove,10));
   }
 
   /* MODAL */
-  function openModal(){var m=el('leadModal');if(m){m.classList.remove('hidden');m.classList.add('flex');}}
-  function closeModal(){var m=el('leadModal');if(m){m.classList.add('hidden');m.classList.remove('flex');}}
+  function openModal(){const m=el('leadModal');if(m){m.classList.remove('hidden');m.classList.add('flex');}}
+  function closeModal(){const m=el('leadModal');if(m){m.classList.add('hidden');m.classList.remove('flex');}}
 
   /* ═══════════════════════════════════════
      jsPDF GENERATOR - 1 halaman A4 summary
      ═══════════════════════════════════════ */
-  function generatePDF(leadName, leadBiz, leadContact) {
-    var jsPDF = window.jspdf ? window.jspdf.jsPDF : (window.jsPDF);
+  function generatePDF(leadName, leadBiz, _leadContact) {
+    const jsPDF = window.jspdf ? window.jspdf.jsPDF : (window.jsPDF);
     if (!jsPDF) { alert('PDF library belum siap. Coba lagi dalam 2 detik.'); return; }
 
-    var doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
-    var menuName = (el('menuName')||{value:''}).value || 'Resep HPP';
-    var calc     = _lastCalc;
-    var dateStr  = new Date().toLocaleDateString('id-ID',{year:'numeric',month:'long',day:'numeric'});
-    var W = 210, margin = 14, contentW = W - margin * 2;
+    const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+    const menuName = (el('menuName')||{value:''}).value || 'Resep HPP';
+    const calc     = _lastCalc;
+    const dateStr  = new Date().toLocaleDateString('id-ID',{year:'numeric',month:'long',day:'numeric'});
+    const W = 210, margin = 14, contentW = W - margin * 2;
 
     // STATUS color
-    var statusTxt, statusColor;
+    let statusTxt, statusColor;
     if (calc.fcPct === null || calc.baseCost === 0) {
       statusTxt = '-'; statusColor = [100,116,139];
     } else if (calc.fcPct <= 30) {
@@ -509,7 +509,7 @@
       statusTxt = 'DANGER';  statusColor = [220,38,38];
     }
 
-    var y = margin;
+    let y = margin;
 
     // ── HEADER BAR ──
     doc.setFillColor(0, 116, 217);
@@ -547,7 +547,7 @@
     doc.setFontSize(8);
     doc.setFont('helvetica','normal');
     doc.setTextColor(100, 116, 139);
-    var metaParts = [];
+    const metaParts = [];
     if (leadBiz)     metaParts.push('Bisnis: ' + leadBiz);
     if (leadName)    metaParts.push('Oleh: ' + leadName);
     metaParts.push('Dicetak: ' + dateStr);
@@ -561,12 +561,12 @@
     y += 6;
 
     // ── BAHAN TABLE ──
-    var tableRows = [];
-    for (var i = 0; i < ingredients.length; i++) {
-      var ing = ingredients[i];
+    const tableRows = [];
+    for (let i = 0; i < ingredients.length; i++) {
+      const ing = ingredients[i];
       if (ing.hargaBeli > 0 && ing.beratKotor > 0 && ing.yield > 0 && ing.qty > 0) {
-        var eff  = (ing.hargaBeli / ing.beratKotor) / (ing.yield / 100);
-        var cost = eff * ing.qty;
+        const eff  = (ing.hargaBeli / ing.beratKotor) / (ing.yield / 100);
+        const cost = eff * ing.qty;
         tableRows.push([
           (ing.nama || 'Bahan '+(i+1)),
           'Rp' + ing.hargaBeli.toLocaleString('id-ID'),
@@ -606,9 +606,9 @@
     y = doc.lastAutoTable.finalY + 7;
 
     // ── SUMMARY BOXES (2x3 grid) ──
-    var boxW = (contentW - 6) / 3;
-    var boxH = 18;
-    var boxes = [
+    const boxW = (contentW - 6) / 3;
+    const boxH = 18;
+    const boxes = [
       { label: 'BASE RECIPE COST',    val: fmtD(calc.baseCost),    col: [248,250,252], valCol: [15,23,42] },
       { label: 'INVISIBLE WASTE ('+calc.waste.toFixed(0)+'%)', val: '+ '+fmtD(calc.baseCost * calc.waste / 100), col: [255,247,237], valCol: [217,119,6] },
       { label: 'TOTAL HPP + WASTE',   val: fmtD(calc.totalHpp),    col: [239,246,255], valCol: [0,116,217] },
@@ -617,10 +617,10 @@
       { label: 'GROSS MARGIN/PORSI',  val: calc.grossMargin !== null ? fmtD(calc.grossMargin) : '-', col: [255,255,255], valCol: statusColor }
     ];
 
-    for (var b = 0; b < boxes.length; b++) {
-      var bx = margin + (b % 3) * (boxW + 3);
-      var by = y + Math.floor(b / 3) * (boxH + 3);
-      var box = boxes[b];
+    for (let b = 0; b < boxes.length; b++) {
+      const bx = margin + (b % 3) * (boxW + 3);
+      const by = y + Math.floor(b / 3) * (boxH + 3);
+      const box = boxes[b];
 
       doc.setFillColor(box.col[0], box.col[1], box.col[2]);
       doc.setDrawColor(226, 232, 240);
@@ -642,18 +642,18 @@
 
     // ── REKOMENDASI ──
     if (calc.fcPct !== null) {
-      var reco = '';
+      let reco = '';
       if (calc.fcPct <= 30) reco = 'Food cost Anda sehat di bawah 30%. Pertahankan kontrol bahan baku dan lakukan review HPP setiap bulan agar tetap di zona aman.';
       else if (calc.fcPct <= 40) reco = 'Food cost mendekati batas atas. Pertimbangkan negosiasi harga bahan baku, perkecil porsi bertahap atau naikkan harga jual 5-10%.';
       else reco = 'Food cost di atas 40% berarti setiap penjualan menggerus profit Anda. Audit bahan baku sekarang dan konsultasikan dengan kami untuk solusi cepat.';
 
       // Hitung tinggi dinamis berdasarkan panjang teks
       doc.setFontSize(7);
-      var recoLines = doc.splitTextToSize(reco, contentW - 6);
-      var recoH = 8 + (recoLines.length * 4);
+      const recoLines = doc.splitTextToSize(reco, contentW - 6);
+      const recoH = 8 + (recoLines.length * 4);
 
       // Background box: warna terang sesuai status (bukan alpha transparan)
-      var recoBg;
+      let recoBg;
       if (calc.fcPct <= 30)       recoBg = [240, 253, 244]; // hijau muda
       else if (calc.fcPct <= 40)  recoBg = [255, 251, 235]; // kuning muda
       else                        recoBg = [254, 242, 242]; // merah muda
@@ -692,16 +692,16 @@
     doc.text('wa.me/628213141688', W - margin - 3, y + 10, { align: 'right' });
 
     // ── SAVE ──
-    var safeName = menuName.replace(/[^a-zA-Z0-9\s]/g,'').trim().replace(/\s+/g,'-') || 'HPP';
+    const safeName = menuName.replace(/[^a-zA-Z0-9\s]/g,'').trim().replace(/\s+/g,'-') || 'HPP';
     doc.save('Guslan-HPP-' + safeName + '.pdf');
   }
 
   /* LEAD */
   function handleLeadSubmit(){
-    var name    = (el('leadName')||{value:''}).value.trim();
-    var contact = (el('leadContact')||{value:''}).value.trim();
-    var biz     = (el('leadBusiness')||{value:''}).value.trim();
-    var errEl   = el('leadError');
+    const name    = (el('leadName')||{value:''}).value.trim();
+    const contact = (el('leadContact')||{value:''}).value.trim();
+    const biz     = (el('leadBusiness')||{value:''}).value.trim();
+    const errEl   = el('leadError');
     if(!name||!contact){
       if(errEl){errEl.textContent='Nama dan WhatsApp/Email wajib diisi.';errEl.classList.remove('hidden');}
       return;
@@ -716,28 +716,36 @@
     syncSlider();
     updateHint();
 
-    var slider=el('wasteSlider');
+    const slider=el('wasteSlider');
     if(slider) slider.addEventListener('input',function(){syncSlider();calculate();});
 
-    var sp=el('sellingPrice');
+    const sp=el('sellingPrice');
     if(sp){
       sp.addEventListener('input',function(){calculate();});
       sp.addEventListener('blur',function(){applyFmtBlur(sp);calculate();});
     }
 
-    el('addIngredientBtn')&&el('addIngredientBtn').addEventListener('click',addIngredient);
+    const addBtn = el('addIngredientBtn');
+    if(addBtn) addBtn.addEventListener('click', addIngredient);
 
-    var cards=el('ingredientCards');
+    const cards = el('ingredientCards');
     if(cards){
-      cards.addEventListener('input',onCardInput);
-      cards.addEventListener('blur',onCardBlur,true);
-      cards.addEventListener('click',onCardClick);
+      cards.addEventListener('input', onCardInput);
+      cards.addEventListener('blur', onCardBlur, true);
+      cards.addEventListener('click', onCardClick);
     }
 
-    el('downloadBtn')  &&el('downloadBtn').addEventListener('click',openModal);
-    el('modalClose')   &&el('modalClose').addEventListener('click',closeModal);
-    el('modalOverlay') &&el('modalOverlay').addEventListener('click',closeModal);
-    el('leadSubmit')   &&el('leadSubmit').addEventListener('click',handleLeadSubmit);
+    const downloadBtn = el('downloadBtn');
+    if(downloadBtn) downloadBtn.addEventListener('click', openModal);
+
+    const modalClose = el('modalClose');
+    if(modalClose) modalClose.addEventListener('click', closeModal);
+
+    const modalOverlay = el('modalOverlay');
+    if(modalOverlay) modalOverlay.addEventListener('click', closeModal);
+
+    const leadSubmit = el('leadSubmit');
+    if(leadSubmit) leadSubmit.addEventListener('click', handleLeadSubmit);
   }
 
   if(document.readyState==='loading'){
