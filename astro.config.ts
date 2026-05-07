@@ -15,6 +15,8 @@ import astrowind from './vendor/integration';
 
 import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehypePlugin } from './src/utils/frontmatter';
 
+import cloudflare from "@astrojs/cloudflare";
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const hasExternalScripts = false;
@@ -24,7 +26,9 @@ const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroInteg
 export default defineConfig({
   site: 'https://guslan.com',
   output: 'static',
-  trailingSlash: 'never', // ✅ TAMBAHAN 1: fix redirect 308 → 301
+
+  // ✅ TAMBAHAN 1: fix redirect 308 → 301
+  trailingSlash: 'never',
 
   integrations: [
     tailwind({
@@ -89,4 +93,6 @@ export default defineConfig({
       },
     },
   },
+
+  adapter: cloudflare()
 });
