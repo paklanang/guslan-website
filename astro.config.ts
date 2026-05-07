@@ -22,9 +22,9 @@ const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroInteg
   hasExternalScripts ? (Array.isArray(items) ? items.map((item) => item()) : [items()]) : [];
 
 export default defineConfig({
-  site: "https://guslan.com",
+  site: 'https://guslan.com',
   output: 'static',
-  trailingSlash: 'never',        // ✅ TAMBAHAN 1: fix redirect 308 → 301
+  trailingSlash: 'never', // ✅ TAMBAHAN 1: fix redirect 308 → 301
 
   integrations: [
     tailwind({

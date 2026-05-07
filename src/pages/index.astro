@@ -18,7 +18,6 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-
   <!-- HERO -->
   <Hero
     actions={[
@@ -44,7 +43,10 @@ const metadata = {
 
     <Fragment slot="subtitle">
       Masalahnya bukan di omzet. Masalahnya di sistem.
-      <span class="font-semibold">Saya bantu Anda hentikan kebocoran cash, tahu menu mana yang benar-benar untung, dan ambil keputusan bisnis tanpa feeling.</span>
+      <span class="font-semibold"
+        >Saya bantu Anda hentikan kebocoran cash, tahu menu mana yang benar-benar untung, dan ambil keputusan bisnis
+        tanpa feeling.</span
+      >
       <br />
     </Fragment>
   </Hero>
@@ -64,8 +66,7 @@ const metadata = {
     items={[
       {
         title: 'Untung di Laporan, Tapi Cash Selalu Kurang',
-        description:
-          'Akhir bulan selalu tegang: cukup nggak buat gaji, supplier, dan operasional?',
+        description: 'Akhir bulan selalu tegang: cukup nggak buat gaji, supplier, dan operasional?',
         icon: 'tabler:building-bank',
       },
       {
@@ -94,12 +95,8 @@ const metadata = {
     <div class="max-w-2xl mx-auto">
       <div class="text-center mb-10">
         <p class="text-sm font-semibold uppercase tracking-widest text-primary mb-2">Mini Health Check</p>
-        <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-3">
-          Cek HPP Bisnis F&B Anda Sekarang
-        </h2>
-        <p class="text-slate-500 dark:text-slate-400">
-          Masukkan 2 angka. Lihat langsung kondisi keuangan bisnis Anda.
-        </p>
+        <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-3">Cek HPP Bisnis F&B Anda Sekarang</h2>
+        <p class="text-slate-500 dark:text-slate-400">Masukkan 2 angka. Lihat langsung kondisi keuangan bisnis Anda.</p>
       </div>
 
       <div class="bg-white dark:bg-slate-900 rounded-2xl shadow-xl p-8 border border-slate-100 dark:border-slate-700">
@@ -254,12 +251,9 @@ const metadata = {
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Kenapa Saya Fokus di F&B?
-      </h3>
-      Karena bisnis ini unik.
-      Cash flow harian, bahan baku fluktuatif, margin tipis, dan operasional kompleks.
-      Saya tidak bekerja dengan semua industri. Saya hanya fokus di F&B.
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Kenapa Saya Fokus di F&B?</h3>
+      Karena bisnis ini unik. Cash flow harian, bahan baku fluktuatif, margin tipis, dan operasional kompleks. Saya tidak
+      bekerja dengan semua industri. Saya hanya fokus di F&B.
     </Fragment>
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
@@ -305,13 +299,11 @@ const metadata = {
       },
       {
         title: 'Apakah saya perlu paham akuntansi dulu?',
-        description:
-          'Tidak perlu. Saya yang urus teknisnya. Anda cukup pahami angka-angka kunci bisnis Anda sendiri.',
+        description: 'Tidak perlu. Saya yang urus teknisnya. Anda cukup pahami angka-angka kunci bisnis Anda sendiri.',
       },
       {
         title: 'Berapa biaya layanannya?',
-        description:
-          'Disesuaikan dengan skala bisnis dan kebutuhan Anda. Konsultasi pertama gratis.',
+        description: 'Disesuaikan dengan skala bisnis dan kebutuhan Anda. Konsultasi pertama gratis.',
       },
       {
         title: 'Berapa lama sebelum hasilnya terasa?',
@@ -389,28 +381,63 @@ const metadata = {
         icon = '\uD83D\uDFE2';
         statusClass = 'font-bold text-base mb-1 text-green-700 dark:text-green-300';
         status = 'HPP Sangat Efisien';
-        text = 'Dari omzet ' + formatRp(omzetVal) + ', biaya bahan baku Anda ' + formatRp(biayaHPP) + ' (' + hppVal + '%). Sisa ' + formatRp(sisaSetelahHPP) + ' untuk menutup biaya operasional lain dan profit. HPP Anda di bawah standar industri. Fokus selanjutnya: pastikan biaya operasional lain juga terkontrol.';
-        action = '\u2705 Langkah selanjutnya: optimalkan biaya tenaga kerja dan overhead untuk maksimalkan profit bersih.';
+        text =
+          'Dari omzet ' +
+          formatRp(omzetVal) +
+          ', biaya bahan baku Anda ' +
+          formatRp(biayaHPP) +
+          ' (' +
+          hppVal +
+          '%). Sisa ' +
+          formatRp(sisaSetelahHPP) +
+          ' untuk menutup biaya operasional lain dan profit. HPP Anda di bawah standar industri. Fokus selanjutnya: pastikan biaya operasional lain juga terkontrol.';
+        action =
+          '\u2705 Langkah selanjutnya: optimalkan biaya tenaga kerja dan overhead untuk maksimalkan profit bersih.';
         resultDiv.className = 'mt-6 rounded-xl p-5 border-l-4 bg-green-50 dark:bg-green-900/20 border-green-400';
       } else if (hppVal <= 35) {
         icon = '\uD83D\uDD35';
         statusClass = 'font-bold text-base mb-1 text-blue-700 dark:text-blue-300';
         status = 'HPP Normal — Masih Sehat';
-        text = 'Dari omzet ' + formatRp(omzetVal) + ', biaya bahan baku Anda ' + formatRp(biayaHPP) + ' (' + hppVal + '%). Sisa ' + formatRp(sisaSetelahHPP) + ' untuk biaya operasional dan profit. HPP Anda berada di kisaran sehat (28-35% untuk restoran dan cafe).';
+        text =
+          'Dari omzet ' +
+          formatRp(omzetVal) +
+          ', biaya bahan baku Anda ' +
+          formatRp(biayaHPP) +
+          ' (' +
+          hppVal +
+          '%). Sisa ' +
+          formatRp(sisaSetelahHPP) +
+          ' untuk biaya operasional dan profit. HPP Anda berada di kisaran sehat (28-35% untuk restoran dan cafe).';
         action = '\uD83D\uDCA1 Langkah selanjutnya: audit menu untuk tahu menu mana yang paling menguntungkan.';
         resultDiv.className = 'mt-6 rounded-xl p-5 border-l-4 bg-blue-50 dark:bg-blue-900/20 border-blue-400';
       } else if (hppVal <= 45) {
         icon = '\uD83D\uDFE1';
         statusClass = 'font-bold text-base mb-1 text-yellow-700 dark:text-yellow-300';
         status = 'HPP Di Atas Normal — Perlu Perhatian';
-        text = 'Dari omzet ' + formatRp(omzetVal) + ', biaya bahan baku Anda ' + formatRp(biayaHPP) + ' (' + hppVal + '%). Dengan HPP ' + hppVal + '%, margin Anda menyempit. Ada potensi kebocoran di pembelian bahan baku, porsi, atau waste yang belum terkontrol.';
+        text =
+          'Dari omzet ' +
+          formatRp(omzetVal) +
+          ', biaya bahan baku Anda ' +
+          formatRp(biayaHPP) +
+          ' (' +
+          hppVal +
+          '%). Dengan HPP ' +
+          hppVal +
+          '%, margin Anda menyempit. Ada potensi kebocoran di pembelian bahan baku, porsi, atau waste yang belum terkontrol.';
         action = '\u26A1 Disarankan: audit porsi dan supplier sekarang sebelum margin terus terkikis.';
         resultDiv.className = 'mt-6 rounded-xl p-5 border-l-4 bg-yellow-50 dark:bg-yellow-900/20 border-yellow-400';
       } else {
         icon = '\uD83D\uDD34';
         statusClass = 'font-bold text-base mb-1 text-red-700 dark:text-red-300';
         status = 'HPP Kritis — Bisnis Berpotensi Rugi';
-        text = 'Dari omzet ' + formatRp(omzetVal) + ', biaya bahan baku saja sudah ' + formatRp(biayaHPP) + ' (' + hppVal + '%). Dengan HPP di atas 45%, sangat sulit menutup biaya operasional lain seperti sewa, gaji, dan listrik. Ini sinyal darurat yang perlu ditangani segera.';
+        text =
+          'Dari omzet ' +
+          formatRp(omzetVal) +
+          ', biaya bahan baku saja sudah ' +
+          formatRp(biayaHPP) +
+          ' (' +
+          hppVal +
+          '%). Dengan HPP di atas 45%, sangat sulit menutup biaya operasional lain seperti sewa, gaji, dan listrik. Ini sinyal darurat yang perlu ditangani segera.';
         action = '\uD83D\uDEA8 Segera konsultasikan kondisi ini. Jangan tunggu sampai cash flow makin kritis.';
         resultDiv.className = 'mt-6 rounded-xl p-5 border-l-4 bg-red-50 dark:bg-red-900/20 border-red-400';
       }
@@ -423,13 +450,22 @@ const metadata = {
       const omzetFormatted = Math.round(omzetVal).toLocaleString('id-ID');
 
       if (hppVal > 35) {
-        resultAction.innerHTML = action + ' <a href="https://wa.me/628213141688?text=Halo%20Guslan,%20HPP%20saya%20' + hppVal + '%25%20dari%20omzet%20' + omzetFormatted + ',%20saya%20butuh%20bantuan" target="_blank" rel="noopener noreferrer" class="block mt-2 text-primary font-semibold hover:underline">Diskusi dengan Guslan sekarang &rarr;</a>';
+        resultAction.innerHTML =
+          action +
+          ' <a href="https://wa.me/628213141688?text=Halo%20Guslan,%20HPP%20saya%20' +
+          hppVal +
+          '%25%20dari%20omzet%20' +
+          omzetFormatted +
+          ',%20saya%20butuh%20bantuan" target="_blank" rel="noopener noreferrer" class="block mt-2 text-primary font-semibold hover:underline">Diskusi dengan Guslan sekarang &rarr;</a>';
       } else {
-        resultAction.innerHTML = action + ' <a href="https://wa.me/628213141688?text=Halo%20Guslan,%20HPP%20saya%20' + hppVal + '%25%20dan%20saya%20ingin%20optimalkan%20lebih%20lanjut" target="_blank" rel="noopener noreferrer" class="block mt-2 text-primary font-semibold hover:underline">Konsultasi lebih lanjut &rarr;</a>';
+        resultAction.innerHTML =
+          action +
+          ' <a href="https://wa.me/628213141688?text=Halo%20Guslan,%20HPP%20saya%20' +
+          hppVal +
+          '%25%20dan%20saya%20ingin%20optimalkan%20lebih%20lanjut" target="_blank" rel="noopener noreferrer" class="block mt-2 text-primary font-semibold hover:underline">Konsultasi lebih lanjut &rarr;</a>';
       }
 
       resultDiv.classList.remove('hidden');
     });
   </script>
-
 </Layout>

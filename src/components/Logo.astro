@@ -5,13 +5,7 @@ import { Image } from 'astro:assets';
 ---
 
 <span class="flex items-center gap-2">
-  <Image
-    src={logo}
-    alt={SITE?.name}
-    height={36}
-    loading="eager"
-    class="h-9 w-auto"
-  />
+  <Image src={logo} alt={SITE?.name} height={36} loading="eager" class="h-9 w-auto" />
   <span class="self-center text-xl font-bold text-gray-900 whitespace-nowrap dark:text-white">
     {SITE?.name}
   </span>

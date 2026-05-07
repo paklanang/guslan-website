@@ -8,14 +8,14 @@ metadata:
   title:
     default: Guslan Putra
     template: '%s — Guslan Putra'
-  description: "Konsultan Akuntansi & Pajak spesialis industri F&B di Bali dan seluruh Indonesia."
+  description: 'Konsultan Akuntansi & Pajak spesialis industri F&B di Bali dan seluruh Indonesia.'
   robots:
     index: true
     follow: true
   openGraph:
     site_name: Guslan Putra
     type: website
-    
+
 i18n:
   language: id
   textDirection: ltr

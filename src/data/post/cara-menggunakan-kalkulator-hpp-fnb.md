@@ -1,8 +1,8 @@
 ---
-title: "Kalkulator HPP F&B: Panduan Lengkap untuk Owner Restoran dan Cafe"
-excerpt: "Panduan praktis menggunakan Kalkulator HPP gratis dari Guslan.com. Pelajari arti Yield, Effective Cost, Invisible Waste, dan cara membaca status GOOD, CAUTION, DANGER untuk bisnis F&B Anda."
-image: "~/assets/images/blog/kalkulator-hpp-fnb-guslan.webp"
-category: "HPP & Food Cost"
+title: 'Kalkulator HPP F&B: Panduan Lengkap untuk Owner Restoran dan Cafe'
+excerpt: 'Panduan praktis menggunakan Kalkulator HPP gratis dari Guslan.com. Pelajari arti Yield, Effective Cost, Invisible Waste, dan cara membaca status GOOD, CAUTION, DANGER untuk bisnis F&B Anda.'
+image: '~/assets/images/blog/kalkulator-hpp-fnb-guslan.webp'
+category: 'HPP & Food Cost'
 tags:
   - kalkulator HPP
   - food cost restoran
@@ -10,7 +10,7 @@ tags:
   - cara hitung HPP
   - akuntansi F&B
 publishDate: 2026-04-23
-author: "Guslan Putra"
+author: 'Guslan Putra'
 ---
 
 Berapa HPP Es Kopi Susu Anda? Kalau jawabannya kira-kira, artikel ini untuk Anda.
@@ -48,6 +48,7 @@ Selalu masukkan berat kotor sesuai berat saat Anda membeli bahan, bukan setelah 
 Yield adalah **persentase bagian bahan yang benar-benar terpakai** setelah proses pembersihan atau pengolahan. Ini konsep paling penting yang paling sering diabaikan owner F&B pemula.
 
 **Contoh nyata:**
+
 - Ayam utuh 1.000 gram setelah dibersihkan dan dibuang tulang serta kulitnya menghasilkan daging bersih sekitar 700 gram. Yield-nya 70%.
 - Bumbu sachet atau bahan kemasan pabrikan biasanya yield-nya 100% karena tidak ada bagian yang terbuang.
 - Bayam segar setelah dipetik dan dicuci memiliki yield sekitar 85 sampai 90%.
@@ -69,6 +70,7 @@ Effective Cost adalah **biaya nyata per gram bahan** setelah memperhitungkan yie
 > Effective Cost = (Harga Beli / Berat Kotor) / (Yield / 100)
 
 **Contoh:**
+
 - Ayam dibeli seharga Rp35.000 per 1.000 gram dengan yield 70%.
 - Harga beli per gram = Rp35.000 / 1.000 = Rp35/gram
 - Effective Cost = Rp35 / 0,70 = **Rp50/gram**
@@ -106,6 +108,7 @@ Food Cost Percentage adalah **rasio HPP terhadap harga jual**, dinyatakan dalam 
 > Food Cost % = (Total HPP / Harga Jual) x 100
 
 **Standar industri F&B:**
+
 - Restoran fine dining: 25 sampai 35%
 - Cafe dan casual dining: 28 sampai 35%
 - Warung dan street food: 30 sampai 40%
@@ -132,13 +135,13 @@ Klik tombol **"+ Tambah Bahan"** untuk menambahkan bahan pertama. Anda bisa mena
 
 Untuk setiap bahan, isi kolom berikut:
 
-| Kolom | Yang Harus Diisi | Contoh |
-|---|---|---|
-| Nama Bahan | Nama bahan baku | Ayam Utuh, Tepung Terigu |
-| Harga Beli (Rp) | Harga per pembelian | 35.000 |
-| Berat Kotor (gr) | Berat saat dibeli | 1.000 |
-| Yield (%) | Persentase yang terpakai | 70 |
-| Qty/Porsi (gr) | Gram yang dipakai per sajian | 150 |
+| Kolom            | Yang Harus Diisi             | Contoh                   |
+| ---------------- | ---------------------------- | ------------------------ |
+| Nama Bahan       | Nama bahan baku              | Ayam Utuh, Tepung Terigu |
+| Harga Beli (Rp)  | Harga per pembelian          | 35.000                   |
+| Berat Kotor (gr) | Berat saat dibeli            | 1.000                    |
+| Yield (%)        | Persentase yang terpakai     | 70                       |
+| Qty/Porsi (gr)   | Gram yang dipakai per sajian | 150                      |
 
 Setelah semua kolom terisi, kalkulator langsung menampilkan Effective Cost dan Cost Dipakai di bawah baris bahan tersebut.
 
@@ -190,6 +193,7 @@ PDF berisi ringkasan lengkap: tabel bahan, semua angka HPP, status menu, dan rek
 Banyak owner baru menghitung HPP saat bisnis sudah bermasalah. Padahal idealnya, setiap menu baru harus sudah melewati kalkulasi HPP sebelum dijual ke pelanggan.
 
 Gunakan [Kalkulator HPP Guslan.com](/tools/hpp-calculator) sebagai titik periksa wajib setiap kali Anda:
+
 - Meluncurkan menu baru
 - Mengubah resep atau komposisi bahan
 - Mendapat informasi kenaikan harga dari supplier
@@ -226,4 +230,4 @@ Kalau menu Anda sudah puluhan dan operasional tersebar di beberapa lokasi, satu 
 
 ---
 
-*Ditulis oleh **Guslan Putra** — Konsultan keuangan spesialis industri F&B di Bali dan seluruh Indonesia.*
+_Ditulis oleh **Guslan Putra** — Konsultan keuangan spesialis industri F&B di Bali dan seluruh Indonesia._
