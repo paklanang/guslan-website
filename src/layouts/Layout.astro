@@ -11,7 +11,6 @@ import Metadata from '~/components/common/Metadata.astro';
 import SiteVerification from '~/components/common/SiteVerification.astro';
 import Analytics from '~/components/common/Analytics.astro';
 import BasicScripts from '~/components/common/BasicScripts.astro';
-import BasicScripts from '~/components/common/BasicScripts.astro';
 import SchemaOrg from '~/components/SchemaOrg.astro';
 
 // Comment the line below to disable View Transitions
@@ -25,6 +24,9 @@ export interface Props {
 
 const { metadata = {} } = Astro.props;
 const { language, textDirection } = I18N;
+
+// ✅ FIX: cast ke any untuk akses field custom (publishDate, faq)
+const meta = metadata as any;
 ---
 
 <!doctype html>
@@ -36,11 +38,11 @@ const { language, textDirection } = I18N;
     <ApplyColorMode />
     <Metadata {...metadata} />
     <SchemaOrg
-      type={metadata?.publishDate ? 'article' : 'website'}
-      title={metadata?.title}
-      description={metadata?.description}
-      publishDate={metadata?.publishDate}
-      faq={metadata?.faq}
+      type={meta?.publishDate ? 'article' : 'website'}
+      title={meta?.title}
+      description={meta?.description}
+      publishDate={meta?.publishDate}
+      faq={meta?.faq}
     />
     <SiteVerification />
     <Analytics />

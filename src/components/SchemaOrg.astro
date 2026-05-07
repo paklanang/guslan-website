@@ -37,7 +37,7 @@ const personSchema = {
   "knowsAbout": [
     "Akuntansi F&B", "Keuangan Restoran", "Konsultan Keuangan Restoran",
     "Pajak Restoran Indonesia", "PPh 21 karyawan F&B", "PPN restoran",
-    "Tax PB1 (PBJT", "COGS Audit", "Automation system akuntansi",
+    "Tax PB1 (PBJT)", "COGS Audit", "Automation system akuntansi",
     "Accurate Online", "ESB Restaurant System",
     "Laporan keuangan restoran", "HPP makanan minuman"
   ]
@@ -104,7 +104,8 @@ const faqSchema = faq && faq.length > 0 ? {
   }))
 } : null;
 
-const graph = [personSchema, businessSchema];
+// FIX: deklarasi eksplisit sebagai any[] agar push schema berbeda tidak error
+const graph: any[] = [personSchema, businessSchema];
 if (articleSchema) graph.push(articleSchema);
 if (faqSchema) graph.push(faqSchema);
 ---

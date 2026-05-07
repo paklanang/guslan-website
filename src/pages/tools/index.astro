@@ -157,7 +157,7 @@ const tools = [
               </div>
             </div>
             <a
-              href={`https://wa.me/628213141688?text=${encodeURIComponent(tool.waMsg)}`}
+              href={`https://wa.me/628213141688?text=${encodeURIComponent(tool.waMsg ?? '')}`}
               target="_blank"
               rel="noopener noreferrer"
               class="inline-flex items-center justify-center gap-2 h-9 px-4 rounded-xl border border-slate-200 dark:border-slate-600 text-slate-500 dark:text-slate-400 text-xs font-semibold hover:border-[#0074D9]/40 hover:text-[#0074D9] transition-all mt-auto"
