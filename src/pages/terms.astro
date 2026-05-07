@@ -3,33 +3,101 @@ import Layout from '~/layouts/PageLayout.astro';
 
 const metadata = {
   title: 'Terms of Service — Guslan Putra',
-  description: 'Terms of service website guslan.com.',
-  robots: { index: false, follow: false }, // ✅ FIX: object, bukan string
+  description: 'Syarat dan ketentuan penggunaan website guslan.com dan seluruh tools di dalamnya.',
+  robots: { index: false, follow: false },
 };
 ---
 
 <Layout metadata={metadata}>
   <section class="max-w-3xl mx-auto px-4 py-16">
-    <h1 class="text-3xl font-bold mb-8">Terms of Service</h1>
-    <p class="text-sm text-gray-500 mb-8">Terakhir diperbarui: Mei 2026</p>
+    <div class="mb-10">
+      <p class="text-[11px] font-bold uppercase tracking-widest text-[#0074D9] mb-2">Legal</p>
+      <h1 class="text-3xl font-extrabold text-slate-900 dark:text-white mb-3">Terms of Service</h1>
+      <p class="text-sm text-slate-500 dark:text-slate-400">Terakhir diperbarui: Mei 2026</p>
+    </div>
 
-    <h2 class="text-xl font-semibold mt-8 mb-3">Penggunaan Konten</h2>
-    <p>
-      Seluruh konten di guslan.com — artikel, tools, dan template — adalah milik Guslan Putra. Konten boleh dibagikan
-      dengan menyertakan sumber, namun tidak boleh direproduksi secara komersial tanpa izin.
-    </p>
+    <div class="prose prose-slate dark:prose-invert max-w-none text-sm leading-relaxed space-y-8">
 
-    <h2 class="text-xl font-semibold mt-8 mb-3">Disclaimer</h2>
-    <p>
-      Informasi di website ini bersifat edukatif dan tidak menggantikan konsultasi profesional. Untuk keputusan keuangan
-      dan perpajakan spesifik, disarankan untuk berkonsultasi langsung.
-    </p>
+      <div>
+        <h2 class="text-base font-bold text-slate-800 dark:text-slate-200 mb-2">1. Penerimaan Syarat</h2>
+        <p class="text-slate-600 dark:text-slate-400">
+          Dengan mengakses dan menggunakan website <strong>guslan.com</strong>, Anda menyatakan telah membaca, memahami, dan menyetujui seluruh syarat dan ketentuan yang berlaku di halaman ini. Jika tidak setuju, mohon untuk tidak menggunakan website ini.
+        </p>
+      </div>
 
-    <h2 class="text-xl font-semibold mt-8 mb-3">Kontak</h2>
-    <p>
-      Pertanyaan dapat disampaikan melalui <a href="https://wa.me/628213141688" class="text-primary hover:underline"
-        >WhatsApp</a
-      >.
-    </p>
+      <div>
+        <h2 class="text-base font-bold text-slate-800 dark:text-slate-200 mb-2">2. Sifat Informasi — Bukan Pengganti Konsultasi Profesional</h2>
+        <p class="text-slate-600 dark:text-slate-400">
+          Seluruh artikel, panduan, dan konten di website ini disediakan <strong>hanya untuk tujuan edukasi dan informasi umum</strong>. Konten ini bukan merupakan nasihat keuangan, akuntansi, atau perpajakan yang bersifat mengikat secara hukum.
+        </p>
+        <p class="text-slate-600 dark:text-slate-400 mt-2">
+          Untuk keputusan bisnis spesifik — terutama terkait perpajakan (PPh, PPN, PB1/PBJT), laporan keuangan, dan strategi pricing — kami sangat menyarankan untuk berkonsultasi langsung dengan Guslan Putra atau profesional keuangan yang berkualifikasi.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-base font-bold text-slate-800 dark:text-slate-200 mb-2">3. Disclaimer Tools (HPP Calculator & Lainnya)</h2>
+        <p class="text-slate-600 dark:text-slate-400">
+          Tools finansial yang tersedia di website ini — termasuk <strong>HPP Calculator</strong> — merupakan alat bantu kalkulasi berbasis input yang Anda masukkan sendiri. Hasil kalkulasi bersifat <strong>simulasi dan estimasi</strong>, bukan jaminan keuntungan atau akurasi bisnis.
+        </p>
+        <ul class="list-disc pl-5 space-y-1 text-slate-600 dark:text-slate-400 mt-2">
+          <li>Hasil tools tidak mempertimbangkan seluruh variabel operasional bisnis Anda.</li>
+          <li>Guslan Putra tidak bertanggung jawab atas keputusan bisnis yang diambil berdasarkan hasil tools semata.</li>
+          <li>Gunakan tools sebagai titik awal analisis, bukan keputusan final.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="text-base font-bold text-slate-800 dark:text-slate-200 mb-2">4. Hak Kekayaan Intelektual</h2>
+        <p class="text-slate-600 dark:text-slate-400">
+          Seluruh konten di website ini — termasuk artikel, desain, tools, template, dan kode — adalah milik <strong>Guslan Putra</strong> dan dilindungi oleh hak cipta.
+        </p>
+        <ul class="list-disc pl-5 space-y-1 text-slate-600 dark:text-slate-400 mt-2">
+          <li><strong>Boleh:</strong> Membagikan link artikel dengan menyertakan sumber (guslan.com).</li>
+          <li><strong>Tidak boleh:</strong> Menyalin, mereproduksi, atau mendistribusikan konten secara komersial tanpa izin tertulis.</li>
+          <li><strong>Tidak boleh:</strong> Mengklaim konten ini sebagai karya sendiri.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="text-base font-bold text-slate-800 dark:text-slate-200 mb-2">5. Batasan Tanggung Jawab</h2>
+        <p class="text-slate-600 dark:text-slate-400">
+          Guslan Putra tidak bertanggung jawab atas kerugian langsung maupun tidak langsung yang timbul akibat penggunaan informasi, tools, atau layanan di website ini. Website disediakan <em>"sebagaimana adanya"</em> tanpa jaminan kelengkapan atau kebebasan dari kesalahan.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-base font-bold text-slate-800 dark:text-slate-200 mb-2">6. Tautan Pihak Ketiga</h2>
+        <p class="text-slate-600 dark:text-slate-400">
+          Website ini mungkin berisi tautan ke website pihak ketiga (seperti WhatsApp, LinkedIn, Instagram). Guslan Putra tidak bertanggung jawab atas konten, kebijakan privasi, atau praktik dari website pihak ketiga tersebut.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-base font-bold text-slate-800 dark:text-slate-200 mb-2">7. Perubahan Layanan</h2>
+        <p class="text-slate-600 dark:text-slate-400">
+          Kami berhak mengubah, memperbarui, atau menghentikan bagian dari website ini — termasuk tools dan konten — kapan saja tanpa pemberitahuan sebelumnya. Syarat dan ketentuan ini juga dapat diperbarui, dan tanggal pembaruan akan selalu dicantumkan di halaman ini.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-base font-bold text-slate-800 dark:text-slate-200 mb-2">8. Hukum yang Berlaku</h2>
+        <p class="text-slate-600 dark:text-slate-400">
+          Syarat dan ketentuan ini diatur oleh hukum yang berlaku di <strong>Indonesia</strong>. Segala sengketa yang timbul akan diselesaikan secara musyawarah, atau jika diperlukan melalui jalur hukum yang berlaku di wilayah Bali, Indonesia.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-base font-bold text-slate-800 dark:text-slate-200 mb-2">9. Kontak</h2>
+        <p class="text-slate-600 dark:text-slate-400">
+          Pertanyaan terkait Terms of Service dapat disampaikan melalui:
+        </p>
+        <ul class="list-disc pl-5 space-y-1 text-slate-600 dark:text-slate-400 mt-2">
+          <li>WhatsApp: <a href="https://wa.me/628213141688" class="text-[#0074D9] hover:underline" target="_blank" rel="noopener noreferrer">+62 821-3141-688</a></li>
+          <li>Website: <a href="/contact" class="text-[#0074D9] hover:underline">guslan.com/contact</a></li>
+        </ul>
+      </div>
+
+    </div>
   </section>
 </Layout>
